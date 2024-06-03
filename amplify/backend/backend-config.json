@@ -1,1 +1,127 @@
-{}
+{
+  "auth": {
+    "ramblinwreckreviewv24e1161e2": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "ramblinwreckreviewv24e1161e2CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "ramblinwreckreviewv24e1161e2PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+        }
+      ]
+    }
+  }
+}
