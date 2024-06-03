@@ -1,42 +1,68 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.portal-body-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.portal-container{
+  width: 350px;
+  height: 400px;
+  align-content: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.portal-component-container{
+  flex-direction: column;
+  display: flex;
+}
+
+.portal-component-container h1{
   text-align: center;
+  color: black;
+  font-weight: 300;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.portal-component-container input{
+  margin-right: 20%;
+  margin-left: 20%;
+  height: 30px;
+  margin-top: 5px;
+  border-radius: 15px;
+  border-width: 1px;
+  border-color: black;
+  padding-left: 10px;
+  background-color: #f2f2f2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.portal-component-container button{
+  margin-right: 20%;
+  margin-left: 20%;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #21314d;
+  color: white;
 }
 
-.card {
-  padding: 2em;
+.portal-component-container div{
+  text-align: center;
+  margin-top: 15px;
+  align-content: center;
+  font-size: 12px;
 }
 
-.read-the-docs {
-  color: #888;
+.portal-bkgd-image{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.portal-forgot-password{
+  cursor: pointer;
+  color: orangered;
 }

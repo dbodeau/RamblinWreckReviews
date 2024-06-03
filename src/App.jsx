@@ -4,30 +4,26 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+    <body className='portal-body'>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {/* <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo"/> */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='portal-body-container'>
+        <div className='portal-container'>
+          <div className='portal-component-container'>
+            <h1>Login</h1>
+            <input type='text' id="username-input" placeholder='Username'></input>
+            <input type='text' id="password-input" placeholder='Password'></input>
+            {/* <button onClick={handleAPICall}>Submit</button> */}
+            <div className="portal-forgot-password" onClick={() => { window.location.href = '/signup';}}>
+              Forgot Password
+            </div>
+          </div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </body>
     </>
   )
 }
