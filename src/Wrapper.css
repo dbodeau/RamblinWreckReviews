@@ -1,0 +1,89 @@
+.wrapper-header{
+  display: flex;
+  flex-direction: row;
+  background-color: #21314d;
+  place-items: center;
+  margin: 0;
+  align-items: center;
+  height: 80px;
+}
+
+.wrapper-header h1 {
+  color: white;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.wrapper-school-header {
+  margin-left: 2%;
+  text-align: center;
+  align-content: center;
+}
+
+.wrapper-nav-bar-menu-link{
+  height: inherit;
+}
+
+.wrapper-nav-bar-menu-button{
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  font-size: 16px;
+  border: none;
+  box-shadow: none !important;
+  height: inherit;
+  min-width: 100px;
+}
+
+#wrapper-nav-bar-menu-button-sign-out{
+  background-color: #B42024;
+  border: none;
+}
+#wrapper-nav-bar-menu-button-sign-out:hover{
+  background-color: rgba(180, 32, 36, 0.8);
+  padding: 20px;
+}
+
+.wrapper-nav-bar-menu-button:hover{
+  border-bottom: solid;
+  border-color: #F15A2A;
+  border-width: 5px;
+  padding-bottom: 15px;
+}
+
+.wrapper-website-title {
+  font-weight: 400;
+  font-size: 25px;
+  flex: 1;
+  text-align: center;
+  align-content: center;
+  position: absolute;
+  width: 100%;
+}
+
+.wrapper-nav-bar-menu{
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  position: fixed;
+  height: inherit;
+  align-items: center;
+}
+
+  /* Styles for smaller screens (adjust the breakpoint as needed) */
+  @media (max-width: 1200px) {
+    .wrapper-school-header{
+      display: none;
+    }
+
+    .wrapper-website-title{
+      text-align: left;
+      position: relative;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .wrapper-website-title{
+      display: none;
+    }
+  }
