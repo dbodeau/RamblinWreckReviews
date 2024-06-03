@@ -1,0 +1,275 @@
+.professor-manage-survey-card {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-top: 20px;
+}
+
+.professor-manage-survey-card-question-content {
+  background-color: rgb(255, 255, 255);
+  width:90%;
+  height: auto;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.professor-manage-survey-card-all-questions {
+  background-color: rgb(255, 255, 255);
+  width:90%;
+  height: auto;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
+.professor-manage-survey-required-question-card {
+  background-color: rgb(255, 255, 255);
+  width: 95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: dashed;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+.professor-manage-survey-add-question-form {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.professor-manage-survey-background-admin {
+  background-color: #21314d;
+  height: 100%;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.professor-manage-survey-survey-input {
+  width: 99%;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 20px;
+}
+
+.professor-manage-survey-question-input {
+  width: 99%;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 70px;
+}
+
+.professor-manage-survey-preview-question-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.professor-manage-survey-add-question-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.professor-manage-survey-form-subheaders {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.professor-manage-survey-preview-question-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.professor-manage-survey-checkbox {
+  margin-top: 18px;
+  height: 15px;
+  width: 15px;
+}
+
+.professor-manage-survey-preview-question-dropdown {
+  margin-top: 16px;
+  margin-left: 10px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.professor-manage-survey-form-button {
+  width: 200px;
+  margin-bottom: 10px;
+  margin-left: 80%;
+  height: 50px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 20px;
+  background-color: #21314d;
+  color:white
+}
+
+.professor-manage-survey-form-button:hover,
+.professor-manage-survey-form-button:focus {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.professor-manage-survey-department-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.professor-manage-survey-department-dropdown {
+  margin-top: 18px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.professor-manage-survey-access-selection {
+  margin-top: 18px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.professor-manage-survey-question-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.professor-manage-survey-question-number-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.professor-manage-survey-category-input {
+  width: 235px;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 25px;
+}
+
+.professor-manage-survey-category-span {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.professor-manage-survey-date-span {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  width: 500px;
+}
+
+.professor-manage-survey-date-size {
+  height: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.professor-manage-survey-content-box-error {
+background-color: rgb(255, 218, 218);
+width:95%;
+height: auto;
+padding: 5px;
+border-color: #484752;
+border-width: 1px;
+border-radius: 8px;
+border-style: solid;
+justify-content: center;
+text-align: center;
+margin-left: 35px;
+margin-top: 35px;
+padding-bottom: 20px;
+padding-top: 20px;
+}
+
+.professor-manage-survey-content-box-success {
+background-color: rgb(229, 255, 218);
+width:95%;
+height: auto;
+padding: 5px;
+border-color: #484752;
+border-width: 1px;
+border-radius: 8px;
+border-style: solid;
+justify-content: center;
+text-align: center;
+margin-left: 35px;
+margin-top: 35px;
+padding-bottom: 20px;
+padding-top: 20px;
+}
+
+.professor-manage-survey-content-text {
+font-weight: 600;
+}
+
+.professor-manage-survey-popup-button {
+width: 100px;
+margin-bottom: 10px;
+margin-left: 0%;
+height: 40px;
+border-width: 1px;
+border-radius: 8px;
+font-size: 16px;
+background-color: #21314d;
+color:white
+}
+
+.professor-manage-survey-upload-csv {
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 10px;
+}

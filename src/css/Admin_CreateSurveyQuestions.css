@@ -1,0 +1,53 @@
+.admin-create-survey-questions-content-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.admin-create-survey-questions-background-admin {
+  background-color: #21314d;
+  height: 100%;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.admin-create-survey-questions-card-question-content {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-top: 20px;
+}
+
+.admin-create-survey-questions-preview-question-span {
+
+}
+
+.admin-create-survey-questions-preview-question-title {
+  
+}
+
+.admin-create-survey-questions-question-title {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-top: 20px;
+}

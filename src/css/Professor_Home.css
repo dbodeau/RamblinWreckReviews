@@ -1,0 +1,148 @@
+.professor-home-body-frame{
+  display: flex;
+  flex-direction: row;
+}
+
+.professor-home-menu-bar-container{
+  display: flex;
+  height: 100vh;
+}
+
+.professor-home-content-container{
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 80px);
+  background-color: white;
+  border-top-left-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 0; 
+  display: flex;
+  flex-wrap: wrap; /* Wrap cards to the next line if needed */
+}
+
+/* .professor-home-card {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-top: 20px;
+}
+
+.professor-home-survey-card {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+.professor-home-class-card {
+  background-color: rgb(255, 255, 255);
+  width: 95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: dashed;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+.professor-home-class-survey-card {
+  background-color: rgb(255, 255, 255);
+  width: 95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: dashed;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+.professor-home-button {
+  width: 90%;
+  margin-bottom: 20px;
+  height: 50px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 20px;
+  background-color: #21314d;
+  color:white
+}
+
+.professor-home-list-of-surveys-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.professor-home-survey-name {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  
+  text-align: left;
+  margin-top: 5px;
+}
+
+.professor-home-class-name {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+
+  text-align: left;
+  margin-top: 5px;
+}
+
+
+.professor-home-list-of-curr-surveys {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 10px;
+} */

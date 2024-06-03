@@ -1,0 +1,17 @@
+.error-404-not-found {
+    display: flex;  /* Make the main container a flex container */
+    justify-content: center;  /* Center content horizontally */
+    align-items: center; 
+  }
+  
+.error-404-not-found-content {
+  text-align: center;  /* Center text within the content div (optional) */
+}
+
+.error-404-error-image {
+  width: 25%;
+  max-width: 25%;  /* Optional for responsive behavior */
+  height: auto;  /* Maintain aspect ratio */
+  border-radius: 50%;
+}
+  

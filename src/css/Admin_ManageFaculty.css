@@ -1,0 +1,239 @@
+.admin-manage-faculty-card {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: 100%;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-top: 20px;
+}
+  
+.admin-manage-faculty-card-content {
+  background-color: rgb(255, 255, 255);
+  width:90%;
+  height: auto;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+  
+.admin-manage-faculty-add-faculty-form {
+  background-color: rgb(255, 255, 255);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: left;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+  
+.admin-manage-faculty-background-admin {
+  background-color: #21314d;
+  height: 100%;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+  
+.admin-manage-faculty-input {
+  width: 75%;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 25px;
+}
+
+.admin-manage-faculty-div-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-manage-faculty-span-name {
+  margin-right: 5%;
+}
+
+.admin-manage-faculty-input-name {
+  width: 300px;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 25px;
+}
+
+.admin-manage-faculty-form-title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.admin-manage-faculty-form-subheaders {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.admin-manage-faculty-invite-button {
+  width: 200px;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  margin-left: 80%;
+  height: 50px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 20px;
+  background-color: #21314d;
+  color:white
+}
+
+.admin-manage-faculty-submit-button {
+  width: 200px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 80%;
+  height: 50px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 20px;
+  background-color: #21314d;
+  color:white
+}
+
+.admin-manage-faculty-form-button:hover,
+.admin-manage-faculty-form-button:focus {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.admin-manage-faculty-faculty-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-manage-faculty-department-dropdown {
+  margin-top: 18px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.admin-manage-faculty-access-selection {
+  margin-top: 18px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.admin-manage-faculty-content-box-error {
+  background-color: rgb(255, 218, 218);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.admin-manage-faculty-content-box-success {
+  background-color: rgb(229, 255, 218);
+  width:95%;
+  height: auto;
+  padding: 5px;
+  border-color: #484752;
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  margin-top: 35px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.admin-manage-faculty-content-text {
+  font-weight: 600;
+}
+
+.admin-manage-faculty-popup-button {
+  width: 100px;
+  margin-bottom: 10px;
+  margin-left: 0%;
+  height: 40px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #21314d;
+  color:white
+}
+
+.admin-manage-faculty-active-flag {
+  color:darkgreen;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.admin-manage-faculty-inactive-flag {
+  color:red;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+admin-manage-faculty-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+td, th {
+  border: 1px solid #c5c5c5;
+  text-align: left;
+  padding: 8px;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.admin-manage-faculty-table-button {
+  width: 100px;
+  height: 30px;
+  border-width: 1px;
+  border-radius: 8px;
+  font-size: 12px;
+  background-color: #21314d;
+  color:white
+}
+
+.admin-manage-faculty-content-container {
+  /* works but breaks the body, designed to add the menu bar and the content horizontally
+  display: flex;
+  flex-direction: row; /* aligns horizontally */
+}

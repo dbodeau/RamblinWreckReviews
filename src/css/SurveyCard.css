@@ -1,0 +1,183 @@
+.professor-home-survey-card-container-bkgd-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0.4;
+  }
+  
+  .professor-home-survey-card-container{
+    height: 200px;
+    min-height: 150px;
+    min-width: 500px;
+    background-color: #21314d;
+    z-index: 40;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .professor-home-survey-card-header-container{
+    display: flex;
+    width: inherit;
+    flex-direction: row;
+    padding: 5px;
+  }
+  
+  .professor-home-survey-card-header-container-title-container{
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    flex: 1;
+  }
+  
+  .professor-home-survey-card-header-container-title-container h3{
+    margin: 0;
+    font-size: 26px;
+    padding: 5px;
+    color: white;
+  }
+  .professor-home-survey-card-header-container-title-container h4{
+    font-size: 20px;
+    margin: 0;
+    padding: 5px;
+    padding-top: 0px;
+    color: white;
+  }
+  
+  .professor-home-survey-card-footer-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .professor-home-survey-card-footer-container h4{
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    flex: 1;
+    margin: 0;
+    color: white;
+  }
+  
+  .professor-home-survey-card-progress-indicator-bar p{
+    text-align: center;
+  }
+  
+  .professor-home-survey-card-progress-indicator-bar{
+    background-color: white;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .professor-home-survey-card-progress-indicator-bar-inside{
+    height: inherit;
+    width: 64%;
+    border-radius: 10px;
+    background-color: #80C342;
+  }
+  
+  .professor-home-survey-card-status-container{
+    background-color: #81848A;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: 30px;
+    margin: 10px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    vertical-align: middle;
+  }
+
+  .professor-home-survey-card-status-container p{
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    line-height: 30px;
+  }
+
+  .professor-home-survey-card-dropdown-button{
+    height: 30px;
+    width: 30px;
+    border: none;
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.professor-home-survey-card-dropdown-button img{
+    width: 20px;
+    height: 20px;
+}
+
+.professor-home-survey-card-dropdown-content {
+  position: absolute; /* Change to absolute */
+  display: none;
+  border-width: 2px;
+  width: fit-content;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-right: 10px;
+  right: 0; /* Align to the left edge of the button */
+}
+
+.professor-home-survey-card-dropdown-content-lower-button{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.professor-home-survey-card-dropdown-content-top-button{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.professor-home-survey-card-dropdown-content button {
+  background-color: #21314d;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+  text-align: right;
+}
+
+.professor-home-survey-card-dropdown-sub-container:hover #professor-home-survey-card-options-content {
+  display: block; /* Show dropdown content on hover */
+}
+
+.professor-home-survey-card-dropdown-content button:hover {
+  background-color: rgba(211, 214, 219, 1); /* Lighter blue hover effect */
+  color: black;
+}
+
+
+  /* RENAME THESE */
+  .responsive {
+    flex: 1;
+    width: 50%;
+    border: solid;
+    /* MUST KEEP BORDER FOR IT TO WORK */
+    border-color: transparent; 
+  }
+  
+  @media (max-width: 800px) {
+    .responsive {
+      width: 100%;
+    }
+    .professor-home-survey-card-container{
+      min-width: 400px;
+    }
+  }
