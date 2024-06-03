@@ -6,12 +6,12 @@ import { signIn } from 'aws-amplify/auth';
 
 Amplify.configure(awsconfig)
 
-// const passwordInput = document.getElementById('password-input').value.trim();
-// const usernameInput = document.getElementById('username-input').value.trim();
+const passwordInput = document.getElementById('password-input').value.trim();
+const usernameInput = document.getElementById('username-input').value.trim();
 
 await signIn({
-  email: 'htjohnson@mines',
-  password: 'Password1$',
+  username: usernameInput,
+  password: passwordInput,
 })
 
 export default function Login(){
