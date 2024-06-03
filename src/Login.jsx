@@ -22,9 +22,10 @@ export default function Login() {
         username,
         password,
       });
-      // Handle successful sign-in
+      // handle successful sign-in
+      window.location.href = '/professor';
     } catch (error) {
-      // Handle sign-in error
+      // handle sign-in error
       console.error('Sign-in error:', error);
     }
   };
