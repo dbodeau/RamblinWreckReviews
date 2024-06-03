@@ -28,7 +28,7 @@ import NotAuthorized from './Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
-//For any web page to be visible in the application, it needs to be linked to this router object
+//for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
   {
     //Wrapper (visually known as the navigation bar) is what holds all the different pages of the application
