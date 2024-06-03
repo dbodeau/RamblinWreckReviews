@@ -3,38 +3,69 @@ import './css/Portal.css';
 import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { signIn } from 'aws-amplify/auth';
+import { useState, useEffect } from 'react';
 
 Amplify.configure(awsconfig)
 
-const passwordInput = document.getElementById('password-input').value.trim();
-const usernameInput = document.getElementById('username-input').value.trim();
+export default function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-await signIn({
-  username: usernameInput,
-  password: passwordInput,
-})
+  useEffect(() => {
+    // This code will run after the initial render
+  }, []);
 
-export default function Login(){
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signIn({
+        username,
+        password,
+      });
+      // Handle successful sign-in
+    } catch (error) {
+      // Handle sign-in error
+      console.error('Sign-in error:', error);
+    }
+  };
+
   return (
     <>
-    <body className='portal-body'>
-      <div>
-        <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo"/>
-      </div>
-      <div className='portal-body-container'>
-        <div className='portal-container'>
-          <div className='portal-component-container'>
-            <h1>Login</h1>
-            <input type='text' id="username-input" placeholder='Username'></input>
-            <input type='text' id="password-input" placeholder='Password'></input>
-            <button onClick={signIn}>Submit</button>
-            <div className="portal-forgot-password" onClick={() => { window.location.href = '/signup';}}>
-              Forgot Password
+      <body className='portal-body'>
+        <div>
+          <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
+        </div>
+        <div className='portal-body-container'>
+          <div className='portal-container'>
+            <div className='portal-component-container'>
+              <h1>Login</h1>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type='text'
+                  id="username-input"
+                  placeholder='Username'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                  type='password'
+                  id="password-input"
+                  placeholder='Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">Submit</button>
+              </form>
+              <div
+                className="portal-forgot-password"
+                onClick={() => { window.location.href = '/signup'; }}
+              >
+                Forgot Password
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </body>
+      </body>
     </>
   );
 };
