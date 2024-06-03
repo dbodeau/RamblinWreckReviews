@@ -12,7 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    // This code will run after the initial render
+    // this code will run after the initial render
   }, []);
 
   const handleSubmit = async (e) => {
