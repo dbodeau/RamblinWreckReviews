@@ -1,13 +1,17 @@
 import minesbkgd from './images/mines-bkgd.jpg';
 import './css/Portal.css';
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
 import { signIn } from 'aws-amplify/auth';
 
-const passwordInput = document.getElementById('password-input').value.trim();
-const usernameInput = document.getElementById('username-input').value.trim();
+Amplify.configure(awsconfig)
+
+// const passwordInput = document.getElementById('password-input').value.trim();
+// const usernameInput = document.getElementById('username-input').value.trim();
 
 await signIn({
-  username: usernameInput,
-  password: passwordInput
+  email: 'htjohnson@mines',
+  password: 'Password1$',
 })
 
 export default function Login(){

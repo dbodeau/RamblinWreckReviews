@@ -27,6 +27,7 @@ import NotFound from './Error404';
 import NotAuthorized from './Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+
 //For any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
   {
