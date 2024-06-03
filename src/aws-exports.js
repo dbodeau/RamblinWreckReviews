@@ -7,6 +7,8 @@ const awsmobile = {
     "aws_cognito_region": "us-east-2",
     "aws_user_pools_id": "us-east-2_aINgPxAHU",
     "aws_user_pools_web_client_id": "7tlaancd9s37c975kt4e33umf1",
+    "aws_user_pools_id": "us-east-2_aINgPxAHU",
+    "aws_user_pools_web_client_id": "7tlaancd9s37c975kt4e33umf1",
     "oauth": {},
     "aws_cognito_username_attributes": [
         "EMAIL"
@@ -27,4 +29,6 @@ const awsmobile = {
         "EMAIL"
     ]
 }
+
+
 export default awsmobile;
