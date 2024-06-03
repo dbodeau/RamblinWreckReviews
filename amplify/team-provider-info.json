@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ramblinwreckreviewv2-dev-48779-authRole",
+      "UnauthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv2-dev-48779-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv2-dev-48779-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
+      "UnauthRoleName": "amplify-ramblinwreckreviewv2-dev-48779-unauthRole",
+      "StackName": "amplify-ramblinwreckreviewv2-dev-48779",
+      "StackId": "arn:aws:cloudformation:us-east-2:386157563166:stack/amplify-ramblinwreckreviewv2-dev-48779/3add4bb0-21c5-11ef-980e-0a0f377c2591",
+      "AmplifyAppId": "d17syn1snva5yk"
+    }
+  }
+}
