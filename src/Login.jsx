@@ -23,6 +23,7 @@ export default function Login() {
         password,
       });
       // Handle successful sign-in
+      console.log("Success");
     } catch (error) {
       // Handle sign-in error
       console.error('Sign-in error:', error);
