@@ -1,3 +1,6 @@
+// displays feedback for every student
+// By: Wesley Woo
+
 import './css/Student_ViewFeedback.css';
 import MenuBar from './MenuBar';
 

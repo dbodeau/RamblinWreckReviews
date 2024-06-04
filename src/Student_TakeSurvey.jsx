@@ -1,4 +1,5 @@
 // frontend display of the survey
+// By: Wesley Woo
 
 import MenuBar from './MenuBar';
 import './css/Student_TakeSurvey.css';

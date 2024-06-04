@@ -32,6 +32,19 @@
     margin-top: -30px;
 }
 
+/* orange bar, for the titles of each survey */
+.student-home-orange-bar-survey {
+    background-color: #F15A2A;
+    width: 100%;
+    height: 3px;
+    flex-direction: column;
+}
+
+/* styling for the different orange bar for the survey */
+.student-home-orange-bar-survey-horizontal-container {
+    flex-direction: column;
+}
+
 /* hover style for the survey button */
 .student-home-survey-button:hover {
     transform: scale(1.1); /* slightly enlarges the button */
@@ -40,12 +53,14 @@
 /* status bar styling */
 .student-home-status-bar {
     display: flex;
-    margin-left: -10%;
+    margin-left: 0%;
+    margin-right: -30%;
     margin-top: -10%;
+    padding-left: 10%;
     justify-content: space-between;
-    align-items: center;
+    align-items: right;
     border-radius: 20px; /* adds rounded corners */
-    font-size: 30px;
+    font-size: 25px;
     color: #21314d;
 }
 
@@ -174,14 +189,15 @@
 }
 
 /* use these presets to change whole card background color based on status */
+/* was removed because it looked kinda tacky */
 .student-home-status-code-taken {
-    /* background-color: #80C342; */
+    background-color: #DDFFDD;
 }
 
 .student-home-status-code-not-taken {
-    /* background-color: #B42024; */
+    background-color: #DDFFDD;
 }
 
 .student-home-status-code-taken-with-feedback {
-    /* background-color: #F1B91A; */
+    background-color: #FFFFED;
 }

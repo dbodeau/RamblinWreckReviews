@@ -1,4 +1,5 @@
 // frontend display for the student home page
+// By: Wesley Woo
 
 import './css/Student_Home.css';
 import MenuBar from "./MenuBar";
@@ -62,24 +63,27 @@ export default function Student_Home() {
     return (
       <div className={`student-home-survey-button ${cssStatusClass}`} key={index}>
         <div className="student-home-survey-name" onClick={() => { window.location.href = '/student/take-survey';}}>
-          <div className="student-home-title-center">{surveyName} {/* name of the survey */}</div>
-            <div className="student-home-status-bar">
-              {/* status code: "not-available" */}
-              {statusCode==="not-available" && (
-                  <p1>Not Available</p1>
-              )}
-              {/* status code: "taken" */}
-              {statusCode==="taken" && (
-                  <p1>Survey Taken</p1>
-              )}
-              {/* status code: "not-taken" */}
-              {statusCode==="not-taken" && (
-                  <p1>Survey Not Taken</p1>
-              )}
-              {/* status code: "taken-with-feedback" */}
-              {statusCode==="taken-with-feedback" && (
-                  <p1>Feedback Available</p1>
-              )}
+          <div className='student-home-orange-bar-survey-horizontal-container'>
+            <div className="student-home-title-center">{surveyName} {/* name of the survey */}</div>
+              <div className='student-home-orange-bar-survey'></div>
+              </div>
+              <div className="student-home-status-bar">
+                {/* status code: "not-available" */}
+                {statusCode==="not-available" && (
+                    <p1>Not Available</p1>
+                )}
+                {/* status code: "taken" */}
+                {statusCode==="taken" && (
+                    <p1>Survey Taken</p1>
+                )}
+                {/* status code: "not-taken" */}
+                {statusCode==="not-taken" && (
+                    <p1>Survey Not Taken</p1>
+                )}
+                {/* status code: "taken-with-feedback" */}
+                {statusCode==="taken-with-feedback" && (
+                    <p1>Feedback Available</p1>
+                )}
           </div>
         </div>
         <div className="student-home-survey-footer">
