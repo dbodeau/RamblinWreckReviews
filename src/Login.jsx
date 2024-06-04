@@ -40,11 +40,11 @@ export default function Login() {
           <div className='portal-container'>
             <div className='portal-component-container'>
               <h1>Login</h1>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className='portal-component-container-form'>
                 <input
                   type='text'
                   id="username-input"
-                  placeholder='Username'
+                  placeholder='Email'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
