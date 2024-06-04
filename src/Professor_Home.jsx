@@ -4,11 +4,9 @@ import MenuBar from './MenuBar';
 import SurveyCard from './SurveyCard';
 import {withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-// import { signOut } from 'aws-amplify/auth';
 
 // START EXAMPLE
 function Professor_Home() {
-  // await signOut();
   // put your request data here!
   const requestData = {
     base: 3,

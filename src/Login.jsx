@@ -4,6 +4,7 @@ import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { signIn } from 'aws-amplify/auth';
 import { useState, useEffect } from 'react';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 Amplify.configure(awsconfig)
 
@@ -36,7 +37,7 @@ export default function Login() {
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
-        <div className='portal-body-container'>
+        {/* <div className='portal-body-container'>
           <div className='portal-container'>
             <div className='portal-component-container'>
               <h1>Login</h1>
@@ -65,7 +66,8 @@ export default function Login() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Authenticator />
       </body>
     </>
   );

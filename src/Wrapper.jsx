@@ -3,6 +3,12 @@ import mineslogo from './images/mineslogo.png';
 import './css/Wrapper.css';    
 import currentUser from './CurrentUser';
 import authStatus from './AuthStatusEnum'; 
+import { signOut } from 'aws-amplify/auth';
+
+async function doSignOut(){
+  await signOut();
+  window.location.href = '/login'
+}
 
 /*
   The wrapper houses the navigation bar that is displayed on top of every page
@@ -32,9 +38,10 @@ export default function Wrapper() {
   );
 
   const signOutLink = (
-    <Link to="/login" className="wrapper-nav-bar-menu-link" onClick={() => {}}> {/* Sign out user and redirect to login */}
-      <button className="wrapper-nav-bar-menu-button" id="wrapper-nav-bar-menu-button-sign-out">Sign Out</button>
-    </Link>
+    <button onClick={doSignOut} className="wrapper-nav-bar-menu-button" id="wrapper-nav-bar-menu-button-sign-out">Sign Out</button>
+    // <Link className="wrapper-nav-bar-menu-link" onClick={() => {doSignOut}}> {/* Sign out user and redirect to login */}
+    //   <button onClick={() => {doSignOut}} className="wrapper-nav-bar-menu-button" id="wrapper-nav-bar-menu-button-sign-out">Sign Out</button>
+    // </Link>
   );
 
   return (
