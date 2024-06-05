@@ -3,6 +3,8 @@ import './css/Professor_Home.css';
 import MenuBar from './MenuBar';
 import SurveyCard from './SurveyCard';
 
+import {withAuthenticator, useAuthenticator } from '@aws-amplify/ui-react';
+
 
 // START EXAMPLE
 export default function Professor_Home() {
