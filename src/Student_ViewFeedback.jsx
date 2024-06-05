@@ -35,6 +35,7 @@ export default function Student_ViewFeedback() {
                     <div className="student-view-feedback-orange-bar"></div>
                 </div>
                 {/* call the displayFeedback function */}
+                {/* Format: title, subtext, feedback */}
                 {displayFeedback("This title can hold informaiton about individuals", "Some subtext", "This is your feedback. Your teammates can talk about you here.")}
                 {displayFeedback("Your Feedback for <Title>", "Some subtext", "This is your feedback")}
                 {displayFeedback("Your Feedback for <Title>", "Some subtext", "This is your feedback")}
