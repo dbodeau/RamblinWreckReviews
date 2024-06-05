@@ -1,0 +1,13 @@
+{
+  "resourceName": "fileUpload",
+  "policyUUID": "4f882313",
+  "bucketName": "ramblinwreckcsvupload",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "S3Trigger1091c9fb",
+  "groupAccess": {}
+}
