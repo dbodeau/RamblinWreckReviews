@@ -2,7 +2,11 @@ import {Link} from 'react-router-dom';
 import './css/Professor_Home.css';
 import MenuBar from './MenuBar';
 import SurveyCard from './SurveyCard';
+<<<<<<< Updated upstream
 import '@aws-amplify/ui-react/styles.css';
+=======
+import {withAuthenticator, useAuthenticator } from '@aws-amplify/ui-react';
+>>>>>>> Stashed changes
 
 // START EXAMPLE
 export default function Professor_Home() {

@@ -1,58 +1,43 @@
 import minesbkgd from './images/mines-bkgd.jpg';
 import './css/Portal.css';
-// import Login from './Login';
+import { useState } from 'react';
+import { confirmSignIn, signIn } from 'aws-amplify/auth';
+import { resetPassword } from 'aws-amplify/auth';
+import { confirmResetPassword } from 'aws-amplify/auth';
+
+const confirmPendingUser = async (email, tempPassword, newPassword) => {
+  // try{
+  //   const output = await resetPassword({username: email});
+  //   console.log(output);
+  // }
+  // catch (e){
+  //   console.log(e);
+  // }
+
+  try {
+    const signInRslt = await signIn({
+      username: email,
+      password: tempPassword,
+    });
+    console.log('signIn', signInRslt);
+
+    if (signInRslt.nextStep?.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED') {
+      const confirmSignInRslt = await confirmSignIn({
+        challengeResponse: newPassword,
+      });
+      console.log('confirmSignIn', confirmSignInRslt);
+      window.location.hrefc = '/professor';
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export default function SignUp() {
-  const handleAPICall = () => {
-    // Gets input from username and password fields
-    const usernameInput = document.getElementById('username-input').value.trim();
-    const passwordInput = document.getElementById('password-input').value.trim();
-    const reEnterPasswordInput = document.getElementById('re-enter-password-input').value.trim();
-    const errorMessage = document.getElementById('error-message'); // Reference to error message element
-    const requestData = {
-      username: usernameInput,
-      new_password: reEnterPasswordInput
-    };
-
-    errorMessage.textContent = '';
-
-    if (passwordInput === reEnterPasswordInput && (!(usernameInput === ""))) {
-      // Successful login logic
-      fetch('https://i7dp69kljj.execute-api.us-east-2.amazonaws.com/FirstTimeUserPasswordRestAPI-Stage' ,{
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-API-KEY': 'NXglZBtATb435jQ18Gi0l3ID9uWReQsKaDAbTv4F',
-        },
-        body: JSON.stringify(requestData)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        const parsedBody = JSON.parse(data.body);
-        
-        console.log('Response:', data.body);
-        console.log('Response URL:', parsedBody.redirectUrl);
-        
-       // window.location.href = parsedBody.redirectUrl; //redirect you to page returned from Lambda function(login-authentication)
-      })
-      .catch(error => {
-        console.error('There was a problem with the request:', error);
-      });
-    } else {
-      // Display error message based on the condition
-      if (usernameInput === "") {
-        errorMessage.textContent = "Username field is empty.";
-      } else {
-        errorMessage.textContent = "Passwords do not match.";
-      }
-    }
-
-  };
+  const [email, setEmail] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  
   return (
     <>
       <body className='portal-body'>
@@ -61,12 +46,32 @@ export default function SignUp() {
         </div>
         <div className="portal-body-container">
           <div className="portal-container">
-            <div className="portal-component-container">
+            <div className="portal-component-container-form">
               <h1>Change Password</h1>
-              <input type="text" id="username-input" placeholder="Username" />
-              <input type="password" id="password-input" placeholder="New Password" />
-              <input type="password" id="re-enter-password-input" placeholder="Re-enter New Password" />
-              <button onClick={handleAPICall}>Change Password</button>
+              <form onSubmit={(e) => {e.preventDefault(); confirmPendingUser(email, currentPassword, newPassword)}} className='portal-component-container-form'>
+                <input
+                  type='text'
+                  id="email-input"
+                  placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  // type='password'
+                  id="current-password-input"
+                  placeholder='Current Password'
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+                <input
+                  // type='password'
+                  id="new-password-input"
+                  placeholder='New Password'
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <button type='submit'>Change Password</button>
+              </form>
               <div id="error-message" className='portal-error-message-container'> {/* Error message container */} </div>
             </div>
           </div>
