@@ -61,38 +61,28 @@ export default function Student_Home() {
     }
     
     return (
-      <div className={`student-home-survey-button ${cssStatusClass}`} key={index}>
-        <div className="student-home-survey-name" onClick={() => { window.location.href = '/student/take-survey';}}>
-          <div className='student-home-orange-bar-survey-horizontal-container'>
-            <div className="student-home-title-center">{surveyName} {/* name of the survey */}</div>
+      <>
+        <div className={`student-home-survey-button ${cssStatusClass}`} key={index}>
+          <div className="student-home-status-bar">
+            {statusCode === "not-available" && (<span>Not Available</span>)} {/* status code: "not-available" */}
+            {statusCode === "taken" && (<span>Survey Taken</span>)} {/* status code: "taken" */}
+            {statusCode === "not-taken" && (<span>Survey Not Taken</span>)} {/* status code: "not-taken" */}
+            {statusCode === "taken-with-feedback" && (<span>Feedback Available</span>)} {/* status code: "taken-with-feedback" */}
+          </div>
+          <div className="student-home-survey-name" onClick={() => { window.location.href = '/student/take-survey';}}>
+            <div className='student-home-orange-bar-survey-horizontal-container'>
+              <div className="student-home-title-center">{surveyName}</div>
               <div className='student-home-orange-bar-survey'></div>
-              </div>
-              <div className="student-home-status-bar">
-                {/* status code: "not-available" */}
-                {statusCode==="not-available" && (
-                    <p1>Not Available</p1>
-                )}
-                {/* status code: "taken" */}
-                {statusCode==="taken" && (
-                    <p1>Survey Taken</p1>
-                )}
-                {/* status code: "not-taken" */}
-                {statusCode==="not-taken" && (
-                    <p1>Survey Not Taken</p1>
-                )}
-                {/* status code: "taken-with-feedback" */}
-                {statusCode==="taken-with-feedback" && (
-                    <p1>Feedback Available</p1>
-                )}
+            </div>
+          </div>
+          <div className="student-home-survey-footer">
+            <div className="student-home-professor-name" onClick={() => { window.location.href = '/student/take-survey';}}>{professorName}</div>
+            <div className="student-home-dropdown-wrapper" div onClick={() => { window.location.href = '/student/view-feedback';}}>
+              {displayDropDownMenu(index)}
+            </div>
           </div>
         </div>
-        <div className="student-home-survey-footer">
-          <div className="student-home-professor-name" onClick={() => { window.location.href = '/student/take-survey';}}>{professorName}</div>
-          <div className="student-home-dropdown-wrapper" div onClick={() => { window.location.href = '/student/view-feedback';}}>
-            {displayDropDownMenu(index)}
-          </div>
-        </div>
-      </div>
+      </>
     );
   }
 
