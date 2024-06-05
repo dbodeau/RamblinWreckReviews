@@ -2,11 +2,12 @@ import {Link} from 'react-router-dom';
 import './css/Professor_Home.css';
 import MenuBar from './MenuBar';
 import SurveyCard from './SurveyCard';
-import {withAuthenticator } from '@aws-amplify/ui-react';
+import {withAuthenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 // START EXAMPLE
 function Professor_Home() {
+
   // put your request data here!
   const requestData = {
     base: 3,
@@ -66,52 +67,8 @@ function Professor_Home() {
       );
 }
 
-export default withAuthenticator(Professor_Home);
+const AuthOptions = {
+  unauthRedirect: '/login',
+};
 
-
-/* <div className='professor-home-card'>
-            <div id="welcomeText"><h1>Welcome to the professor home page</h1></div>
-            <Link to="/professor/create-course">
-              <button className='professor-home-button'>Create Course</button>
-            </Link>
-            <Link to="/professor/email-notifications">
-              <button className='professor-home-button'>Email Notifications</button>
-            </Link>
-            <Link to="/professor/manage-students">
-              <button className='professor-home-button'>Manage Students</button>
-            </Link>
-            <Link to="/professor/manage-survey">
-              <button className='professor-home-button'>Manage Surveys</button>
-            </Link>
-            <Link to="/professor/student-responses">
-              <button className='professor-home-button'>Student Responses</button>
-            </Link>
-            <button id="apiButton" className="professor-home-button" onClick={callApi}>Call API!</button>
-          </div>
-          
-    
-          <h3 className='professor-home-list-of-surveys-title'>Current Surveys</h3>
-            <div className='professor-home-survey-card'>
-              <div className='professor-home-class-card'>
-                <h3 className='professor-home-class-name'>Class Code A</h3>
-              </div>
-              <div className='professor-home-class-card'>
-                <h3 className='professor-home-class-name'>Class Code B</h3>
-                <div className='professor-home-class-survey-card'>
-                </div>
-              </div>
-            </div>
-
-
-      
-            <h3 className='professor-home-list-of-surveys-title'>Past Surveys</h3>
-            <div className='professor-home-survey-card'>
-              <div className='professor-home-class-card'>
-                <h3 className='professor-home-class-name'>Class Code A</h3>
-              </div>
-              <div className='professor-home-class-card'>
-                <h3 className='professor-home-class-name'>Class Code B</h3>
-                <div className='professor-home-class-survey-card'>
-                </div>
-              </div>
-            </div> */
+export default withAuthenticator(Professor_Home, AuthOptions);

@@ -37,7 +37,7 @@ export default function Login() {
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
-        {/* <div className='portal-body-container'>
+        <div className='portal-body-container'>
           <div className='portal-container'>
             <div className='portal-component-container'>
               <h1>Login</h1>
@@ -66,8 +66,8 @@ export default function Login() {
               </div>
             </div>
           </div>
-        </div> */}
-        <Authenticator />
+        </div>
+        {/* <Authenticator /> */}
       </body>
     </>
   );
