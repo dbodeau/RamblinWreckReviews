@@ -2,11 +2,10 @@ import {Link} from 'react-router-dom';
 import './css/Professor_Home.css';
 import MenuBar from './MenuBar';
 import SurveyCard from './SurveyCard';
-import {withAuthenticator, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 // START EXAMPLE
-function Professor_Home() {
+export default function Professor_Home() {
 
   // put your request data here!
   const requestData = {
@@ -66,9 +65,3 @@ function Professor_Home() {
         </>
       );
 }
-
-const AuthOptions = {
-  unauthRedirect: '/login',
-};
-
-export default withAuthenticator(Professor_Home, AuthOptions);

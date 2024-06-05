@@ -4,6 +4,7 @@ import './css/Wrapper.css';
 import currentUser from './CurrentUser';
 import authStatus from './AuthStatusEnum'; 
 import { signOut } from 'aws-amplify/auth';
+import {withAuthenticator, useAuthenticator } from '@aws-amplify/ui-react';
 
 async function doSignOut(){
   await signOut();
@@ -13,7 +14,7 @@ async function doSignOut(){
 /*
   The wrapper houses the navigation bar that is displayed on top of every page
 */
-export default function Wrapper() {
+function Wrapper() {
 
   function updateNavBarData(status){
     currentUser.setCurrentStatus(status);
@@ -62,3 +63,9 @@ export default function Wrapper() {
     </>
   );
 }
+
+const AuthOptions = {
+  unauthRedirect: '/login',
+};
+
+export default withAuthenticator(Wrapper, AuthOptions);
