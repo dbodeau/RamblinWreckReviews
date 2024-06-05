@@ -30,9 +30,9 @@
 /* horizontally aligns the manu bar with the survey bubbles */
 .student-take-survey-horizontal-container {
     display: flex;
-    flex-direction: column; /* aligns horizontally */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
-    height: 100vh; /* takes full viewport height */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
     flex: 1;
 }
 
@@ -40,7 +40,7 @@
 .student-take-survey-question-wrapper {
     width: 80%;
     height: auto;
-    margin: 1% auto; /* centers the button horizontally */
+    margin: 1% auto;
     margin-left: 5%;
     margin-right: 3%;
     margin-top: 2%;
@@ -48,11 +48,11 @@
     padding-left: 30px;
     padding-right: 30px;
 
-    background-color: rgba(33, 49, 77, 0.15); /*gray background code: rgba(33, 49, 77, 0.2)*/
+    background-color: rgba(33, 49, 77, 0.15);
     text-align: left;
     color: #21314d;
 
-    border-radius: 20px; /* adds rounded corners */
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -90,7 +90,7 @@
     padding: 20px 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* align buttons to the right */
+    align-items: flex-end;
 }
 
 /* styling for the subtext */
@@ -102,12 +102,12 @@
 /* aligns the question bubbles vertically */
 .student-take-survey-vertical-container {
     display: flex;
-    flex-direction: column; /* aligns vertically */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     border-top-right-radius: 10px;
-    flex-grow: 1; /* takes up remaining space */
-    padding-top: 20px; /* adds padding to the top */
+    flex-grow: 1;
+    padding-top: 20px;
     overflow: scroll;
     padding-bottom: 150px;
 }
@@ -140,9 +140,9 @@
 
 /* styling for the text answer */
 .student-take-survey-text-field {
-    flex: 1; /* take up available space */
-    overflow-y: hidden; /* This enables vertical scrolling */
-    overflow-x: hidden; /* This hides horizontal scrolling */
+    flex: 1;
+    overflow-y: hidden;
+    overflow-x: hidden;
     resize: none;
     width: auto;
     padding-right: 60px;
@@ -152,7 +152,7 @@
 .student-take-survey-text-input-field textarea {
     width: '200px';
     height: '100px';
-    resize: none; /* prevents resizing of the text box */
+    resize: none;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 1%;
@@ -160,8 +160,8 @@
 }
 
 .student-take-survey-text-input-field textarea:focus {
-    border-color:  #21314d; /* dorder color when focused */
-    outline: none; /* remove the default outline */
+    border-color:  #21314d; /* darker color when focused */
+    outline: none;
 }
 
 .student-take-survey-text-input-field textarea {

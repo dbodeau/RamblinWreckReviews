@@ -25,16 +25,16 @@
     max-width: 90%;
     min-width: 60%;
     height: auto;
-    margin: 1% auto; /* centers the button horizontally */
+    margin: 1% auto;
     margin-left: 5%;
     margin-right: 3%;
     margin-top: 2%;
 
-    background-color: rgba(33, 49, 77, 0.2);;
+    background-color: rgba(33, 49, 77, 0.15);;
     text-align: center;
     color: #21314d;
 
-    border-radius: 20px; /* adds rounded corners */
+    border-radius: 20px;
     padding: 10px;
 }
 
@@ -55,20 +55,20 @@
 /* horizontally aligns the manu bar with the feedback bubbles */
 .student-view-feedback-horizontal-container{
     display: flex;
-    flex-direction: row; /* aligns horizontally */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
-    height: 100vh; /* takes full viewport height */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100vh;
 }
 
 /* aligns the feedback bubbles vertically */
 .student-view-feedback-vertical-container{
     display: flex;
-    flex-direction: column; /* aligns vertically */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     border-top-right-radius: 10px;
-    flex-grow: 1; /* takes up remaining space */
-    padding-top: none; /* adds padding to the top */
+    flex-grow: 1;
+    padding-top: none;
     overflow: scroll;
     padding-bottom: 150px;
 }

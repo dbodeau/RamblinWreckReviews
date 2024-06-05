@@ -2,10 +2,10 @@
 .student-home-survey-button {
     width: 80%;
     min-height: 200px;
-    margin: 1% auto; /* centers the button horizontally */
-    border: 5px solid #21314d; /* adds a thick border */
-    border-radius: 20px; /* adds rounded corners */
-    cursor: pointer; /* changes cursor to pointer on hover */
+    margin: 1% auto;
+    border: 5px solid #21314d;
+    border-radius: 20px;
+    cursor: pointer;
     text-align: center;
     align-content: center;
     color: #21314d;
@@ -14,7 +14,7 @@
     justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
-    transition: transform 0.3s; /* smooth transition for scale */
+    transition: transform 0.3s;
 }
 
 /* for the home title */
@@ -47,7 +47,7 @@
 
 /* hover style for the survey button */
 .student-home-survey-button:hover {
-    transform: scale(1.1); /* slightly enlarges the button */
+    transform: scale(1.1);
 }
 
 /* status text styling */
@@ -67,14 +67,15 @@
 .student-home-title-center {
     font-size: 50px;
     margin-top: 0;
+    margin-top: -80px;
 }
 
 /* horizontally aligns the menu bar with the survey bubbles */
 .student-home-horizontal-container {
     display: flex;
-    flex-direction: row; /* aligns horizontally */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
-    height: 100vh; /* takes full viewport height */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100vh;
     background-color: white;
     border-radius: 10px;
 }
@@ -82,19 +83,19 @@
 /* aligns the survey bubbles with the ... button and professor name */
 .student-home-vertical-container {
     display: flex;
-    flex-direction: column; /* aligns vertically */
-    flex-wrap: nowrap; /* prevents wrapping of items to next line */
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     border-top-right-radius: 10px;
-    flex-grow: 1; /* takes up remaining space */
-    padding-top: 20px; /* adds padding to the top */
+    flex-grow: 1;
+    padding-top: 20px;
     overflow: scroll;
     padding-bottom: 150px;
 }
 
 /* survey name title */
 .student-home-survey-name {
-    font-size: 35px; /* Increase the font size */
+    font-size: 35px;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -138,19 +139,19 @@
     padding-bottom: 15px;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s; /* smooth transition */
+    transition: background-color 0.3s, box-shadow 0.3s;
     font-size: 40px; /* increase the font size of the ... button */
-    outline: none; /* ensure no outline appears */
-    box-shadow: none; /* remove any box shadow */
+    outline: none;
+    box-shadow: none;
 }
 
 /* when you hover over the ... button */
 .student-home-dropdown-button:hover,
 .student-home-dropdown-button:focus,
 .student-home-dropdown-button:active {
-    background-color: transparent; /* keep background transparent */
-    outline: none; /* ensure no outline appears */
-    box-shadow: none; /* remove any box shadow */
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
 }
 
 /* dropdown menu once you open the ... button */
@@ -176,20 +177,20 @@
 
 /* Menu bar styling */
 .student-home-menu-bar {
-    flex-shrink: 0; /* Prevents the menu bar from shrinking */
+    flex-shrink: 0;
 }
 
 /* styling for all the different status codes */
 .student-home-status-code-not-available {
-    background-color: rgba(211, 211, 211, 0.5); /* light gray color with 50% opacity */
+    background-color: rgba(211, 211, 211, 0.5);
     background-image: 
       linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent),
       linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
-    background-size: 20px 20px; /* to adjust the size of the stripes */
+    background-size: 20px 20px;
 }
 
 /* use these presets to change whole card background color based on status */
-/* was removed because it looked kinda tacky */
+/* can be modified based on status code, as well as different styling */
 .student-home-status-code-taken {
     background-color: #DDFFDD;  
 }
