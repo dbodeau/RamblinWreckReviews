@@ -1,4 +1,5 @@
 // frontend display of the survey
+// By: Wesley Woo
 
 import MenuBar from './MenuBar';
 import './css/Student_TakeSurvey.css';
@@ -6,7 +7,7 @@ import React, { useState } from 'react';
 
 // funciton for the new, better and improved bubble sliders
 function MultipleChoiceSlider({ options, rowNames, numBubbles, onSelectionChange }) {
-    // ddd an empty string to the beginning of the options array, to correctly space out the output
+    // add an empty string to the beginning of the options array, to correctly space out the output
     const modifiedOptions = ["", ...options];
     const [selectedOptions, setSelectedOptions] = useState(
         rowNames.reduce((acc, rowName) => {
@@ -58,10 +59,7 @@ function MultipleChoiceSlider({ options, rowNames, numBubbles, onSelectionChange
     );
 }
 
-
-
-
-// function for the new, better and improved buttons
+// function for the new, better and improved grid of buttons
 function MultipleChoiceButtons({ options, name, onSelectionChange }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -109,10 +107,13 @@ function TextInputField({ name, onTextChange }) {
 }
 
 // function to display each question
-function DisplayQuestions({question = "Your Question Here", subtext = "subtext", questionNumber = 1, type = "bubble", onAnswerChange }) {
-    // adding more options here will add more buttons
-    const options = ["Excellent", "Good", "Average", "Poor", "Very Poor"]; // defines all the options for the bubbles 'names'
-    const rowNames = ["Student 1", "Student 2", "Student 3", "Student 4"]; // defines all students in each group
+function DisplayQuestions({question = "Your Question Here", subtext = "subtext", questionNumber = 1, type = "bubble", options = ["Excellent", "Good", "Average", "Poor", "Very Poor"], rowNames = ["Student 1", "Student 2", "Student 3", "Student 4"], numBubbles = 3}) {
+    const handleAnswerChange = (question, answer) => {
+        setAnswers(prevAnswers => ({
+            ...prevAnswers,
+            [question]: answer,
+        }));
+    };
 
     return (
         <div className="student-take-survey-question-wrapper">
@@ -132,18 +133,18 @@ function DisplayQuestions({question = "Your Question Here", subtext = "subtext",
                 {/* if statement to determine type passed in */}
                 <div className='student-take-survey-bubble-field'>
                     {type === "selection" && (
-                        <MultipleChoiceButtons options={options} name={`question-${questionNumber}`} onSelectionChange={onAnswerChange} />
+                        <MultipleChoiceButtons options={options} name={`question-${questionNumber}`} onSelectionChange={handleAnswerChange} />
                     )}
                 </div>
                 <div className='student-take-survey-text-field'>
                     {type === "text" && (
-                        <TextInputField name={`question-${questionNumber}`} onTextChange={onAnswerChange} />
+                        <TextInputField name={`question-${questionNumber}`} onTextChange={handleAnswerChange} />
                     )}
                 </div>
                 <div className='student-take-survey-bubble-scale-field'>
                     {type === "bubble" && (
                     <div className="options-container">
-                        <MultipleChoiceSlider options={options} rowNames={rowNames} numBubbles={3} onSelectionChange={onAnswerChange} />
+                        <MultipleChoiceSlider options={options} rowNames={rowNames} numBubbles={numBubbles} onSelectionChange={handleAnswerChange} />
                     </div>
                     )}
                 </div>
@@ -156,18 +157,16 @@ export default function Student_TakeSurveys() {
     // bits of code to handle getting the answers for the surveys
     const [answers, setAnswers] = useState({});
 
-    const handleAnswerChange = (question, answer) => {
-        setAnswers(prevAnswers => ({
-            ...prevAnswers,
-            [question]: answer,
-        }));
-    };
-
     const handleSubmit = () => {  // here all the answers are being logged to the console when you click submit
-        console.log("Submitted Answers:");
+        // write answers to database here
+
+        console.log("Submitted Answers:"); // TODO: pass a unique identifier to each MC grid, as the answers are currently coliding
         Object.keys(answers).forEach(key => {
             console.log(`${key}: ${answers[key]}`);
         });
+        // redirects to the student home page
+        // popup window can be added later
+        <button onClick={window.location.href = '/student'}>Close</button>
     };
 
     return (
@@ -175,7 +174,6 @@ export default function Student_TakeSurveys() {
         <div className='student-take-survey-entire-page'>
             <MenuBar />
             <div className="student-take-survey-horizontal-container">
-                
                 <div className='student-take-survey-vertical-container'>
                     {/* for the survey title */}
                     <div className='student-take-survey-title'>
@@ -183,15 +181,15 @@ export default function Student_TakeSurveys() {
                         <div className='student-take-survey-orange-bar'></div>
                     </div>
                         {/* add your questions here */}
-                        {/* format: title, subtext, question number, type, */}
-                        <DisplayQuestions questionNumber={1} onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="What is your favorite animal?" questionNumber={2} type="text" onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="What is your favorite class?" questionNumber={3} type="selection" onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="What is your favorite food?" questionNumber={4} type="bubble" onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="What is your favorite color?" questionNumber={5} type="text" onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="question content" questionNumber={6} type="selection" onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="question content" questionNumber={7} onAnswerChange={handleAnswerChange} />
-                        <DisplayQuestions question="question content" questionNumber={8} onAnswerChange={handleAnswerChange} />
+                        {/* Format: title, subtext, question number, type, options (for MC questions, what do you want to name the MC options), rowNames (for MC grid layout, put student names here), numBubbles (for MC grid, put [ex: 1-3])*/}
+                        <DisplayQuestions questionNumber={1} />
+                        <DisplayQuestions question="What is your favorite animal?" questionNumber={2} type="text" />
+                        <DisplayQuestions question="What is your favorite class?" questionNumber={3} type="selection" />
+                        <DisplayQuestions question="What is your favorite food?" questionNumber={4} type="bubble" />
+                        <DisplayQuestions question="What is your favorite color?" questionNumber={5} type="text" />
+                        <DisplayQuestions question="question content" questionNumber={6} type="selection" />
+                        <DisplayQuestions question="question content" questionNumber={7} />
+                        <DisplayQuestions question="question content" questionNumber={8} />
                         {/* submit button */}
                     <div>
                         <button className="student-take-survey-submit-button" onClick={handleSubmit}>Submit</button>

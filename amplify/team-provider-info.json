@@ -9,11 +9,13 @@
       "UnauthRoleName": "amplify-ramblinwreckreviewv2-dev-48779-unauthRole",
       "StackName": "amplify-ramblinwreckreviewv2-dev-48779",
       "StackId": "arn:aws:cloudformation:us-east-2:386157563166:stack/amplify-ramblinwreckreviewv2-dev-48779/3add4bb0-21c5-11ef-980e-0a0f377c2591",
-      "AmplifyAppId": "d17syn1snva5yk"
+      "AmplifyAppId": "d17syn1snva5yk",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ramblinwreckreviewv2-dev-48779-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "ramblinwreckreviewv24e1161e2": {}
+        "ramblinwreckreviewv24e1161e2": {},
+        "ramblinwreckreviewv2c3b308f7": {}
       },
       "function": {
         "ramblinwreckreviewv24e1161e2CustomMessage": {
@@ -27,7 +29,14 @@
           "GROUP": "RamblinWreckUsers",
           "deploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
           "s3Key": "amplify-builds/ramblinwreckreviewv24e1161e2PostConfirmation-3564462f654445494d2f-build.zip"
+        },
+        "S3Trigger1091c9fb": {
+          "deploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
+          "s3Key": "amplify-builds/S3Trigger1091c9fb-5431622b2b754b455245-build.zip"
         }
+      },
+      "storage": {
+        "fileUpload": {}
       }
     }
   }
