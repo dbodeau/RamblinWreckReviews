@@ -31,7 +31,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 //for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
   {
-    //wrapper (visually known as the navigation bar) is what holds all the different pages of the application
+    //Wrapper (visually known as the navigation bar) is what holds all the different pages of the application
     path: "/",
     element: <Wrapper />,
     children: [
