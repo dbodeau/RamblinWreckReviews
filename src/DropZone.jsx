@@ -3,31 +3,31 @@ import { useDropzone } from 'react-dropzone';
 import upload from './images/upload-mines.png';
 import success from './images/checkmark-circle-green.png'; // Import success image
 import './css/DropZone.css'; // Import your CSS file
+import { uploadData } from 'aws-amplify/storage';
+
+function generateRandomFileName() {
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let fileName = '';
+
+  for (let i = 0; i < 20; i++) {
+    fileName += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return fileName;
+}
 
 const MyDropzone = () => {
   const [file, setFile] = useState(null);
-
+  let myPath =  generateRandomFileName()+".csv"
   const handleFileUpload = async (fileContent) => {
-    try {
-        console.log(fileContent);
-      const response = await fetch('https://rcs7kfkc00.execute-api.us-east-2.amazonaws.com/upload-csv-to-s3-stage', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json', // Set appropriate content type
-          'X-API-KEY': 'ZmKJbn1sFC7Xd9N0YZM1p8bspfgWPI425pOsleiE',
-          "Authorization": 'NONE' 
-        },
-        body: fileContent, // Send the file content as the body
-      });
-      console.log("Response:", response);
-  
-      // ... rest of your upload logic
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    } finally {
-      console.log("File upload completed (success or error)");
+    console.log("uploading file")
+    const result = await uploadData({
+      data: fileContent,
+      path: myPath
+    });
+    console.log(21,result);
     }
-  };
+  
 
 const onDrop = (acceptedFiles) => {
     return new Promise((resolve, reject) => {

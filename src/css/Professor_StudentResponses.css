@@ -1,0 +1,328 @@
+.professor-student-responses-body-frame{
+    display: flex;
+    flex-direction: row;
+    background-color: #21314d;
+}
+
+.professor-student-responses-content-container{
+    width: 100%;
+    position: relative;
+    height: calc(100vh - 50px - 40px);
+    background-color: white;
+    border-top-left-radius: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.professor-student-responses-options-header{
+    width: 100%;
+    height: 40px;
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.professor-student-responses-dropdown-button{
+    height: 100%;
+    top:0%;
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    background-color: #21314d;
+    color: white;
+    font-size: 16px;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.professor-student-responses-dropdown-button img{
+    width: 25px;
+    height: 25px;
+    object-fit: scale-down;
+    margin-left: 10px;
+}
+.professor-student-responses-dropdown-container {
+  position: relative; /*Keep relative positioning for dropdown content */
+  display: flex;
+  flex-direction: row;
+  
+}
+
+#professor-student-responses-course-select{
+  display: block;
+}
+
+#professor-student-responses-survey-select{
+  display: block;
+}
+
+.professor-student-responses-dropdown-content {
+  display: none;
+  position: absolute;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 50%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 100%;
+}
+
+.professor-student-responses-dropdown-content-lower-button{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.professor-student-responses-dropdown-content-top-button{
+  border-top-right-radius: 10px;
+}
+
+.professor-student-responses-dropdown-content button {
+  background-color: #21314d;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  /* align-content: end; */
+  width: 100%;
+}
+
+.professor-student-responses-dropdown-sub-container:hover #professor-student-responses-course-select-content {
+  display: block; /* Show dropdown content on hover */
+}
+
+.professor-student-responses-dropdown-sub-container:hover .professor-student-responses-dropdown-button{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: solid;
+  border-color: white;
+  border-width: 2px;
+}
+
+.professor-student-responses-dropdown-sub-container:hover #professor-student-responses-survey-select-content {
+  display: block; /* Show dropdown content on hover */
+}
+
+.professor-student-responses-dropdown-content button:hover {
+  background-color: rgba(211, 214, 219, 1); /* Lighter blue hover effect */
+  color: black;
+}
+
+
+.professor-student-responses-main-content-container{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.professor-student-responses-student-list-container{
+    background-color: rgba(33, 49, 77, 0.2);
+    padding: 5px;
+    border-radius: 10px;
+    flex: 1;
+    margin-bottom: 10px;
+
+    /* overflow-y: scroll;  */
+}
+
+.professor-student-responses-student-list-header{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.professor-student-responses-student-list-header button{
+  height: 40px;
+  width: 40px;
+  border: none;
+  box-shadow: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  background-color: #21314d;
+}
+
+.professor-student-responses-student-list-header button:hover{
+  background-color: #879EC3;
+}
+
+.professor-student-responses-student-list-header button img{
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.professor-student-responses-student-list-container h2{
+  font-weight: 500;
+  text-align: left;
+  margin: 10px;
+  flex: 1;
+}
+.professor-student-responses-student-list-header input{
+  height: 40px;
+  width: 300px;
+  border-radius: 20px;
+  border: none;
+  padding-left: 10px;
+}
+
+.professor-student-responses-student-list-body{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(33, 49, 77, 0.2);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  align-items: center;
+}
+
+.professor-student-responses-student-list-body-info{
+  flex: 1;
+}
+
+.professor-student-responses-student-list-body-info h4, h6{
+  margin: 5px;
+}
+
+.professor-student-responses-student-list-body button{
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+  box-shadow: none;
+}
+
+.professor-student-responses-student-list-body-content{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.professor-student-responses-student-sublist-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.professor-student-responses-student-list-image{
+    flex: 1;
+    align-items: center;
+    text-align: right;
+    padding-right: 50px;
+
+}
+
+.professor-student-responses-expand-chevron{
+  margin-right: 80px;
+  margin-top: 15px;
+  width: 20px;
+}
+
+
+.professor-student-responses-student-list-body-info-buttons-edit:hover{
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+
+.professor-student-responses-student-list-body button img{
+  height: 18px;
+}
+
+.professor-student-responce-expand-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .professor-student-responses-upload-container h2{
+    font-weight: 500;
+    text-align: center;
+    margin: 10px;
+    align-content: center;
+  }
+  
+  .professor-student-responses-manual-upload-container{
+    background-color: rgba(33, 49, 77, 0.2);
+    padding: 5px;
+    border-radius: 10px;
+    flex: 1;
+  }
+
+  .test{
+    display: flex;
+    flex: 1;
+  }
+  
+  .professor-student-responses-csv-upload-container{
+    flex: 1;
+  }
+
+  .professor-student-responses-manual-upload-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .professor-student-responses-manual-upload-name-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .professor-student-responses-manual-upload-input-name{
+    flex: 1;
+
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .professor-student-responses-manual-upload-input-other{
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+  }
+  
+  .professor-student-responses-manual-upload-button{
+    margin: 5px;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #21314d;
+    color:white;
+    box-shadow: none !important;
+  }
+
+  .professor-student-responses-manual-upload-button:hover{
+    background-color: #879EC3;
+    color: white;
+    border: none;
+  }
+
+.professor-student-feedback-table{
+  width: 90%;
+}
+
+.professor-student-feedback-respondee {
+  text-align: center;
+}
+
+.professor-student-responses-grade-table {
+  width: 90%;
+}

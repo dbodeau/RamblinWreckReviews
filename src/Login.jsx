@@ -2,8 +2,8 @@ import minesbkgd from './images/mines-bkgd.jpg';
 import './css/Portal.css';
 import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { signIn } from 'aws-amplify/auth';
 import { useState, useEffect } from 'react';
+import { signIn } from '@aws-amplify/auth';
 
 Amplify.configure(awsconfig)
 
@@ -11,19 +11,22 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    // this code will run after the initial render
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signIn({
+      const user = await signIn({
         username,
         password,
       });
-      // handle successful sign-in
-      window.location.href = '/professor';
+
+      console.log(user);
+
+      if (user.nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED'){
+        window.location.href = '/signup';
+      }
+      else{
+        //Go to correct logged in user page
+      }
     } catch (error) {
       // handle sign-in error
       console.error('Sign-in error:', error);
@@ -40,16 +43,16 @@ export default function Login() {
           <div className='portal-container'>
             <div className='portal-component-container'>
               <h1>Login</h1>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className='portal-component-container-form'>
                 <input
                   type='text'
                   id="username-input"
-                  placeholder='Username'
+                  placeholder='Email'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
-                  type='password'
+                  // type='password'
                   id="password-input"
                   placeholder='Password'
                   value={password}
@@ -59,7 +62,7 @@ export default function Login() {
               </form>
               <div
                 className="portal-forgot-password"
-                onClick={() => { window.location.href = '/signup'; }}
+                onClick={() => window.location.href = '/signup'}
               >
                 Forgot Password
               </div>

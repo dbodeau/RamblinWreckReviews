@@ -1,4 +1,5 @@
 // frontend display for the student home page
+// By: Wesley Woo
 
 import './css/Student_Home.css';
 import MenuBar from "./MenuBar";
@@ -40,7 +41,7 @@ export default function Student_Home() {
   }
 
   // function that creates bubbles for each survey
-  function displaySurvey(index, surveyName = "default survey", professorName = "Professor", statusCode = "not-available") {
+  function displaySurvey(index, surveyName = "default survey", professorName = "Class Name: Professor", statusCode = "not-available") {
     let cssStatusClass = "student-home-status-code-not-available"
     /* status code: "not-available" */
     if (statusCode === 'not-available'){
@@ -61,25 +62,16 @@ export default function Student_Home() {
     
     return (
       <div className={`student-home-survey-button ${cssStatusClass}`} key={index}>
+        <div className="student-home-status-bar">
+          {statusCode === "not-available" && (<span>Not Available</span>)} {/* status code: "not-available" */}
+          {statusCode === "taken" && (<span>Survey Taken</span>)} {/* status code: "taken" */}
+          {statusCode === "not-taken" && (<span>Survey Not Taken</span>)} {/* status code: "not-taken" */}
+          {statusCode === "taken-with-feedback" && (<span>Feedback Available</span>)} {/* status code: "taken-with-feedback" */}
+        </div>
         <div className="student-home-survey-name" onClick={() => { window.location.href = '/student/take-survey';}}>
-          <div className="student-home-title-center">{surveyName} {/* name of the survey */}</div>
-            <div className="student-home-status-bar">
-              {/* status code: "not-available" */}
-              {statusCode==="not-available" && (
-                  <p1>Not Available</p1>
-              )}
-              {/* status code: "taken" */}
-              {statusCode==="taken" && (
-                  <p1>Survey Taken</p1>
-              )}
-              {/* status code: "not-taken" */}
-              {statusCode==="not-taken" && (
-                  <p1>Survey Not Taken</p1>
-              )}
-              {/* status code: "taken-with-feedback" */}
-              {statusCode==="taken-with-feedback" && (
-                  <p1>Feedback Available</p1>
-              )}
+          <div className='student-home-orange-bar-survey-horizontal-container'>
+            <div className="student-home-title-center">{surveyName}</div>
+            <div className='student-home-orange-bar-survey'></div>
           </div>
         </div>
         <div className="student-home-survey-footer">
@@ -102,7 +94,7 @@ export default function Student_Home() {
           <div className="student-home-orange-bar"></div>
         </div>
         {/* create the survey bubbles */}
-        {/* format: index(usually starting with 0), survey title, professor name/subtext, status */}
+        {/* format: index(usually starting with 0, must be unique), survey title, professor name/subtext, status */}
         {/* possible status codes: "not-available", "taken", "not-taken", "taken-with-feedback" */}
         {displaySurvey(0, "Peer Eval 1", "CSCI:200 Professor Jane Smith", "not-available")}
         {displaySurvey(1, "Peer Eval 2", "HASS: 410 Professor John Doe", "taken")}
