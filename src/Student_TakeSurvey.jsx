@@ -1,5 +1,6 @@
 // frontend display of the survey
-// By: Wesley Woo
+// creating questions is all done through functions
+// by: Wesley Woo
 
 import MenuBar from './MenuBar';
 import './css/Student_TakeSurvey.css';
