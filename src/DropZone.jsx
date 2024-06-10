@@ -2,19 +2,7 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import upload from './images/upload-mines.png';
 import success from './images/checkmark-circle-green.png'; // Import success image
-import './css/DropZone.css'; // Import your CSS file
-import { uploadData } from 'aws-amplify/storage';
-
-function generateRandomFileName() {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let fileName = '';
-
-  for (let i = 0; i < 20; i++) {
-    fileName += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-
-  return fileName;
-}
+import './css/DropZone.css'; 
 
 const MyDropzone = () => {
   const [file, setFile] = useState(null);
