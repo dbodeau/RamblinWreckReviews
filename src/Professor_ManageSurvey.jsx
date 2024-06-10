@@ -1,11 +1,14 @@
+/* This is previous team code and our team did not touch this file. This page allows professors to create suverys */
 import './css/Professor_ManageSurvey.css'
 import SurveyQuestions from './SurveyQuestions'
 // import FileUpload from './FileUpload';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom'
 import { Popup } from 'reactjs-popup';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from './AuthStatusEnum';
 
-export default function Professor_ManageSurvey() {
+function Professor_ManageSurvey() {
   //use state allows React to re-render when it detects a change in this variable
   const [formState, setFormState] = useState({ content: '', is_mandatory: false, question_type: '', question_category: '', department: '', new_category: '' });
   //question categories that are all from one department
@@ -251,13 +254,4 @@ export default function Professor_ManageSurvey() {
   );
 }
 
-
-/**
- * 
- * @returns all the necessary API calls to prepopulate drop downs
- */
-export async function getCreateContentPageData() {
-  const departments = await fetchAllDepartments()
-  //return {departments}
-  return departments
-}
+export default AWS_Authenticator(Professor_ManageSurvey, AuthStatusEnum.SUPERUSER);

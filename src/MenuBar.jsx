@@ -8,17 +8,15 @@ import person3Dark from './images/person-3-black.png';
 import edit from './images/edit.png';
 import editDark from './images/edit-black.png';
 import './css/MenuBar.css';
-import currentUser from './CurrentUser';
 import authStatus from './AuthStatusEnum';
+import AWS_Authenticator from './AWS_Authenticator';
 
-export default function MenuBar() {
+function MenuBar() {
   const [imageUrl, setImageUrl] = useState(chevron_down); // State to track image viewed
   const [isOpen, setIsOpen] = useState(false); // State to track menu visibility
   const [isPlusHovered, setIsPlusHovered] = useState(false); 
   const [isPersonHovered, setIsPersonHovered] = useState(false);
   const [isEditHovered, setIsEditHovered] = useState(false);
-
-  currentUser.setCurrentStatus(localStorage.getItem("currentStatus")); //Updates current object based on local storage of status
 
   const switchMenuBarVisibility = () => {
     setImageUrl(imageUrl === chevron_down ? chevron_right : chevron_down); // Toggle image viewed on button
@@ -128,9 +126,9 @@ export default function MenuBar() {
               <div className="menu-bar-menu-title-container">
                 <h2>Menu</h2>
               </div>
-              {currentUser.currentStatus === authStatus.ADMIN ? adminMenu : null}
-              {currentUser.currentStatus === authStatus.SUPERUSER ? professorMenu : null}
-              {currentUser.currentStatus === authStatus.STUDENT ? studentMenu : null}
+              {localStorage.getItem('AWS_signedInUserCurrentGroupStatus') !== null && localStorage.getItem('AWS_signedInUserCurrentGroupStatus') === authStatus.ADMIN ? adminMenu : null}
+              {localStorage.getItem('AWS_signedInUserCurrentGroupStatus') !== null && localStorage.getItem('AWS_signedInUserCurrentGroupStatus') === authStatus.SUPERUSER ? professorMenu : null}
+              {localStorage.getItem('AWS_signedInUserCurrentGroupStatus') !== null && localStorage.getItem('AWS_signedInUserCurrentGroupStatus') === authStatus.STUDENT ? studentMenu : null}
             </div>
           )}
         </div>
@@ -138,3 +136,5 @@ export default function MenuBar() {
     </>
   );
 }
+
+export default AWS_Authenticator(MenuBar);

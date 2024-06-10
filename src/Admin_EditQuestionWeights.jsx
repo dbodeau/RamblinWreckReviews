@@ -1,5 +1,4 @@
-/* This is previous team code and our team did not touch this file
-im sorry if your the one that has to clean this*/
+/* This is previous team code and our team did not touch this file*/
 import "./css/Admin_EditQuestionWeights.css";
 import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";

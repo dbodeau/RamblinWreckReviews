@@ -1,8 +1,11 @@
-// displays feedback for every student
+/* displays feedback for every student. This shows the feedback of the survey taken. The idea is the professor releases the survey and 
+what content is there for the student to see*/
 // By: Wesley Woo
 
 import './css/Student_ViewFeedback.css';
 import MenuBar from './MenuBar';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from './AuthStatusEnum';
 
 // function to display feedback
 function displayFeedback(title = "Feedback Title", subtext="subtext", text="Here is what your peers said about you!") {
@@ -24,7 +27,7 @@ function displayFeedback(title = "Feedback Title", subtext="subtext", text="Here
     );
 }
 
-export default function Student_ViewFeedback() {
+function Student_ViewFeedback() {
     return(
         <div className="student-view-feedback-horizontal-container">
             <MenuBar />
@@ -44,3 +47,5 @@ export default function Student_ViewFeedback() {
         </div>
     );
 }
+
+export default AWS_Authenticator(Student_ViewFeedback, AuthStatusEnum.STUDENT);

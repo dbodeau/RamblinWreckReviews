@@ -1,3 +1,5 @@
+/* This is previous team code and our team did not touch this file.*/
+
 import "./css/Questions.css";
 import { Link } from "react-router-dom";
 

@@ -1,3 +1,5 @@
+/* This was created by AWS. We dont really know what this does */
+
 const reportWebVitals = onPerfEntry => {
     if (onPerfEntry && onPerfEntry instanceof Function) {
       import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {

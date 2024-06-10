@@ -78,3 +78,5 @@ const onDrop = (acceptedFiles) => {
 };
 
 export default MyDropzone;
+
+

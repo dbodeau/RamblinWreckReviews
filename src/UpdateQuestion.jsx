@@ -1,11 +1,14 @@
+/* This is previous team code and our team did not touch this file. Unknown purpose*/
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./css/UpdateQuestion.css";
 import { updateQuestion } from "./api/admin.api";
 import { Popup } from "reactjs-popup";
+import AWS_Authenticator from './AWS_Authenticator';
+
 
 //takes in the question that was clicked on as the params and department id
-export default function UpdateQuestion() {
+function UpdateQuestion() {
   //find data from the browser router
   const location = useLocation();
   const props = location.state;
@@ -99,3 +102,5 @@ export default function UpdateQuestion() {
     </>
   );
 }
+
+export default AWS_Authenticator(updateQuestion);

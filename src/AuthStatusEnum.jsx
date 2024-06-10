@@ -5,5 +5,5 @@ const AuthStatusEnum = {
     SUPERUSER: "Super-users",
     STUDENT: "Students"
 };
-
+  
 export default AuthStatusEnum;

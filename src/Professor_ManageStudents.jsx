@@ -1,3 +1,8 @@
+/* This file is for a professor to see all the students in their class. Also where they can add(CSV or manual), edit or remove them. 
+Manually adding students we did not have time to implement. CSV file almost works but there is one missing peice: when you upload you get an 
+IAM role conflict. The idea is that CSV will go to the database and when a student signs up they are added to the coginto pool. The purpose of the 
+database is to connect their surveys to them. Because the way the cognito is set up the original idea of a teacher signing up a student was not possible
+ */
 import React, { useState } from 'react';
 import chevron_down from './images/chevron-down.png';
 import edit from './images/edit.png';
@@ -5,7 +10,9 @@ import trash from './images/trash.png';
 import plus from './images/plus.png';
 import './css/Professor_ManageStudents.css'; // Import your CSS file
 import MenuBar from './MenuBar';  // Import your MenuBar component
-import DropZone from './DropZone';
+import DropZone from './DropZone'; //This is your CSV file upload box for dropping 
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from './AuthStatusEnum';
 
 //Student Object with name and 
 class Student {
@@ -124,4 +131,4 @@ function Professor_ManageStudents() {
   );
 }
 
-export default Professor_ManageStudents;
+export default AWS_Authenticator(Professor_ManageStudents, AuthStatusEnum.SUPERUSER);

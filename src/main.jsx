@@ -1,3 +1,4 @@
+/*This where all paths go. When you add a page add the path and element below. This is also called index.jsx sometimes*/
 // admin page imports
 import AdminCreateSurveyQuestions from './Admin_CreateSurveyQuestions';
 import AdminEditQuestionWeights from './Admin_EditQuestionWeights';
@@ -16,7 +17,8 @@ import StudentTakeSurvey from './Student_TakeSurvey';
 import StudentViewFeedback from './Student_ViewFeedback';
 // login and signup page imports
 import Login from './Login';
-import SignUp from './SignUp';
+import SignUpPage from './SignUpPage';
+import ForgetPasswordResetPage from './ForgetPasswordResetPage';
 // generic imports
 // import App from './App';
 import React from 'react';
@@ -30,7 +32,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 //for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
   {
-    //Wrapper (visually known as the navigation bar) is what holds all the different pages of the application
+    //wrapper (visually known as the navigation bar) is what holds all the different pages of the application
     path: "/",
     element: <Wrapper />,
     children: [
@@ -41,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <SignUp />
+        element: <SignUpPage />
+      },
+      {
+        path: "/forgot-password",
+        element:<ForgetPasswordResetPage/>,
       },
       // for admin pages
       {
@@ -84,8 +90,6 @@ const router = createBrowserRouter([
       {
         path: "/professor/manage-survey",
         element: <ProfessorManageSurvey />,
-        // probably don't need this
-        //loader: getCreateContentPageData
       },
       {
         path: "/professor/student-responses",

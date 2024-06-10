@@ -1,10 +1,11 @@
-// frontend display of the survey
-// creating questions is all done through functions
-// by: Wesley Woo
+/* frontend display of the survey. This displays the acutal content of the survey. A student gets here by clicking on the survey */
+// By: Wesley Woo
 
 import MenuBar from './MenuBar';
 import './css/Student_TakeSurvey.css';
 import React, { useState } from 'react';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from './AuthStatusEnum';
 
 // funciton for the new, better and improved bubble sliders
 function MultipleChoiceSlider({ options, rowNames, numBubbles, onSelectionChange }) {
@@ -154,7 +155,7 @@ function DisplayQuestions({question = "Your Question Here", subtext = "subtext",
     );
 }
 
-export default function Student_TakeSurveys() {
+function Student_TakeSurvey() {
     // bits of code to handle getting the answers for the surveys
     const [answers, setAnswers] = useState({});
 
@@ -200,3 +201,5 @@ export default function Student_TakeSurveys() {
         </div>
     );
 }
+
+export default AWS_Authenticator(Student_TakeSurvey, AuthStatusEnum.STUDENT);

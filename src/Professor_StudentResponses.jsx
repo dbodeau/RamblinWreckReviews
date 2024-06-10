@@ -1,3 +1,4 @@
+
 import './css/Professor_StudentResponses.css'
 import React, { useState } from 'react';
 import chevron_down from './images/chevron-down.png';
@@ -7,6 +8,8 @@ import trash from './images/trash.png';
 import plus from './images/plus.png';
 import MenuBar from './MenuBar'; 
 import DropZone from './DropZone';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from './AuthStatusEnum';
 
 /*
 This page is for professors to see their student's feedback in a tabular form
@@ -76,8 +79,7 @@ const questions = [
 
   let studGroup = [];
 
-
-export default function Professor_StudentResponses() {
+function Professor_StudentResponses() {
 
   function loadStudent(student, group){
       //display student information in group
@@ -232,4 +234,6 @@ export default function Professor_StudentResponses() {
   );
 
 }
+
+export default AWS_Authenticator(Professor_StudentResponses, AuthStatusEnum.SUPERUSER);
 

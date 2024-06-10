@@ -1,3 +1,4 @@
+/*Custom 404 page - Just for funzies its cute*/
 import React from 'react';
 import errorImage from './images/404.jpg'; // Assuming 404.png is in the same directory
 import './css/Error404.css';
