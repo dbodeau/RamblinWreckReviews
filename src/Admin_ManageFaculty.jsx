@@ -1,10 +1,14 @@
+/* This is previous team code and our team did not touch this file logic*/
 import "./css/Admin_ManageFaculty.css";
 import { useLoaderData } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Popup } from "reactjs-popup";
 import MenuBar from './MenuBar';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from "./AuthStatusEnum";
 
-export default function Admin_ManageFaculty() {
+
+function Admin_ManageFaculty() {
   //stores users under a selected department
   const [users, setUsers] = useState([]);
   //re-renders page without state change
@@ -379,3 +383,5 @@ export default function Admin_ManageFaculty() {
     </>
   );
 }
+
+export default AWS_Authenticator(Admin_ManageFaculty, AuthStatusEnum.ADMIN);

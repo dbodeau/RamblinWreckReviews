@@ -1,8 +1,22 @@
+/* This file is for the CSV file upload of students on the Professor_ManageStudents page. */
+
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import upload from './images/upload-mines.png';
-import success from './images/checkmark-circle-green.png'; // Import success image 
-import './css/DropZone.css'; 
+import success from './images/checkmark-circle-green.png'; // Import success image
+import './css/DropZone.css'; // Import your CSS file
+import { uploadData } from 'aws-amplify/storage';
+
+function generateRandomFileName() { /* Must have unique name or AWS S3 will not upload(cant have duplicate named files)*/
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let fileName = '';
+
+  for (let i = 0; i < 20; i++) {
+    fileName += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return fileName;
+}
 
 const MyDropzone = () => {
   const [file, setFile] = useState(null);
@@ -19,7 +33,7 @@ const MyDropzone = () => {
 
 const onDrop = (acceptedFiles) => {
     return new Promise((resolve, reject) => {
-      // Check if file is a CSV
+      //Check if file is a CSV
       const isCSV = acceptedFiles[0].type === 'text/csv';
       if (isCSV) {
         // handleFileUpload(acceptedFiles[0]);
@@ -64,5 +78,3 @@ const onDrop = (acceptedFiles) => {
 };
 
 export default MyDropzone;
-
-
