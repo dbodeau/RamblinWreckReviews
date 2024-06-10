@@ -1,10 +1,14 @@
+/* This is previous team code and our team did not touch this file
+im sorry if your the one that has to clean this*/
 import "./css/Admin_EditQuestionWeights.css";
 import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Popup } from "reactjs-popup";
 import MenuBar from './MenuBar';
+import AWS_Authenticator from './AWS_Authenticator';
+import AuthStatusEnum from "./AuthStatusEnum";
 
-export default function Admin_EditQuestionWeights() {
+function Admin_EditQuestionWeights() {
   var departments = useLoaderData();
 
    //re-renders page without state change
@@ -682,3 +686,5 @@ export default function Admin_EditQuestionWeights() {
     </>
   );
 }
+
+export default AWS_Authenticator(Admin_EditQuestionWeights, AuthStatusEnum.ADMIN);
