@@ -40,7 +40,7 @@ export default function Login() {
           setErrorMessage('Incorrect username or password');
       } 
       else if(error.message == 'Password attempts exceeded'){
-        setErrorMessage('Password attemps exceeded');
+        setErrorMessage('Password attempts exceeded');
       }
       else {
         setErrorMessage('An Error Occurred');
