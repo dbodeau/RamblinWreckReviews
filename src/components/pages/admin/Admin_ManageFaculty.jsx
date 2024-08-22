@@ -3,8 +3,8 @@ import "./css/Admin_ManageFaculty.css";
 import { useLoaderData } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Popup } from "reactjs-popup";
-import MenuBar from './MenuBar';
-import AWS_Authenticator from './AWS_Authenticator';
+import MenuBar from '../../../MenuBar';
+import AWS_Authenticator from '../../../AWS_Authenticator';
 import AuthStatusEnum from "./AuthStatusEnum";
 
 

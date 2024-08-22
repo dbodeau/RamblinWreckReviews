@@ -8,7 +8,7 @@ code which calls the same handle submit function
 import minesbkgd from './images/mines-bkgd.jpg';
 import './css/Portal.css';
 import { Amplify } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import awsconfig from '../../../aws-exports';
 import { useState, useEffect } from 'react';
 import { resetPassword, confirmResetPassword } from '@aws-amplify/auth';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';

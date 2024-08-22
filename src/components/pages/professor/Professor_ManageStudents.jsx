@@ -9,10 +9,10 @@ import edit from './images/edit.png';
 import trash from './images/trash.png';
 import plus from './images/plus.png';
 import './css/Professor_ManageStudents.css'; // Import your CSS file
-import MenuBar from './MenuBar';  // Import your MenuBar component
-import DropZone from './DropZone'; //This is your CSV file upload box for dropping 
+import MenuBar from '../../../MenuBar';  // Import your MenuBar component
+import DropZone from '../../DropZone'; //This is your CSV file upload box for dropping 
 import AWS_Authenticator from './AWS_Authenticator';
-import AuthStatusEnum from './AuthStatusEnum';
+import AuthStatusEnum from '../../../classes/AuthStatusEnum';
 
 //Student Object with name and 
 class Student {

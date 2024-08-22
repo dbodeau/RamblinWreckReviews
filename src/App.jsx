@@ -17,14 +17,14 @@ import StudentTakeSurvey from './Student_TakeSurvey';
 import StudentViewFeedback from './Student_ViewFeedback';
 // login and signup page imports
 import Login from './Login';
-import SignUpPage from './SignUpPage';
+import SignUpPage from './components/pages/auth/SignUpPage';
 import ForgetPasswordResetPage from './ForgetPasswordResetPage';
 // generic imports
 // import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
-import Wrapper from './Wrapper';
+import Wrapper from './components/Wrapper';
 import NotFound from './Error404';
 import NotAuthorized from './Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';

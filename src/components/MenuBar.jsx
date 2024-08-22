@@ -8,7 +8,7 @@ import person3Dark from './images/person-3-black.png';
 import edit from './images/edit.png';
 import editDark from './images/edit-black.png';
 import './css/MenuBar.css';
-import authStatus from './AuthStatusEnum';
+import authStatus from '../classes/AuthStatusEnum';
 import AWS_Authenticator from './AWS_Authenticator';
 
 function MenuBar() {

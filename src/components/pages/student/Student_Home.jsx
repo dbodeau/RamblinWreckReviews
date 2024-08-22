@@ -2,7 +2,7 @@
 // By: Wesley Woo 
 
 import './css/Student_Home.css';
-import MenuBar from "./MenuBar";
+import MenuBar from "../../../MenuBar";
 import React, { useState } from 'react';
 import AWS_Authenticator from './AWS_Authenticator';
 import AuthStatusEnum from './AuthStatusEnum';

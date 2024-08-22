@@ -6,8 +6,8 @@ import chevron_right from './images/chevron-right.png'
 import edit from './images/edit.png';
 import trash from './images/trash.png';
 import plus from './images/plus.png';
-import MenuBar from './MenuBar'; 
-import DropZone from './DropZone';
+import MenuBar from '../../../MenuBar'; 
+import DropZone from '../../../DropZone';
 import AWS_Authenticator from './AWS_Authenticator';
 import AuthStatusEnum from './AuthStatusEnum';
 

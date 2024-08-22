@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { Amplify } from 'aws-amplify';
-import awsconfig from './aws-exports';
-import Error401 from './Error401';
+import awsconfig from '../aws-exportss';
+import Error401 from './pages/error/Error401';
 
 Amplify.configure(awsconfig);
 

@@ -1,7 +1,7 @@
-import MenuBar from './MenuBar';
-import Error401 from './Error401';
+import MenuBar from '../../MenuBar';
+import Error401 from '../error/Error401';
 import './css/Admin_Home.css';
-import AWS_Authenticator from './AWS_Authenticator';
+import AWS_Authenticator from '../../AWS_Authenticator';
 import AuthStatusEnum from './AuthStatusEnum';
 
 

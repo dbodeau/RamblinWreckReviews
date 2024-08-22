@@ -3,7 +3,7 @@ what content is there for the student to see*/
 // By: Wesley Woo
 
 import './css/Student_ViewFeedback.css';
-import MenuBar from './MenuBar';
+import MenuBar from '../../MenuBar';
 import AWS_Authenticator from './AWS_Authenticator';
 import AuthStatusEnum from './AuthStatusEnum';
 

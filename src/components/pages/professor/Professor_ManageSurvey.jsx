@@ -1,6 +1,6 @@
 /* This is previous team code and our team did not touch this file. This page allows professors to create suverys */
 import './css/Professor_ManageSurvey.css'
-import SurveyQuestions from './SurveyQuestions'
+import SurveyQuestions from '../../../SurveyQuestions'
 // import FileUpload from './FileUpload';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom'
