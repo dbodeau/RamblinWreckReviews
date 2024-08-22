@@ -2,10 +2,10 @@
 what content is there for the student to see*/
 // By: Wesley Woo
 
-import './css/Student_ViewFeedback.css';
+import '../../../css/Student_ViewFeedback.css';
 import MenuBar from '../../MenuBar';
-import AWS_Authenticator from './AWS_Authenticator';
-import AuthStatusEnum from './AuthStatusEnum';
+import AWS_Authenticator from '../../AWS_Authenticator';
+import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 // function to display feedback
 function displayFeedback(title = "Feedback Title", subtext="subtext", text="Here is what your peers said about you!") {

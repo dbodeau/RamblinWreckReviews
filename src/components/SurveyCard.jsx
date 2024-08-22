@@ -1,8 +1,8 @@
 /* This is previous team code and our team did not touch this file. Unknown purpose*/
 
-import csciBkgdImg from './images/csci-bkgd-img.jpeg';
-import ellipsis from './images/ellipsis.png';
-import './css/SurveyCard.css';
+import csciBkgdImg from '../assets/images/csci-bkgd-img.jpeg';
+import ellipsis from '../assets/images/ellipsis.png';
+import '../css/SurveyCard.css';
 
 export default function SurveyCard() {
       return (

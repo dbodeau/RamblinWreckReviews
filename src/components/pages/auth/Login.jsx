@@ -4,8 +4,8 @@
   2.If they know username(being email) and password they are redirected to the page they have the highest permissions too
 */
 
-import minesbkgd from './images/mines-bkgd.jpg';
-import './css/Portal.css';
+import minesbkgd from '../../../assets/images/mines-bkgd.jpg';
+import '../../../css/Portal.css';
 import { Amplify } from 'aws-amplify';
 import awsconfig from '../../../aws-exports';
 import { useState, useEffect } from 'react';

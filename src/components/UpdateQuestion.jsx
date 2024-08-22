@@ -1,7 +1,7 @@
 /* This is previous team code and our team did not touch this file. Unknown purpose*/
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./css/UpdateQuestion.css";
+import "../css/UpdateQuestion.css";
 import { updateQuestion } from "./api/admin.api";
 import { Popup } from "reactjs-popup";
 import AWS_Authenticator from './AWS_Authenticator';

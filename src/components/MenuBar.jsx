@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import chevron_right from './images/chevron-right.png';
-import chevron_down from './images/chevron-down.png';
-import plus from './images/plus.png';
-import plusDark from './images/plus-black.png';
-import person3 from './images/person-3.png';
-import person3Dark from './images/person-3-black.png';
-import edit from './images/edit.png';
-import editDark from './images/edit-black.png';
-import './css/MenuBar.css';
-import authStatus from '../classes/AuthStatusEnum';
+import chevron_right from '../assets/images/chevron-right.png';
+import chevron_down from '../assets/images/chevron-down.png';
+import plus from '../assets/images/plus.png';
+import plusDark from '../assets/images/plus-black.png';
+import person3 from '../assets/images/person-3.png';
+import person3Dark from '../assets/images/person-3-black.png';
+import edit from '../assets/images/edit.png';
+import editDark from '../assets/images/edit-black.png';
+import '../css/MenuBar.css';
+import authStatus from '../types/AuthStatusEnum';
 import AWS_Authenticator from './AWS_Authenticator';
 
 function MenuBar() {

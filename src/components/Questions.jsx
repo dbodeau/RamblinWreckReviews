@@ -1,6 +1,6 @@
 /* This is the previous team's code and our team did not touch this file.*/
 
-import "./css/Questions.css";
+import "../css/Questions.css";
 import { Link } from "react-router-dom";
 
 //setQuestions updates the state of the parent

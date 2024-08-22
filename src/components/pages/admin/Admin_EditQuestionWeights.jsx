@@ -1,11 +1,11 @@
 /* This is previous team code and our team did not touch this file*/
-import "./css/Admin_EditQuestionWeights.css";
+import "../../../css/Admin_EditQuestionWeights.css";
 import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Popup } from "reactjs-popup";
-import MenuBar from '../../../MenuBar';
-import AWS_Authenticator from '../../../AWS_Authenticator';
-import AuthStatusEnum from "../../AuthStatusEnum";
+import MenuBar from '../../MenuBar';
+import AWS_Authenticator from '../../AWS_Authenticator';
+import AuthStatusEnum from "../../../types/AuthStatusEnum";
 
 function Admin_EditQuestionWeights() {
   var departments = useLoaderData();

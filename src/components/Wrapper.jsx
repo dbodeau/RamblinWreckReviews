@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
-import mineslogo from './images/mineslogo.png'; 
-import './css/Wrapper.css';    
-import authStatus from './AuthStatusEnum'; 
+import mineslogo from '../assets/images/mineslogo.png'; 
+import '../css/Wrapper.css';    
+import authStatus from '../types/AuthStatusEnum'; 
 import { signOut } from 'aws-amplify/auth';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';

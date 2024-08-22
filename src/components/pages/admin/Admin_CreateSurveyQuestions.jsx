@@ -1,13 +1,13 @@
 /* This is previous team code and our team did not touch this file*/
 
-import Questions from './Questions';
+import Questions from '../../Questions';
 import React, {useState} from 'react';
 import {useLoaderData} from 'react-router-dom';
 import {Popup} from 'reactjs-popup';
-import './css/Admin_CreateSurveyQuestions.css';
-import MenuBar from './MenuBar';
-import AWS_Authenticator from './AWS_Authenticator';
-import AuthStatusEnum from './AuthStatusEnum';
+import '../../../css/Admin_CreateSurveyQuestions.css';
+import MenuBar from '../../MenuBar';
+import AWS_Authenticator from '../../AWS_Authenticator';
+import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 
 function Admin_CreateSurveyQuestions() {

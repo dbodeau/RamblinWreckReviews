@@ -1,15 +1,15 @@
 
-import './css/Professor_StudentResponses.css'
+import '../../../css/Professor_StudentResponses.css'
 import React, { useState } from 'react';
-import chevron_down from './images/chevron-down.png';
-import chevron_right from './images/chevron-right.png'
-import edit from './images/edit.png';
-import trash from './images/trash.png';
-import plus from './images/plus.png';
-import MenuBar from '../../../MenuBar'; 
-import DropZone from '../../../DropZone';
-import AWS_Authenticator from './AWS_Authenticator';
-import AuthStatusEnum from './AuthStatusEnum';
+import chevron_down from '../../../assets/images/chevron-down.png';
+import chevron_right from '../../../assets/images/chevron-right.png'
+import edit from '../../../assets/images/edit.png';
+import trash from '../../../assets/images/trash.png';
+import plus from '../../../assets/images/plus.png';
+import MenuBar from '../../MenuBar'; 
+import DropZone from '../../DropZone';
+import AWS_Authenticator from '../../AWS_Authenticator';
+import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 /*
 This page is for professors to see their student's feedback in a tabular form

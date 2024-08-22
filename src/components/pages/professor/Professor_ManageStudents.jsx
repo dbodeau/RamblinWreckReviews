@@ -4,15 +4,15 @@ IAM role conflict. The idea is that CSV will go to the database and when a stude
 database is to connect their surveys to them. Because the way the cognito is set up the original idea of a teacher signing up a student was not possible
  */
 import React, { useState } from 'react';
-import chevron_down from './images/chevron-down.png';
-import edit from './images/edit.png';
-import trash from './images/trash.png';
-import plus from './images/plus.png';
-import './css/Professor_ManageStudents.css'; // Import your CSS file
-import MenuBar from '../../../MenuBar';  // Import your MenuBar component
+import chevron_down from '../../../assets/images/chevron-down.png';
+import edit from '../../../assets/images/edit.png';
+import trash from '../../../assets/images/trash.png';
+import plus from '../../../assets/images/plus.png';
+import '../../../css/Professor_ManageStudents.css'; // Import your CSS file
+import MenuBar from '../../MenuBar';  // Import your MenuBar component
 import DropZone from '../../DropZone'; //This is your CSV file upload box for dropping 
-import AWS_Authenticator from './AWS_Authenticator';
-import AuthStatusEnum from '../../../classes/AuthStatusEnum';
+import AWS_Authenticator from '../../AWS_Authenticator';
+import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 //Student Object with name and 
 class Student {

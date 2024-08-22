@@ -3,8 +3,8 @@
   and required to make a password.
 */
 
-import minesbkgd from './images/mines-bkgd.jpg';
-import './css/Portal.css';
+import minesbkgd from '../../../assets/images/mines-bkgd.jpg';
+import '../../../css/Portal.css';
 import { useState } from 'react';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { signUp, confirmSignUp } from 'aws-amplify/auth';

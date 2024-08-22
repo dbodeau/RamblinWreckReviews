@@ -1,6 +1,6 @@
 /* This is previous team code and our team did not touch this file. Unknown purpose*/
 
-import "./css/SurveyQuestion.css";
+import "../css/SurveyQuestion.css";
 import AWS_Authenticator from './AWS_Authenticator';
 
 

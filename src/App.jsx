@@ -1,32 +1,32 @@
 /*This where all paths go. When you add a page add the path and element below. This is also called index.jsx sometimes*/
 // admin page imports
-import AdminCreateSurveyQuestions from './Admin_CreateSurveyQuestions';
-import AdminEditQuestionWeights from './Admin_EditQuestionWeights';
-import AdminHome from './Admin_Home';
-import AdminManageFaculty from './Admin_ManageFaculty';
+import AdminCreateSurveyQuestions from './components/pages/admin/Admin_CreateSurveyQuestions';
+import AdminEditQuestionWeights from './components/pages/admin/Admin_EditQuestionWeights';
+import AdminHome from './components/pages/admin/Admin_Home';
+import AdminManageFaculty from './components/pages/admin/Admin_ManageFaculty';
 // professor page imports
-import ProfessorCreateCourse from './Professor_CreateCourse';
-import ProfessorEmailNotifications from './Professor_EmailNotifications';
-import ProfessorHome from './Professor_Home';
-import ProfessorManageStudents from './Professor_ManageStudents';
-import ProfessorManageSurvey from './Professor_ManageSurvey';
-import ProfessorStudentResponses from './Professor_StudentResponses';
+import ProfessorCreateCourse from './components/pages/professor/Professor_CreateCourse';
+import ProfessorEmailNotifications from './components/pages/professor/Professor_EmailNotifications';
+import ProfessorHome from './components/pages/professor/Professor_Home';
+import ProfessorManageStudents from './components/pages/professor/Professor_ManageStudents';
+import ProfessorManageSurvey from './components/pages/professor/Professor_ManageSurvey';
+import ProfessorStudentResponses from './components/pages/professor/Professor_StudentResponses';
 // student page imports
-import StudentHome from './Student_Home';
-import StudentTakeSurvey from './Student_TakeSurvey';
-import StudentViewFeedback from './Student_ViewFeedback';
+import StudentHome from './components/pages/student/Student_Home';
+import StudentTakeSurvey from './components/pages/student/Student_TakeSurvey';
+import StudentViewFeedback from './components/pages/student/Student_ViewFeedback';
 // login and signup page imports
-import Login from './Login';
+import Login from './components/pages/auth/Login';
 import SignUpPage from './components/pages/auth/SignUpPage';
-import ForgetPasswordResetPage from './ForgetPasswordResetPage';
+import ForgetPasswordResetPage from './components/pages/auth/ForgetPasswordResetPage';
 // generic imports
 // import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
+// import '../../../css/index.css';
 import Wrapper from './components/Wrapper';
-import NotFound from './Error404';
-import NotAuthorized from './Error401'
+import NotFound from './components/pages/error/Error404';
+import NotAuthorized from './components/pages/error/Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //for any web page to be visible in the application, it needs to be linked to this router object

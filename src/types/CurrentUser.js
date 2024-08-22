@@ -1,5 +1,5 @@
 // Singleton User to Manage
-import authStatus from './AuthStatusEnum';
+import authStatus from '../../../types/AuthStatusEnum';
 import { useState } from 'react';
 
 class CurrentUser {

@@ -1,5 +1,5 @@
 import minesbkgd from './images/mines-bkgd.jpg';
-import './css/Portal.css';
+import '../../../css/Portal.css';
 import { useState } from 'react';
 import { confirmSignIn, signIn } from 'aws-amplify/auth';
 import { resetPassword } from 'aws-amplify/auth';
