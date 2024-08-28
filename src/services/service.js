@@ -199,7 +199,7 @@ export async function getSurvey(courseId, surveyId) {
 }
 
 export async function createSurvey(courseId, survey) {
-  // const response = await axiosInstance.post(`/course/${courseId}/surveys/${survey.id}`, survey);
+  // const response = await axiosInstance.post(`/course/${courseId}/surveys`, survey);
   // return response.body;
   return survey;
 }
@@ -216,3 +216,24 @@ export async function deleteSurvey(courseId, surveyId) {
   // return response.body;
   return true;
 }
+
+/**
+ * Responses: 
+ * base url: /course/${courseId}/surveys/${surveyId}/responses
+ * no delete or get
+ *    delete unneeded
+ *    get covered in survey
+ */
+
+export async function createResponse(courseId, surveyId, studentResponse) {
+  // const response = await axiosInstance.post(`/course/${courseId}/surveys/${surveyId}/responses`, studentResponse);
+  // return response.body;
+  return survey;
+}
+
+export async function updateResponse(courseId, surveyId, studentResponse) {
+  // const response = await axiosInstance.put(`/course/${courseId}/surveys/{surveyId}/responses/${studentResponse.id}`, studentResponse);
+  // return response.body;
+  return survey;
+}
+
