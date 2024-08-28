@@ -139,25 +139,80 @@ export async function deleteCourse(courseId) {
 
 /**
  * Course Faculty:
- * base url: /course/${courseId}/faculty
+ * base url: /courses/${courseId}/faculty
  * no get, covered in class
  */
 
 export async function addCourseFacultyMember(courseId, facultyMember) {
-  // const response = await axiosInstance.post(`/course/${courseId}/faculty/`, facultyMember);
+  // const response = await axiosInstance.post(`/courses/${courseId}/faculty/`, facultyMember);
   // return response.body;
   return facultyMember;
 }
 
 export async function updateCourseFacultyMember(courseId, facultyMember) {
-  // const response = await axiosInstance.put(`/course/${courseId}/faculty/${facultyMember.id}`, facultyMember);
+  // const response = await axiosInstance.put(`/courses/${courseId}/faculty/${facultyMember.id}`, facultyMember);
   // return response.body;
   return facultyMember;
 }
 
 // Should not actually delete, just set to inactive.
 export async function deleteCourseFacultyMember(courseId, facultyMemberId) {
-  // const response = await axiosInstance.delete(`/course/${courseId}/faculty/${facultyMemberId}`);
+  // const response = await axiosInstance.delete(`/courses/${courseId}/faculty/${facultyMemberId}`);
+  // return response.body;
+  return true;
+}
+
+/**
+ * Course Students: 
+ * base url: /courses/${courseId}/students
+ * no get, covered in class
+ */
+
+export async function addCourseStudent(courseId, student) {
+  // const response = await axiosInstance.post(`/courses/${courseId}/students/`, student);
+  // return response.body;
+  return student;
+}
+
+export async function updateCourseStudent(courseId, student) {
+  // const response = await axiosInstance.put(`/courses/${courseId}/students/${student.id}`, student);
+  // return response.body;
+  return student;
+}
+
+// Should not actually delete, just set to inactive.
+export async function deleteCourseStudent(courseId, studentId) {
+  // const response = await axiosInstance.delete(`/courses/${courseId}/students/${studentId}`);
+  // return response.body;
+  return true;
+}
+
+/**
+ * Surveys:
+ * base url: /course/${courseId}/surveys
+ */
+
+export async function getSurvey(courseId, surveyId) {
+  // const response = await axiosInstance.get(`/course/${courseId}/surveys/${surveyId}`});
+  // return response.body;
+  return {};
+}
+
+export async function createSurvey(courseId, survey) {
+  // const response = await axiosInstance.post(`/course/${courseId}/surveys/${survey.id}`, survey);
+  // return response.body;
+  return survey;
+}
+
+export async function updateSurvey(courseId, survey) {
+  // const response = await axiosInstance.put(`/course/${courseId}/surveys/{survey.id}`, survey);
+  // return response.body;
+  return survey;
+}
+
+// Should not actually delete, just set to inactive.
+export async function deleteSurvey(courseId, surveyId) {
+  // const response = await axiosInstance.delete(`/course/${courseId}/surveys/${surveyId}`);
   // return response.body;
   return true;
 }
