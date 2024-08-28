@@ -19,7 +19,7 @@ const axiosInstance = axios({
 export async function getDepartment(departmentId) {
   // const response = await axiosInstance.get(`/department/{departmentId}`);
   // return response.body;
-  return department;
+  return {};
 }
 
 export async function createDepartment(department) {
@@ -54,10 +54,10 @@ export async function updateQuestion(question) {
 }
 
 // Should not actually delete, just set to inactive.
-export async function deleteQuestion(question) {
-  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/questions/${question.id}`);
+export async function deleteQuestion(questionId) {
+  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/questions/${questionId}`);
   // return response.body;
-  return question;
+  return true;
 }
 
 /**
@@ -79,7 +79,7 @@ export async function updateQuestioWeights(department, weights) {
  * Department Faculty: 
  * base url: /department/${departmentId}/faculty
  * no get, covered in department
- *    impliment if ever non-admin can view other faculty in one of their departments
+ *    impliment if ever non-admin should be able to view other faculty in one of their departments
  */
 
 export async function addDepartmentFacultyMember(facultyMember) {
@@ -95,8 +95,69 @@ export async function updateDepartmentFacultyMember(facultyMember) {
 }
 
 // Should not actually delete, just set to inactive.
-export async function deleteDepartmentFacultyMember(facultyMember) {
-  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/faculty/${facultyMember.id}`);
+export async function deleteDepartmentFacultyMember(facultyMemberId) {
+  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/faculty/${facultyMemberId}`);
+  // return response.body;
+  return true;
+}
+
+/**
+ * Courses:
+ * base url: /courses
+ */
+
+export async function getCoursesForStudent() {
+  // const response = await axiosInstance.get(`/courses/student`});
+  // return response.body;
+  return [];
+}
+
+export async function getCoursesForProfessor() {
+  // const response = await axiosInstance.get(`/courses/professor`});
+  // return response.body;
+  return [];
+}
+
+export async function createCourse(course) {
+  // const response = await axiosInstance.post(`/courses/`, course);
+  // return response.body;
+  return course;
+}
+
+export async function updateCourse(course) {
+  // const response = await axiosInstance.put(`/courses/${course.id}`, course);
+  // return response.body;
+  return course;
+}
+
+// Should not actually delete, just set to inactive.
+export async function deleteCourse(courseId) {
+  // const response = await axiosInstance.delete(`/courses/${courseId}`);
+  // return response.body;
+  return true;
+}
+
+/**
+ * Course Faculty:
+ * base url: /course/${courseId}/faculty
+ * no get, covered in class
+ */
+
+export async function addCourseFacultyMember(courseId, facultyMember) {
+  // const response = await axiosInstance.post(`/course/${courseId}/faculty/`, facultyMember);
   // return response.body;
   return facultyMember;
+}
+
+export async function updateCourseFacultyMember(courseId, facultyMember) {
+  // const response = await axiosInstance.put(`/course/${courseId}/faculty/${facultyMember.id}`, facultyMember);
+  // return response.body;
+  return facultyMember;
+}
+
+// Should not actually delete, just set to inactive.
+export async function deleteCourseFacultyMember(courseId, facultyMemberId) {
+  // const response = await axiosInstance.delete(`/course/${courseId}/faculty/${facultyMemberId}`);
+  // return response.body;
+  return true;
 }
