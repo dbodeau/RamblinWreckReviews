@@ -8,33 +8,72 @@ const axiosInstance = axios({
   // any auth stuff can go here (or get added somewhere below)
 })
 
-/*
- * Questions: 
+/**
+ * Department: 
+ * base url: /department
  * Unsure of needed parameters or question properties
+ * no delete, put as 
+ *  deletion shouldn't really be a thing, could do some sort of setting to inactive if needed
+ *  put should be handled by other endpoints with limited responsibilities.
  */
 
-export async function getQuestions(department) {
-  // const response = await axiosInstance.get('/questions', {params: {departmet}});
+export async function getDepartment(departmentId) {
+  // const response = await axiosInstance.get(`/department/{departmentId}`);
+  // return response.body;
+  return department;
+}
+
+export async function createDepartment(department) {
+  // const response = await axiosInstance.post('/department', department);
+  // return response.body;
+  return department;
+}
+
+/**
+ * Questions:
+ * base url: /department/${departmentId}/questions 
+ * Unsure of needed parameters or question properties
+ * TODO: relies on user's admin department. Get from user object retrieved from server. 
+ *    Should probably ensure user has an admin department. TS would ensure we did this.
+ */
+
+export async function getQuestions(departmentId) {
+  // const response = await axiosInstance.get(`/department/{departmentId}/questions`});
   // return response.body;
   return [];
 }
 
 export async function createQuestion(question) {
-  // const response = await axiosInstance.post('/questions/', question);
+  // const response = await axiosInstance.post(`/department/{user.adminDepartment}/questions/`, question);
   // return response.body;
   return question;
 }
 
 export async function updateQuestion(question) {
-  // const response = await axiosInstance.put(`/questions/${question.id}`, question);
+  // const response = await axiosInstance.put(`/department/{user.adminDepartment}/questions/${question.id}`, question);
   // return response.body;
   return question;
 }
 
 // Should not actually delete, just set to inactive.
 export async function deleteQuestion(question) {
-  // const response = await axiosInstance.delete(`/questions/${question.id}`);
+  // const response = await axiosInstance.delete(`/department/{user.adminDepartment}/questions/${question.id}`);
   // return response.body;
   return question;
+}
+
+/**
+ * Question weights:
+ * base url: /department/${departmentId}/mcqweights 
+ * Unsure of needed parameters or question properties
+ * no get, post, delete because they should not be needed. 
+ *  get is covered in get department / get survey
+ *  post/delete not needed, one to one with department.
+ */
+
+export async function updateQuestioWeights(department, weights) {
+  // const response = await axiosInstance.put(`/department/${department.id}/mcqweights`, weights);
+  // return response.body;
+  return weights;
 }
 
