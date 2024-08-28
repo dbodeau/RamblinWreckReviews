@@ -11,10 +11,9 @@ const axiosInstance = axios({
 /**
  * Department: 
  * base url: /department
- * Unsure of needed parameters or question properties
- * no delete, put as 
- *  deletion shouldn't really be a thing, could do some sort of setting to inactive if needed
- *  put should be handled by other endpoints with limited responsibilities.
+ * no delete, put as: 
+ *    deletion shouldn't really be a thing, could do some sort of setting to inactive if needed
+ *    put should be handled by other endpoints with limited responsibilities.
  */
 
 export async function getDepartment(departmentId) {
@@ -31,10 +30,9 @@ export async function createDepartment(department) {
 
 /**
  * Questions:
- * base url: /department/${departmentId}/questions 
- * Unsure of needed parameters or question properties
- * TODO: relies on user's admin department. Get from user object retrieved from server. 
- *    Should probably ensure user has an admin department. TS would ensure we did this.
+ * base url: /department/${departmentId}/questions
+ * TODO: relies on currUser's admin department. Get from currUser object retrieved from server. 
+ *    Should probably ensure currUser has an admin department. TS would ensure we did this.
  */
 
 export async function getQuestions(departmentId) {
@@ -44,20 +42,20 @@ export async function getQuestions(departmentId) {
 }
 
 export async function createQuestion(question) {
-  // const response = await axiosInstance.post(`/department/{user.adminDepartment}/questions/`, question);
+  // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/questions/`, question);
   // return response.body;
   return question;
 }
 
 export async function updateQuestion(question) {
-  // const response = await axiosInstance.put(`/department/{user.adminDepartment}/questions/${question.id}`, question);
+  // const response = await axiosInstance.put(`/department/{currUser.adminDepartment}/questions/${question.id}`, question);
   // return response.body;
   return question;
 }
 
 // Should not actually delete, just set to inactive.
 export async function deleteQuestion(question) {
-  // const response = await axiosInstance.delete(`/department/{user.adminDepartment}/questions/${question.id}`);
+  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/questions/${question.id}`);
   // return response.body;
   return question;
 }
@@ -65,10 +63,10 @@ export async function deleteQuestion(question) {
 /**
  * Question weights:
  * base url: /department/${departmentId}/mcqweights 
- * Unsure of needed parameters or question properties
+ * Unsure of needed parameters or properties
  * no get, post, delete because they should not be needed. 
- *  get is covered in get department / get survey
- *  post/delete not needed, one to one with department.
+ *    get is covered in get department / get survey
+ *    post/delete not needed, one to one with department.
  */
 
 export async function updateQuestioWeights(department, weights) {
@@ -77,3 +75,28 @@ export async function updateQuestioWeights(department, weights) {
   return weights;
 }
 
+/**
+ * Department Faculty: 
+ * base url: /department/${departmentId}/faculty
+ * no get, covered in department
+ *    impliment if ever non-admin can view other faculty in one of their departments
+ */
+
+export async function addDepartmentFacultyMember(facultyMember) {
+  // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/faculty/`, facultyMember);
+  // return response.body;
+  return facultyMember;
+}
+
+export async function updateDepartmentFacultyMember(facultyMember) {
+  // const response = await axiosInstance.put(`/department/{currUser.adminDepartment}/faculty/${facultyMember.id}`, facultyMember);
+  // return response.body;
+  return facultyMember;
+}
+
+// Should not actually delete, just set to inactive.
+export async function deleteDepartmentFacultyMember(facultyMember) {
+  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/faculty/${facultyMember.id}`);
+  // return response.body;
+  return facultyMember;
+}
