@@ -31,24 +31,41 @@ We made some particular design decisions with the clients desires directly in mi
 One particularly important thing that needs to stay consistent through the website is the coloring and fonts need to follow Mines standards. This can be found at brand.mines.edu
 
 ## List of Pages
-Admin_CreateSurveQuestions: page link:/admin/create-survey-questions done by the previous group, could use some makeup. Responsible for admins creating questions
-Admin_EditQuestionWeights: I'm so sorry for the naming convention, this was done by the previous group, could use some makeup. Page link: admin/edit-question-weights. 
- Admin_Home: right now it has nothing, should show admins their classes and departments. Page link: /admin
-Admin_ManageFaculty: adds teachers to courses. Made by the last group, needs makeup. Page link: /admin/manage-faculty
-Error401: wrong permissions page. Page link: /401-not-permitted
-Error404: page not found page. Page link: /404-not-found
-Login: login page, functional from localhost and domain. Page link: /login
-Signup: signup page, functional from localhost and domain. Page link: /signup
-MenuBar: the bar that appears on the top of all pages. Page link: /
-Professor_CreateCourse: made by the last group, literally nothing, would recommend deleting, but ask Donna first.
-Professor_EmailNotifications: made by the last group, also nothing. Would be used for sending “nag” emails. Page link: /professor/email-notifications
-Professor_Home: shows professors their active surveys and their completion. Page link: /professor
-Professor_ManageStudents: add/edit students. Click the plus button to upload csv and add students. Page link: professor/manage-students
-Professor/manage-survey: made by the last group, could use some makeup. This is where professors can make surveys. Page link: /professor/manage-survey
-Professor_StudentResponses: this is where professors can see the student groups and their responses. Page link: /professor/student-responses
-Student_Home: shows students their surveys and classes. Page link: /student
-Student_TakeSurvey: students can take surveys. Page link: /student/take-survey
-Student_viewFeedback: students can see the feedback they got. Page link: /student/view-feedback
+- Admin_CreateSurveQuestions: page link:/admin/create-survey-questions done by the previous group, could use some makeup. Responsible for admins creating questions
+
+- Admin_EditQuestionWeights: I'm so sorry for the naming convention, this was done by the previous group, could use some makeup. Page link: admin/edit-question-weights. 
+
+- Admin_Home: right now it has nothing, should show admins their classes and departments. Page link: /admin
+
+- Admin_ManageFaculty: adds teachers to courses. Made by the last group, needs makeup. Page link: /admin/manage-faculty
+
+- Error401: wrong permissions page. Page link: /401-not-permitted
+
+- Error404: page not found page. Page link: /404-not-found
+
+- Login: login page, functional from localhost and domain. Page link: /login
+
+- Signup: signup page, functional from localhost and domain. Page link: /signup
+
+- MenuBar: the bar that appears on the top of all pages. Page link: /
+
+- Professor_CreateCourse: made by the last group, literally nothing, would recommend deleting, but ask Donna first.
+
+- Professor_EmailNotifications: made by the last group, also nothing. Would be used for sending “nag” emails. Page link: /professor/email-notifications
+
+- Professor_Home: shows professors their active surveys and their completion. Page link: /professor
+
+- Professor_ManageStudents: add/edit students. Click the plus button to upload csv and add students. Page link: professor/manage-students
+
+- Professor/manage-survey: made by the last group, could use some makeup. This is where professors can make surveys. Page link: /professor/manage-survey
+
+- Professor_StudentResponses: this is where professors can see the student groups and their responses. Page link: /professor/student-responses
+
+- Student_Home: shows students their surveys and classes. Page link: /student
+
+- Student_TakeSurvey: students can take surveys. Page link: /student/take-survey
+
+- Student_viewFeedback: students can see the feedback they got. Page link: /student/view-feedback
 
 ## Installation Guide
 
@@ -72,9 +89,13 @@ If you want to edit the information, you can right click on the tables tab and c
 ## Troubleshooting Guide
 
 Our team has encountered countless errors when building this website. It is very likely that future teams would also encounter the same errors. Here is a list of error our team has encountered and how to fix them:
+
 MOST COMMON ERROR (stinky build file): Running on localhost works but deployment to Amplify doesn’t work (or nothing works). Solution: you have a stinky build file. Your auto generated settings files for Amplify are wrong, go back to the GitHub and get the correct files (these files will usually be in the .git ignore). Another Solution: you could have a duplicate node_modules folder, which Node.js uses. Make sure that the node_modules folder has the correct content, or regenerate it.
+
 Deployment to Amplify works, but the webpage shows up as a blank, white screen. Solution: go to the Amplify console and click on redirects. You are redirecting to the wrong url link. It needs to redirect from /<*> to /index.html on a 400 redirect.
+
 You get a permissions error in AWS. Solution: for AWS, everything is restricted by default. You need to add new permissions for the action you want. Each service is different, but usually you need to create a new Iam Role and add admin access.
+
 COORS error; happens when you try to set up an API and modify information: Solution: When signing in, an access token will be passed to the user. There is a function to get the access token in the AWS documentation. Make sure that you are passing in the correct credentials for the header.
 
 ## Contact
