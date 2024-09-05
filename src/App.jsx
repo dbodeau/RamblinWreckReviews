@@ -16,6 +16,7 @@ import StudentHome from './components/pages/student/Student_Home';
 import StudentTakeSurvey from './components/pages/student/Student_TakeSurvey';
 import StudentViewFeedback from './components/pages/student/Student_ViewFeedback';
 // login and signup page imports
+import Home from './components/pages/Home';
 import Login from './components/pages/auth/Login';
 import SignUpPage from './components/pages/auth/SignUpPage';
 import ForgetPasswordResetPage from './components/pages/auth/ForgetPasswordResetPage';
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Wrapper />,
     children: [
+      {
+        path: "/Home",
+        element: <Home />
+      },
       // for login and signup pages
       {
         path: "/login",
