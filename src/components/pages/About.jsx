@@ -3,23 +3,28 @@
 */
 
 import minesbkgd from '../../assets/images/mines-bkgd.jpg';
-import '../../css/Home.css';
+import '../../css/About.css';
 
-export default function Home() {
+export default function About() {
   return (
     <body>
         <div>
-            <img className='home-bkgd-image' src={minesbkgd} alt="Mines Logo" />
+            <img className='about-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
-        <div className='home-body-container'>
-            <div className='home-container'>
-                <div className='home-component-container'>
+        <div className='about-body-container'>
+            <div className='about-container'>
+                <div className='about-component-container'>
                     {/*Don't we just love pure html in React*/}
                     <h2>Overview</h2>
                     <p>Mines currently uses CATME, Purdue University’s team evaluation platform, but it has significant costs and lacks crucial features. We are developing a modern, in-house peer evaluation platform that addresses these limitations and incorporates additional functionalities.</p>
 
                     <h2>Development History</h2>
-                    <p>We are the 7th team working on this project.</p>
+                    <p>We are the 7th team working on this project...</p>
+
+                    <h2>Featurs</h2>
+                    <p><strong>Administrators</strong> or Department heads will curate a catalog of pre-approved questions, define weightings to multiple choice questions and assign mandatory questions.</p>
+                    <p><strong>Professors</strong> can create and assign surveys, view an up-to-date completion status on surveys, modify students and TAs on a per-class basis, and much more...</p>
+                    <p><strong>Students</strong> can fill out peer evaluation surveys and review feedback from peers.</p>
 
                     <h2>Contributors</h2>
                     <div>
