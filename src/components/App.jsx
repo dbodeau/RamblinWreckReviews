@@ -1,4 +1,4 @@
-/*This where all paths go. When you add a page add the path and element below. This is also called index.jsx sometimes*/
+/*This where all paths go. When you add a page add the path and element below.*/
 // admin page imports
 import AdminCreateSurveyQuestions from './components/pages/admin/Admin_CreateSurveyQuestions';
 import AdminEditQuestionWeights from './components/pages/admin/Admin_EditQuestionWeights';
@@ -22,12 +22,13 @@ import ForgetPasswordResetPage from './components/pages/auth/ForgetPasswordReset
 // generic imports
 // import App from './App';
 import React from 'react';
-import ReactDOM from 'react-dom';
 // import '../../../css/index.css';
 import Wrapper from './components/Wrapper';
 import NotFound from './components/pages/error/Error404';
 import NotAuthorized from './components/pages/error/Error401'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
+import AWS_Authenticator from './components/AWS_Authenticator';
+import AuthStatusEnum from '../types/AuthStatusEnum';
 
 //for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/forgot-password",
-        element:<ForgetPasswordResetPage/>,
+        element: <ForgetPasswordResetPage />,
       },
       // for admin pages
       {
@@ -116,14 +117,35 @@ const router = createBrowserRouter([
         path: "/student/view-feedback",
         element: <StudentViewFeedback />,
       }
-     ],
+    ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-//code that renders the application
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
-  </React.StrictMode>
-)
+export const App = () => {
+  const [role, setRole] = useState('');
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.contains('admin')) {
+      setRole(AuthStatusEnum.ADMIN);
+    }
+    else if (location.contains('professor')) {
+      setRole(AuthStatusEnum.SUPERUSER);
+    }
+    else if (location.contains('student')) {
+      setRole(AuthStatusEnum.STUDENT);
+    }
+    else {
+      setRole('');
+    }
+  }, [location])
+
+  return (
+    <React.StrictMode>
+      <AWS_Authenticator role={role}>
+        <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
+      </AWS_Authenticator>
+    </React.StrictMode>
+  )
+}
