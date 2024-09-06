@@ -4,10 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Popup } from "reactjs-popup";
 import MenuBar from '../../MenuBar';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from "../../../types/AuthStatusEnum";
 
-function Admin_EditQuestionWeights() {
+export default function Admin_EditQuestionWeights() {
   var departments = useLoaderData();
 
    //re-renders page without state change
@@ -685,5 +683,3 @@ function Admin_EditQuestionWeights() {
     </>
   );
 }
-
-export default AWS_Authenticator(Admin_EditQuestionWeights, AuthStatusEnum.ADMIN);

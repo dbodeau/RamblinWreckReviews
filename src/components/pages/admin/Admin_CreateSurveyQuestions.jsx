@@ -6,11 +6,8 @@ import {useLoaderData} from 'react-router-dom';
 import {Popup} from 'reactjs-popup';
 import '../../../css/Admin_CreateSurveyQuestions.css';
 import MenuBar from '../../MenuBar';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
-
-function Admin_CreateSurveyQuestions() {
+export default function Admin_CreateSurveyQuestions() {
     //use state allows React to re-render when it detects a change in this variable
     const [formState, setFormState] = useState( {content: '', is_mandatory: false, question_type: '', question_category: '', department: '', new_category: ''});
     //question categories that are all from one department
@@ -267,5 +264,3 @@ function Admin_CreateSurveyQuestions() {
       </>
     );
   }
-
-  export default AWS_Authenticator(Admin_CreateSurveyQuestions, AuthStatusEnum.ADMIN);

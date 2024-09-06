@@ -11,8 +11,6 @@ import plus from '../../../assets/images/plus.png';
 import '../../../css/Professor_ManageStudents.css'; // Import your CSS file
 import MenuBar from '../../MenuBar';  // Import your MenuBar component
 import DropZone from '../../DropZone'; //This is your CSV file upload box for dropping 
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 //Student Object with name and 
 class Student {
@@ -40,7 +38,7 @@ function downloadStudentForSelectedSurvey(){
   //Add download logic here
 }
 
-function Professor_ManageStudents() {
+export default function Professor_ManageStudents() {
   //Returns student viewable object on screen
   function loadStudent(studentList){
     downloadStudentForSelectedSurvey();
@@ -130,5 +128,3 @@ function Professor_ManageStudents() {
     </div>
   );
 }
-
-export default AWS_Authenticator(Professor_ManageStudents, AuthStatusEnum.SUPERUSER);

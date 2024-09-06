@@ -4,11 +4,9 @@ import { useLocation } from "react-router-dom";
 import "../css/UpdateQuestion.css";
 import { updateQuestion } from "./api/admin.api";
 import { Popup } from "reactjs-popup";
-import AWS_Authenticator from './AWS_Authenticator';
-
 
 //takes in the question that was clicked on as the params and department id
-function UpdateQuestion() {
+export default function UpdateQuestion() {
   //find data from the browser router
   const location = useLocation();
   const props = location.state;
@@ -102,5 +100,3 @@ function UpdateQuestion() {
     </>
   );
 }
-
-export default AWS_Authenticator(updateQuestion);

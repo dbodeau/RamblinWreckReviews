@@ -4,8 +4,6 @@ what content is there for the student to see*/
 
 import '../../../css/Student_ViewFeedback.css';
 import MenuBar from '../../MenuBar';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 // function to display feedback
 function displayFeedback(title = "Feedback Title", subtext="subtext", text="Here is what your peers said about you!") {
@@ -27,7 +25,7 @@ function displayFeedback(title = "Feedback Title", subtext="subtext", text="Here
     );
 }
 
-function Student_ViewFeedback() {
+export default function Student_ViewFeedback() {
     return(
         <div className="student-view-feedback-horizontal-container">
             <MenuBar />
@@ -47,5 +45,3 @@ function Student_ViewFeedback() {
         </div>
     );
 }
-
-export default AWS_Authenticator(Student_ViewFeedback, AuthStatusEnum.STUDENT);

@@ -1,11 +1,8 @@
 import MenuBar from '../../MenuBar';
-import Error401 from '../error/Error401';
 import '../../../css/Admin_Home.css';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 
-function Admin_Home() {
+export default function Admin_Home() {
   return (
     <div>
       <>
@@ -20,5 +17,3 @@ function Admin_Home() {
     </div>
   );
 }
-
-export default AWS_Authenticator(Admin_Home, AuthStatusEnum.ADMIN);

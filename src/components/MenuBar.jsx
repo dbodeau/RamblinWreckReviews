@@ -9,9 +9,8 @@ import edit from '../assets/images/edit.png';
 import editDark from '../assets/images/edit-black.png';
 import '../css/MenuBar.css';
 import authStatus from '../types/AuthStatusEnum';
-import AWS_Authenticator from './AWS_Authenticator';
 
-function MenuBar() {
+export default function MenuBar() {
   const [imageUrl, setImageUrl] = useState(chevron_down); // State to track image viewed
   const [isOpen, setIsOpen] = useState(false); // State to track menu visibility
   const [isPlusHovered, setIsPlusHovered] = useState(false); 
@@ -136,5 +135,3 @@ function MenuBar() {
     </>
   );
 }
-
-export default AWS_Authenticator(MenuBar);

@@ -4,10 +4,8 @@
 import '../../../css/Student_Home.css';
 import MenuBar from "../../MenuBar";
 import React, { useState } from 'react';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
-function Student_Home() {
+export default function Student_Home() {
   // state to manage which dropdown menus are open
   const [openMenus, setOpenMenus] = useState([]);
 
@@ -111,5 +109,3 @@ function Student_Home() {
     </div>
   );
 }
-
-export default AWS_Authenticator(Student_Home, AuthStatusEnum.STUDENT);
