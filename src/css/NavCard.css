@@ -1,0 +1,18 @@
+.navcard-button {
+    height: 200px;
+    width: 250px;
+    margin: 10px;
+}
+
+img {
+    height: 50px;
+    /* width: 60px; */
+}
+
+h2 {
+    height: 40px;
+}
+
+p {
+    height: 25px;
+}
