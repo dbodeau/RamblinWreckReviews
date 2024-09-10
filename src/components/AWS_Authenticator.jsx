@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Children } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { Amplify } from 'aws-amplify';
 import awsconfig from '../aws-exports';
@@ -12,10 +12,11 @@ Amplify.configure(awsconfig);
   role is handled in the parent component by looking at page address.
 */
 
-const AWS_Authenticator = (role) => { 
+const AWS_Authenticator = ({role, children}) => { 
   const [isLoading, setIsLoading] = useState(true); // Initial loading state
   const [user, setUser] = useState(null);
-  const [userGroups, setUserGroups] = useState(null);
+  const [userGroups, setUserGroups] = useState([]);
+  const [userHasAccess, setUserHasAccess] = useState(false);
 
   const getCurrentUserGroupAccess = async (currentUser) => {
     // return empty array is no current user or no username property is present
@@ -50,15 +51,21 @@ const AWS_Authenticator = (role) => {
   };
 
   const getUserAndGroups = async () => {
-    const currentUser = await getCurrentUser();
-    const currentUserGroups = await getCurrentUserGroupAccess(currentUser); // Assuming getCurrentUserGroupAccess returns user groups
+    try {
+      const currentUser = await getCurrentUser();
+      const currentUserGroups = await getCurrentUserGroupAccess(currentUser); // Assuming getCurrentUserGroupAccess returns user groups
 
-    setUser(currentUser);
-    setUserGroups(currentUserGroups);
-    setIsLoading(false);
+      setUser(currentUser);
+      setUserGroups(currentUserGroups);
+      setIsLoading(false);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
-  const userHasAccess = () => {
+  const getUserAccess = () => {
+    console.log(role);
     if(role == '') {
       return true;
     }
@@ -71,13 +78,21 @@ const AWS_Authenticator = (role) => {
   }
 
   // get user and groups on page load
-  useEffect(getUserAndGroups, []);
+  useEffect(() => {
+    getUserAndGroups()
+    setUserHasAccess(getUserAccess);
+  }, []);
+
+  // check for access
+  useEffect(() => {
+    setUserHasAccess(getUserAccess);
+  }, [role, userGroups])
 
   return (
-      isLoading
-        ? <p style={{width:'100vw', height:'100vh', textAlign:'center', alignContent:'center'}}>Loading...</p>
-        : userHasAccess() 
-          ? <Children refetchUser={getUserAndGroups}/> 
+      userHasAccess
+        ? <>{children}</>
+        : isLoading 
+          ? <p style={{width:'100vw', height:'100vh', textAlign:'center', alignContent:'center'}}>Loading...</p>
           : <Error401 />
   )
 };

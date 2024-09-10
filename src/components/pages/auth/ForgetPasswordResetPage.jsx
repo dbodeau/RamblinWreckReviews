@@ -64,7 +64,7 @@ export default function ForgetPasswordResetPage() {
 
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -127,7 +127,7 @@ export default function ForgetPasswordResetPage() {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

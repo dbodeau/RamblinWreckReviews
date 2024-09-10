@@ -51,7 +51,7 @@ export default function SignUpPage() {
 
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className="portal-bkgd-image" src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -124,7 +124,7 @@ export default function SignUpPage() {
             </p>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 }

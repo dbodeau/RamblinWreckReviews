@@ -7,12 +7,12 @@ export default function Admin_Home() {
     <div>
       <>
       <link rel="stylesheet" href="style.css" />
-      <body>
+      <div>
         <div className='admin-home-content-container'>
           {<MenuBar />}
           <div className="admin-home-welcomeText"><h1>Welcome to the admin home page</h1></div>
         </div>
-      </body>
+      </div>
       </>
     </div>
   );

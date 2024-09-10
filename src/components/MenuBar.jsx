@@ -115,7 +115,7 @@ export default function MenuBar() {
 
   return (
     <>
-      <body>
+      <div>
         <div className="menu-bar-vertical-bar-container" onMouseLeave={switchMenuBarVisibility}>
           <button className="menu-bar-button" onMouseEnter={switchMenuBarVisibility}>
             <img src={imageUrl} alt='dropdown button' />
@@ -131,7 +131,7 @@ export default function MenuBar() {
             </div>
           )}
         </div>
-      </body>
+      </div>
     </>
   );
 }

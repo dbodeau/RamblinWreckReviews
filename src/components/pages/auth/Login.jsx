@@ -50,7 +50,7 @@ export default function Login() {
 
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -106,7 +106,7 @@ export default function Login() {
             <a href='/signup'><button className='portal-sign-up-redirect-button'>Don't have an account?<br></br> Sign Up!</button></a>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };
