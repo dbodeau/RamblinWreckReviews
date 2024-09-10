@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getCurrentUser } from 'aws-amplify/auth';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../aws-exports';
 import Error401 from './pages/error/Error401';
-
-Amplify.configure(awsconfig);
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserGroups } from '../redux/authSlice';
+import { getCognitoUser } from '../services/authService';
 
 /*
   Currently, user/role list is only retrieved on component load.
@@ -14,49 +12,17 @@ Amplify.configure(awsconfig);
 
 const AWS_Authenticator = ({role, children}) => { 
   const [isLoading, setIsLoading] = useState(true); // Initial loading state
-  const [user, setUser] = useState(null);
-  const [userGroups, setUserGroups] = useState([]);
   const [userHasAccess, setUserHasAccess] = useState(false);
-
-  const getCurrentUserGroupAccess = async (currentUser) => {
-    // return empty array is no current user or no username property is present
-    if (!!currentUser || !!currentUser.username) {
-      return []
-    }
-
-    const requestData = {
-      username: currentUser?.username,
-    };
-
-    // TODO: replace with a call from services when merged properly.
-    try {
-      const response = await fetch('https://0wr74dgf99.execute-api.us-east-2.amazonaws.com/get-users-cognito-groups-stage', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      return data.body; // Assuming data.body contains user groups
-    } catch (error) {
-      console.error(`Error when fetching groups for user ${currentUser?.username}:`, error);
-      return []; // Return empty array on error
-    }
-  };
+  
+  const userGroups = useSelector((state => state.auth.userGroups));
+  const dispatch = useDispatch();
 
   const getUserAndGroups = async () => {
     try {
-      const currentUser = await getCurrentUser();
-      const currentUserGroups = await getCurrentUserGroupAccess(currentUser); // Assuming getCurrentUserGroupAccess returns user groups
-
-      setUser(currentUser);
-      setUserGroups(currentUserGroups);
+      const user = await getCognitoUser();
+      const userGroups = await getCognitoUserGroups(user);
+      dispatch(updateUserGroups(user))
+      dispatch(updateUserGroups(userGroups))
       setIsLoading(false);
     }
     catch (error) {

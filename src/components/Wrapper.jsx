@@ -1,30 +1,32 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import mineslogo from '../assets/images/mineslogo.png';
 import '../css/Wrapper.css';
 import authStatus from '../types/AuthStatusEnum';
 import { signOut } from 'aws-amplify/auth';
 import { useEffect, useState } from 'react';
-import { getCurrentUser } from 'aws-amplify/auth';
 import AWS_Authenticator from './AWS_Authenticator';
 import { useLocation } from 'react-router-dom';
-
-async function doSignOut() {
-  await signOut();
-  localStorage.setItem('AWS_signedInUserGroupStatuses', [""]);
-  window.location.href = '/login'
-}
-
-let currentUser;
+import { useSelector } from 'react-redux';
+import { clearUser } from '../redux/authSlice';
 
 /*
   The wrapper houses the navigation bar that is displayed on top of every page
 */
 function Wrapper() {
-  const [isLoading, setIsLoading] = useState(true);
-
   const [role, setRole] = useState('');
 
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const userGroups = useSelector((state => state.auth.userGroups));
+  const currentUser = useSelector((state => state.auth.user));
+  const dispatch = useDispatch();
+
+  const doSignOut = async () => {
+    await signOut();
+    dispatch(clearUser());
+    navigate('/login');
+  }
 
   useEffect(() => {
     if (location.pathname.includes('admin')) {
@@ -75,10 +77,10 @@ function Wrapper() {
         <h1 className="wrapper-website-title">Ramblin' Wreck Reviews</h1>
         <div className='wrapper-nav-bar-menu'>
           {/* Displays correct links based on user access */}
-          {localStorage.getItem('AWS_signedInUserGroupStatuses') !== null && localStorage.getItem('AWS_signedInUserGroupStatuses').includes(authStatus.ADMIN) ? adminLink : null}
-          {localStorage.getItem('AWS_signedInUserGroupStatuses') !== null && localStorage.getItem('AWS_signedInUserGroupStatuses').includes(authStatus.SUPERUSER) ? professorLink : null}
-          {localStorage.getItem('AWS_signedInUserGroupStatuses') !== null && localStorage.getItem('AWS_signedInUserGroupStatuses').includes(authStatus.STUDENT) ? studentLink : null}
-          {localStorage.getItem('AWS_signedInUserGroupStatuses') !== null && !currentUser ? null : signOutLink} {/* Always shows up on nav bar as redirects to login */}
+          {userGroups.includes(authStatus.ADMIN) ? adminLink : null}
+          {userGroups.includes(authStatus.SUPERUSER) ? professorLink : null}
+          {userGroups.includes(authStatus.STUDENT) ? studentLink : null}
+          {!currentUser ? null : signOutLink}
         </div>
       </div>
       <AWS_Authenticator role={role}>

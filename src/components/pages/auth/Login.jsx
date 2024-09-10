@@ -6,13 +6,9 @@
 
 import minesbkgd from '../../../assets/images/mines-bkgd.jpg';
 import '../../../css/Portal.css';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../../../aws-exports';
 import { useState, useEffect } from 'react';
 import { signIn } from '@aws-amplify/auth';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
-
-Amplify.configure(awsconfig)
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false); /*Show password purpose is to hide and show the password: user clicks a FaEye in the input container (in HTML code below)*/
