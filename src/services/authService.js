@@ -1,16 +1,18 @@
+import { getCurrentUser } from "@aws-amplify/auth";
+
 export async function getCognitoUser() {
   try {
     return await getCurrentUser();
   }
-  catch (err) {
+  catch (error) {
     console.error(`Error when fetching current user:`, error);
-    throw err;
+    throw error;
   }
 }
 
 export async function getCognitoUserGroups(user) {
   // return empty array is no current user or no username property is present
-  if (!!user || !!user.username) {
+  if (!user || !user.username) {
     console.error(`Cannot fetch groups for null user`);
     return [];
   }

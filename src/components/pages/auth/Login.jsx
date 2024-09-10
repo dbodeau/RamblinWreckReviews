@@ -17,7 +17,6 @@ export default function Login() {
   const [isFocused, setIsFocused] = useState(false); /*This displays password requirments when the user is in the password input container */
   const [errorMessage, setErrorMessage] = useState('');
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

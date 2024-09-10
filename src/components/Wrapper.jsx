@@ -1,12 +1,12 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import mineslogo from '../assets/images/mineslogo.png';
 import '../css/Wrapper.css';
-import authStatus from '../types/AuthStatusEnum';
+import AuthStatusEnum from '../types/AuthStatusEnum';
 import { signOut } from 'aws-amplify/auth';
 import { useEffect, useState } from 'react';
 import AWS_Authenticator from './AWS_Authenticator';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '../redux/authSlice';
 
 /*
@@ -48,19 +48,19 @@ function Wrapper() {
   }
 
   const adminLink = (
-    <Link to="/admin" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(authStatus.ADMIN)}>
+    <Link to="/admin" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(AuthStatusEnum.ADMIN)}>
       <button className="wrapper-nav-bar-menu-button">Admin</button>
     </Link>
   );
 
   const professorLink = (
-    <Link to="/professor" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(authStatus.SUPERUSER)}>
+    <Link to="/professor" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(AuthStatusEnum.SUPERUSER)}>
       <button className="wrapper-nav-bar-menu-button">Professor</button>
     </Link>
   );
 
   const studentLink = (
-    <Link to="/student" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(authStatus.STUDENT)}>
+    <Link to="/student" className="wrapper-nav-bar-menu-link" onClick={() => updateNavBarData(AuthStatusEnum.STUDENT)}>
       <button className="wrapper-nav-bar-menu-button">Student</button>
     </Link>
   );
@@ -77,10 +77,10 @@ function Wrapper() {
         <h1 className="wrapper-website-title">Ramblin' Wreck Reviews</h1>
         <div className='wrapper-nav-bar-menu'>
           {/* Displays correct links based on user access */}
-          {userGroups.includes(authStatus.ADMIN) ? adminLink : null}
-          {userGroups.includes(authStatus.SUPERUSER) ? professorLink : null}
-          {userGroups.includes(authStatus.STUDENT) ? studentLink : null}
-          {!currentUser ? null : signOutLink}
+          {userGroups.includes(AuthStatusEnum.ADMIN) ? adminLink : null}
+          {userGroups.includes(AuthStatusEnum.SUPERUSER) ? professorLink : null}
+          {userGroups.includes(AuthStatusEnum.STUDENT) ? studentLink : null}
+          {currentUser ? signOutLink: null}
         </div>
       </div>
       <AWS_Authenticator role={role}>

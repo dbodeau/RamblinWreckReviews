@@ -76,7 +76,7 @@ export default function Student_Home() {
         </div>
         <div className="student-home-survey-footer">
           <div className="student-home-professor-name" onClick={() => { window.location.href = '/student/take-survey';}}>{professorName}</div>
-          <div className="student-home-dropdown-wrapper" div onClick={() => { window.location.href = '/student/view-feedback';}}>
+          <div className="student-home-dropdown-wrapper" onClick={() => { window.location.href = '/student/view-feedback';}}>
             {displayDropDownMenu(index)}
           </div>
         </div>

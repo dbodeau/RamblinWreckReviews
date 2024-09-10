@@ -9,6 +9,7 @@ import edit from '../assets/images/edit.png';
 import editDark from '../assets/images/edit-black.png';
 import '../css/MenuBar.css';
 import authStatus from '../types/AuthStatusEnum';
+import { useNavigate } from 'react-router-dom';
 
 export default function MenuBar() {
   const [imageUrl, setImageUrl] = useState(chevron_down); // State to track image viewed
@@ -16,6 +17,8 @@ export default function MenuBar() {
   const [isPlusHovered, setIsPlusHovered] = useState(false); 
   const [isPersonHovered, setIsPersonHovered] = useState(false);
   const [isEditHovered, setIsEditHovered] = useState(false);
+
+  const navigate = useNavigate();
 
   const switchMenuBarVisibility = () => {
     setImageUrl(imageUrl === chevron_down ? chevron_right : chevron_down); // Toggle image viewed on button
@@ -30,21 +33,21 @@ export default function MenuBar() {
 
   const adminMenu = (
     <div className='menu-bar-menu-item-container'>
-      <button onClick={() => { window.location.href = "/admin/create-survey-questions"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
+      <button onClick={() => { navigate( "/admin/create-survey-questions") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
         <img
           src={isPlusHovered ? menuItemImages.plus.dark : menuItemImages.plus.light}
           alt="Create Survey Questions"
         />
         Create Survey Questions
       </button>
-      <button onClick={() => { window.location.href = "/admin/manage-faculty"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsPersonHovered(true)} onMouseLeave={() => setIsPersonHovered(false)}>
+      <button onClick={() => { navigate( "/admin/manage-faculty") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPersonHovered(true)} onMouseLeave={() => setIsPersonHovered(false)}>
         <img
           src={isPersonHovered ? menuItemImages.person3.dark : menuItemImages.person3.light}
           alt="Manage Faculty Access"
         />
         Manage Faculty Access
       </button>
-      <button onClick={() => { window.location.href = "/admin/edit-question-weights"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/admin/edit-question-weights") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="Edit Question Weights"
@@ -56,35 +59,35 @@ export default function MenuBar() {
 
   const professorMenu = (
     <div className='menu-bar-menu-item-container'>
-      <button onClick={() => { window.location.href = "/professor/create-course"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
+      <button onClick={() => { navigate( "/professor/create-course") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
         <img
           src={isPlusHovered ? menuItemImages.plus.dark : menuItemImages.plus.light}
           alt="Create Course icon"
         />
         Create Course
       </button>
-      <button onClick={() => { window.location.href = "/professor/manage-survey"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsPersonHovered(true)} onMouseLeave={() => setIsPersonHovered(false)}>
+      <button onClick={() => { navigate( "/professor/manage-survey") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPersonHovered(true)} onMouseLeave={() => setIsPersonHovered(false)}>
         <img
           src={isPersonHovered ? menuItemImages.person3.dark : menuItemImages.person3.light}
           alt="Manage Surveys icon"
         />
         Manage Surveys
       </button>
-      <button onClick={() => { window.location.href = "/professor/manage-students"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/professor/manage-students") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="Manage Students icon"
         />
         Manage Students
       </button>
-      <button onClick={() => { window.location.href = "/professor/student-responses"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/professor/student-responses") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="Student Responses icon"
         />
         Student Responses
       </button>
-      <button onClick={() => { window.location.href = "/professor/email-notifications"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/professor/email-notifications") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="Email Notifications icon"
@@ -96,14 +99,14 @@ export default function MenuBar() {
 
   const studentMenu = (
     <div className='menu-bar-menu-item-container'>
-      <button onClick={() => { window.location.href = "/student/take-survey"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/student/take-survey") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="Take Survey icon"
         />
         Take Survey
       </button>
-      <button onClick={() => { window.location.href = "/student/view-feedback"; }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
+      <button onClick={() => { navigate( "/student/view-feedback") }} className="menu-bar-menu-item" onMouseEnter={() => setIsEditHovered(true)} onMouseLeave={() => setIsEditHovered(false)}>
         <img
           src={isEditHovered ? menuItemImages.edit.dark : menuItemImages.edit.light}
           alt="View Feedback icon"
