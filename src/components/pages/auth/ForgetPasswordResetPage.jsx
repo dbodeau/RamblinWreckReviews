@@ -7,14 +7,9 @@ code which calls the same handle submit function
 
 import minesbkgd from '../../../assets/images/mines-bkgd.jpg';
 import '../../../css/Portal.css';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../../../aws-exports';
 import { useState, useEffect } from 'react';
 import { resetPassword, confirmResetPassword } from '@aws-amplify/auth';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
-
-
-Amplify.configure(awsconfig)
 
 export default function ForgetPasswordResetPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +59,7 @@ export default function ForgetPasswordResetPage() {
 
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -127,7 +122,7 @@ export default function ForgetPasswordResetPage() {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

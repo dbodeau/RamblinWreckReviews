@@ -40,7 +40,7 @@ export default function SignUp() {
   
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className="portal-bkgd-image" src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -76,7 +76,7 @@ export default function SignUp() {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 }

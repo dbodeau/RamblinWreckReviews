@@ -1,18 +1,16 @@
 import MenuBar from '../../MenuBar';
 import '../../../css/Admin_Home.css';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 import NavCard from '../../NavCard';
 import person3 from '../../../assets/images/person-3-black.png';
 import edit from '../../../assets/images/edit-black.png';
 import scale from '../../../assets/images/scale-black.png'; 
 import plus from '../../../assets/images/plus-black.png'; 
 
-function Admin_Home() {
+export default function Admin_Home() {
   return (
     <div>
       <link rel="stylesheet" href="style.css" />
-      <body>
+      <div>
         <div className='admin-home-content-container'>
           {<MenuBar />}
           {/*How do we feel about this formatting?*/}
@@ -42,9 +40,7 @@ function Admin_Home() {
             logo={plus}
           />
         </div>
-      </body>
+      </div>
     </div>
   );
 }
-
-export default AWS_Authenticator(Admin_Home, AuthStatusEnum.ADMIN);

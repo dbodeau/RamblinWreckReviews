@@ -1,32 +1,30 @@
-/*This where all paths go. When you add a page add the path and element below. This is also called index.jsx sometimes*/
+/*This where all paths go. When you add a page add the path and element below.*/
 // admin page imports
-import AdminCreateSurveyQuestions from './components/pages/admin/Admin_CreateSurveyQuestions';
-import AdminEditQuestionWeights from './components/pages/admin/Admin_EditQuestionWeights';
-import AdminHome from './components/pages/admin/Admin_Home';
-import AdminManageFaculty from './components/pages/admin/Admin_ManageFaculty';
+import AdminCreateSurveyQuestions from './pages/admin/Admin_CreateSurveyQuestions';
+import AdminEditQuestionWeights from './pages/admin/Admin_EditQuestionWeights';
+import AdminHome from './pages/admin/Admin_Home';
+import AdminManageFaculty from './pages/admin/Admin_ManageFaculty';
 // professor page imports
-import ProfessorCreateCourse from './components/pages/professor/Professor_CreateCourse';
-import ProfessorEmailNotifications from './components/pages/professor/Professor_EmailNotifications';
-import ProfessorHome from './components/pages/professor/Professor_Home';
-import ProfessorManageStudents from './components/pages/professor/Professor_ManageStudents';
-import ProfessorManageSurvey from './components/pages/professor/Professor_ManageSurvey';
-import ProfessorStudentResponses from './components/pages/professor/Professor_StudentResponses';
+import ProfessorCreateCourse from './pages/professor/Professor_CreateCourse';
+import ProfessorEmailNotifications from './pages/professor/Professor_EmailNotifications';
+import ProfessorHome from './pages/professor/Professor_Home';
+import ProfessorManageStudents from './pages/professor/Professor_ManageStudents';
+import ProfessorManageSurvey from './pages/professor/Professor_ManageSurvey';
+import ProfessorStudentResponses from './pages/professor/Professor_StudentResponses';
 // student page imports
-import StudentHome from './components/pages/student/Student_Home';
-import StudentTakeSurvey from './components/pages/student/Student_TakeSurvey';
-import StudentViewFeedback from './components/pages/student/Student_ViewFeedback';
+import StudentHome from './pages/student/Student_Home';
+import StudentTakeSurvey from './pages/student/Student_TakeSurvey';
+import StudentViewFeedback from './pages/student/Student_ViewFeedback';
 // login and signup page imports
-import Login from './components/pages/auth/Login';
-import SignUpPage from './components/pages/auth/SignUpPage';
-import ForgetPasswordResetPage from './components/pages/auth/ForgetPasswordResetPage';
+import Login from './pages/auth/Login';
+import SignUpPage from './pages/auth/SignUpPage';
+import ForgetPasswordResetPage from './pages/auth/ForgetPasswordResetPage';
 // generic imports
-// import App from './App';
 import React from 'react';
-import ReactDOM from 'react-dom';
 // import '../../../css/index.css';
-import Wrapper from './components/Wrapper';
-import NotFound from './components/pages/error/Error404';
-import NotAuthorized from './components/pages/error/Error401'
+import Wrapper from './Wrapper';
+import NotFound from './pages/error/Error404';
+import NotAuthorized from './pages/error/Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //for any web page to be visible in the application, it needs to be linked to this router object
@@ -47,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/forgot-password",
-        element:<ForgetPasswordResetPage/>,
+        element: <ForgetPasswordResetPage />,
       },
       // for admin pages
       {
@@ -116,14 +114,14 @@ const router = createBrowserRouter([
         path: "/student/view-feedback",
         element: <StudentViewFeedback />,
       }
-     ],
+    ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-//code that renders the application
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
-  </React.StrictMode>
-)
+export default function App(){
+  return (
+    <React.StrictMode>
+      <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
+    </React.StrictMode>
+  )
+}
