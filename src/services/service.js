@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios({
-  baseURL: 'https://0wr74dgf99.execute-api.us-east-2.amazonaws.com',
+  baseURL: 'https://3l2g4sxaue.execute-api.us-east-2.amazonaws.com/prod',
   headers: {
     'Content-Type': 'application/json',
   },
