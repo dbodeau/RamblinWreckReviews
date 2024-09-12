@@ -1,4 +1,4 @@
-import { Autocomplete, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, ThemeProvider, View, Text } from "@aws-amplify/ui-react";
+import { Autocomplete, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, ThemeProvider, View, Text, Grid } from "@aws-amplify/ui-react";
 import { MdArrowDropDown, MdArrowDropUp, MdCancel, MdDelete, MdEdit, MdSave } from "react-icons/md";
 import { isEqual } from "lodash";
 import '@aws-amplify/ui-react/styles.css';
@@ -30,15 +30,11 @@ const theme = {
 };
 
 // all members of data must have a unique id prop.
+// if a status prop exists, the enable/disable button will show
+//  status prop options: enabled || disabled
 export default function ListManager({ config, addComponent, editItem, deleteItem, data }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
-
-  const cancelEdit = (element) => {
-    if(isEqual(element, expandedElement)) {
-      setEditMode(false);
-    }
-  }
 
   return (
     <ThemeProvider theme={theme} colorMode="light">
@@ -68,51 +64,113 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
                             // style={{height: '300px'}}
                           >
                             <View>
-                              {
-                                config.map((item => (
-                                  <View 
-                                    key={item.key}
-                                    style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
-                                  >
-                                    <Text style={{width: '20%', paddingLeft: '3%'}}>{item.displayName}: </Text>
-                                    {
-                                      item.readOnly || !editMode
-                                        ? <Text>{expandedElement[item.key]}</Text>
-                                        : item.type == 'string'
-                                          ? <TextField
-                                              label={item.displayName}
-                                              value={expandedElement[item.key]} 
-                                              onChange={(e) => setExpandedElement(elem => ({...elem, [item.key]: e.target.value}))} 
-                                              size='small'
-                                              labelHidden
-                                            />
-                                          : <Autocomplete                                              label={item.displayName}
-                                              value={expandedElement[item.key]} 
-                                              options={
-                                                item.type == 'enum'
-                                                  ? [...item.enumOptions?.map(opt => ({id: opt, label: opt}))]
-                                                  : [{id: 'true', label: 'true'}, {id: 'false', label: 'false'}]
+                              <Grid
+                                templateColumns={{ base: '1fr', large: '1fr 1fr' }}
+                                templateRows={{ base: `repeat(${config.length}, auto)`, large: `repeat(${Math.ceil( config.length/2)}, auto)` }}
+                                autoFlow='column'
+                              >
+                                {
+                                  config.map((item => (
+                                    <View 
+                                      key={item.key}
+                                      style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
+                                    >
+                                      <Text style={{width: '20%', paddingLeft: '3%'}}>{item.displayName}: </Text>
+                                      {
+                                        item.readOnly || !editMode
+                                          ? <Text>{expandedElement[item.key]}</Text>
+                                          : <View style={{width: '77%'}}>
+                                              {
+                                                item.type == 'string'
+                                                  ? <TextField
+                                                      label={item.displayName}
+                                                      value={expandedElement[item.key]} 
+                                                      onChange={(e) => setExpandedElement(elem => ({...elem, [item.key]: e.target.value}))} 
+                                                      size='small'
+                                                      labelHidden
+                                                    />
+                                                  : <Autocomplete
+                                                      label={item.displayName}
+                                                      value={expandedElement[item.key]} 
+                                                      options={
+                                                        item.type == 'enum'
+                                                          ? [...item.enumOptions?.map(opt => ({id: opt, label: opt}))]
+                                                          : [{id: 'true', label: 'true'}, {id: 'false', label: 'false'}]
+                                                      }
+                                                      onChange={null}
+                                                      onClear={() =>  setExpandedElement(elem => ({...elem, [item.key]: ''}))}
+                                                      onSelect={(opt) =>  setExpandedElement(elem => ({...elem, [item.key]: opt.label}))}
+                                                      optionFilter={() => true}
+                                                      hasSearchButton={false}
+                                                      hasSearchIcon={false}
+                                                      size='small'
+                                                    />
                                               }
-                                              onChange={null}
-                                              onClear={() =>  setExpandedElement(elem => ({...elem, [item.key]: ''}))}
-                                              onSelect={(opt) =>  setExpandedElement(elem => ({...elem, [item.key]: opt.label}))}
-                                              optionFilter={() => true}
-                                              hasSearchButton={false}
-                                              hasSearchIcon={false}
-                                              size='small'
-                                            />
+                                            </View> 
+                                          
+                                      }
+                                    </View>
+                                  )))
+                                }
+                              </Grid>
+                              
+                              <View style={{display: 'flex', flexDirection: 'row-reverse'}}>
+                                <Button 
+                                  onClick={() => {
+                                    if (!element.status || element.status == 'enabled') {
+                                      deleteItem(element)
                                     }
-                                  </View>
-                                )))
-                              }
+                                    else {
+                                      editItem({...element, status: 'enabled'})
+                                    }
+                                  }}
+                                  marginLeft='1em'
+                                >
+                                  <MdDelete />
+                                  <Text paddingLeft='1em'>{!element.status ? 'Delete' : element.status == 'enabled' ? 'Disable' : 'Enable'}</Text>
+                                </Button>
+                                {
+                                  !editMode && 
+                                    <Button 
+                                      onClick={() => setEditMode(true)}
+                                      marginLeft='1em'
+                                    >
+                                      <MdEdit />
+                                      <Text paddingLeft='1em'>Edit</Text>
+                                    </Button>
+                                }
+                                {
+                                  editMode && 
+                                    <Button 
+                                      marginLeft='1em'
+                                      onClick={() => {
+                                        editItem(expandedElement); 
+                                        setEditMode(false);
+                                      }}
+                                    >
+                                      <MdSave />
+                                      <Text paddingLeft='1em'>Save Changes</Text>
+                                    </Button>
+                                }
+                                {
+                                  editMode && 
+                                    <Button
+                                      marginLeft='1em'
+                                      onClick={() => {
+                                        setEditMode(false);
+                                        setExpandedElement(element);
+                                      }}
+                                    >
+                                      <MdCancel/>
+                                      <Text paddingLeft='1em'>Discard Changes</Text>
+                                    </Button>
+                                }
+                              </View>
                             </View>
                           </TableCell>
-                          <TableCell style={{ width: "50px" }}>
+                          <TableCell style={{ display: 'flex', borderWidth: '0px' }}>
                               <Button onClick={() => {setExpandedElement(null); setEditMode(false)}}><MdArrowDropUp /></Button>
-                              {!editMode && <Button title='minimise' onClick={() => setEditMode(true)}>{<MdEdit />}</Button>}
-                              {editMode && <Button onClick={() => cancelEdit(element)}>{<MdCancel />}</Button>}
-                              {editMode && <Button onClick={() => {editItem(expandedElement); setEditMode(false)}}>{<MdSave />}</Button>}
-                              <Button onClick={() => {deleteItem(element)}}><MdDelete /></Button>
+
                           </TableCell>
                         </>
                       : (<>
