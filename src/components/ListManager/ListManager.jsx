@@ -1,8 +1,11 @@
-import { Autocomplete, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, ThemeProvider, View, Text, Grid } from "@aws-amplify/ui-react";
+import { Button, Table, TableBody, TableCell, TableHead, TableRow, ThemeProvider, View, Text, Grid } from "@aws-amplify/ui-react";
 import { MdAdd, MdArrowDropDown, MdArrowDropUp, MdCancel, MdDelete, MdEdit, MdFilterList, MdFilterListOff, MdOutlineRemove, MdSave } from "react-icons/md";
-import { isEqual, isPlainObject } from "lodash";
+import { isEqual } from "lodash";
 import '@aws-amplify/ui-react/styles.css';
 import { useEffect, useState } from "react";
+import FilterBar from "./FilterBar";
+import EditField from "./EditField";
+
 /*
 config 
 Array of {
@@ -21,117 +24,13 @@ const theme = {
       table: {
         row: {
           hover: {
-            backgroundColor: { value: '{colors.shadow.primary}' },
+            backgroundColor: { value: '{colors.shadow.secondary}' },
           },
         }
       },
     },
   },
 };
-
-const EditField = ({configItem, value, setValue}) => {
-  if (configItem.type == 'string') {
-    return (
-      <TextField
-        label={configItem.displayName}
-        value={value} 
-        onChange={e => setValue(e.target.value)} 
-        size='small'
-        labelHidden
-      />
-    )
-  }
-  else {
-    return (
-      <Autocomplete
-        label={configItem.displayName}
-        value={value} 
-        options={
-          configItem.type == 'enum'
-            ? configItem.enumOptions?.map(opt => (isPlainObject(opt)? opt: {id: opt, label: opt}))
-            : [{id: 'true', label: 'true'}, {id: 'false', label: 'false'}]
-        }
-        onChange={null}
-        onClear={() =>  setValue('')}
-        onSelect={(opt) =>  setValue(opt.id)}
-        optionFilter={() => true}
-        hasSearchButton={false}
-        hasSearchIcon={false}
-        size='small'
-      />
-    )
-  }
-}
-
-const FilterBar = ({config, activeFilters, setActiveFilters}) => {
-  const [newFilter, setNewFilter] = useState(null);
-
-  return (
-    <>
-      <View
-        style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
-      >
-        <Text>{activeFilters.length == 0 ? 'No':''} Active Filters:</Text>
-        {
-          newFilter == null && 
-          <Button marginLeft='1em' onClick={() => setNewFilter({key: '', value: ''})}>
-            <MdAdd/>
-          </Button>
-        }
-      </View>
-      {
-        activeFilters.map(filter => (
-          <View
-            key={filter.key}
-            style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
-          >
-            <Text>{config.find(item => item.key == filter.key).displayName}: </Text>
-            <EditField
-              configItem={config.find(item => item.key == filter.key)}
-              value={filter.value}
-              setValue={newValue => setActiveFilters(filters => filters.map(f => f.key == filter.key?{...filter, value: newValue}:f))}
-            />
-            <Button marginLeft='1em' onClick={() => setActiveFilters(filters => filters.filter(f => f.key != filter.key))}>
-              <MdOutlineRemove/>
-            </Button>
-
-          </View>
-        ))
-      }
-      {
-        newFilter != null && (
-          <View
-            style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
-          > 
-            <EditField
-              configItem={{displayName: 'Field Selection', type: 'enum', enumOptions: config.filter(c => !activeFilters.find(f => c.key == f.key)).map(c => ({id: c.key, label: c.displayName}))}}
-              value={config.find(item => item.key == newFilter.key)?.displayName ?? ''}
-              setValue={newValue => setNewFilter(nf => ({...nf, key: newValue}))}
-            />
-            <Text marginRight='1em'>:</Text>
-            {
-              newFilter.key != '' && (
-                <>
-                  <EditField
-                    configItem={config.find(item => item.key == newFilter.key)}
-                    value={newFilter.value}
-                    setValue={newValue => setNewFilter(nf => ({...nf, value: newValue}))}
-                  />
-                  <Button marginLeft='1em' onClick={() => {
-                    setActiveFilters(filters => [...filters, newFilter]);
-                    setNewFilter(null);
-                    }}>
-                    <MdSave/>
-                  </Button>
-                </>
-              )
-            }
-          </View>
-        )
-      }
-    </>
-  )
-}
 
 // all members of data must have a unique id prop.
 // if a status prop exists, the enable/disable button will show
@@ -146,7 +45,6 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
   const applyFilters = () => {
     let filteredData = data;
     activeFilters.forEach((filter) => {
-      //get assoc config
       if(!filter.value==''){
         //get assoc config
         const filterConfig = config.find(c => c.key == filter.key);
@@ -174,6 +72,10 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
     }
   }
 
+  const toggleBarSelected = (bar) => {
+    setBarSelected(bs => bs==bar? null : bar);
+  }
+
   useEffect(() => {
     applyFilters();
   }, [activeFilters])
@@ -181,8 +83,8 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
   return (
     <ThemeProvider theme={theme} colorMode="light">
       <Table
-        // highlightOnHover={!!!expandedElement}
-        // variation="striped"
+        highlightOnHover={!!!expandedElement && barSelected == null}
+        variation="striped"
       >
         <TableHead>
           <TableRow>
@@ -195,7 +97,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
               <View
                 style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}
               >
-                <Button onClick={() => setBarSelected(state => state == 'filter' ? null : 'filter')}>
+                <Button onClick={() => toggleBarSelected('filter')}>
                   {
                     barSelected == 'filter'
                       ? <MdFilterListOff/>
@@ -204,7 +106,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
                 </Button>
                 {
                   !!addComponent && (
-                    <Button marginLeft='1em' onClick={() => setBarSelected(state => state == 'add' ? null : 'add')}>
+                    <Button marginLeft='1em' onClick={() => toggleBarSelected('add')}>
                       {
                         barSelected == 'add'
                           ? <MdOutlineRemove/>
@@ -220,7 +122,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
         <TableBody>
           {
             barSelected == 'filter' && (
-              <TableRow >
+              <TableRow backgroundColor= 'shadow.secondary' >
                 <TableCell 
                   colSpan={config.filter(item => item.showInShortList).length + 1}
                 >
@@ -262,9 +164,8 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
                   </TableCell>
                 </TableRow>
                 {
-                  expandedElement !== null && expandedElement?.id == element.id && 
-                  (
-                    <TableRow style={{backgroundColor: '#dde3ed'}}>
+                  expandedElement !== null && expandedElement?.id == element.id && (
+                    <TableRow backgroundColor= 'shadow.secondary'>
                       <TableCell 
                         colSpan={config.filter(item => item.showInShortList).length + 1}
                       >
@@ -275,7 +176,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
                             autoFlow='column'
                           >
                             {
-                              config.map((item => (
+                              config.map(item => (
                                 <View 
                                   key={item.key}
                                   style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
@@ -294,10 +195,9 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
                                       
                                   }
                                 </View>
-                              )))
+                              ))
                             }
                           </Grid>
-                          
                           <View style={{display: 'flex', flexDirection: 'row-reverse'}}>
                             <Button 
                               onClick={() => {
