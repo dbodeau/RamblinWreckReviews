@@ -1,5 +1,5 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableRow, ThemeProvider, View, Text, Grid } from "@aws-amplify/ui-react";
-import { MdAdd, MdArrowDropDown, MdArrowDropUp, MdCancel, MdDelete, MdEdit, MdFilterList, MdFilterListOff, MdOutlineRemove, MdSave } from "react-icons/md";
+import { MdAdd, MdArrowDropDown, MdArrowDropUp, MdCancel, MdDelete, MdEdit, MdFilterList, MdFilterListOff, MdSave } from "react-icons/md";
 import { isEqual } from "lodash";
 import '@aws-amplify/ui-react/styles.css';
 import { useEffect, useState } from "react";
@@ -35,12 +35,12 @@ const theme = {
 // all members of data must have a unique id prop.
 // if a status prop exists, the enable/disable button will show
 //  status prop options: enabled || disabled
-export default function ListManager({ config, addComponent, editItem, deleteItem, data }) {
+export default function ListManager({ config, showAddComponent, editItem, deleteItem, data }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [activeFilters, setActiveFilters] = useState([{key: 'status', value: 'enabled'}]);
   const [dataShown, setDataShown] = useState(data.filter(elem => !elem.status || elem.status == 'enabled'));
-  const [barSelected, setBarSelected] = useState(null);
+  const [showFilterBar, setShowFilterBar] = useState(null);
 
   const applyFilters = () => {
     let filteredData = data;
@@ -72,8 +72,8 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
     }
   }
 
-  const toggleBarSelected = (bar) => {
-    setBarSelected(bs => bs==bar? null : bar);
+  const toggleFilterBar = () => {
+    setShowFilterBar(state => !state);
   }
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
   return (
     <ThemeProvider theme={theme} colorMode="light">
       <Table
-        highlightOnHover={!!!expandedElement && barSelected == null}
+        highlightOnHover={!!!expandedElement && showFilterBar == false}
         variation="striped"
       >
         <TableHead>
@@ -97,20 +97,18 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
               <View
                 style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}
               >
-                <Button onClick={() => toggleBarSelected('filter')}>
+                <Button onClick={toggleFilterBar}>
                   {
-                    barSelected == 'filter'
+                    showFilterBar
                       ? <MdFilterListOff/>
                       : <MdFilterList/>
                   }
                 </Button>
                 {
-                  !!addComponent && (
-                    <Button marginLeft='1em' onClick={() => toggleBarSelected('add')}>
+                  !!showAddComponent && (
+                    <Button marginLeft='1em' onClick={showAddComponentß}>
                       {
-                        barSelected == 'add'
-                          ? <MdOutlineRemove/>
-                          : <MdAdd/>
+                        <MdAdd/>
                       }
                     </Button>
                   )
@@ -121,7 +119,7 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
         </TableHead>
         <TableBody>
           {
-            barSelected == 'filter' && (
+            showFilterBar && (
               <TableRow backgroundColor= 'shadow.secondary' >
                 <TableCell 
                   colSpan={config.filter(item => item.showInShortList).length + 1}
@@ -136,20 +134,9 @@ export default function ListManager({ config, addComponent, editItem, deleteItem
             )
           }
           {
-            barSelected == 'add' && (
-              <TableRow >
-                <TableCell 
-                  colSpan={config.filter(item => item.showInShortList).length + 1}
-                >
-                  {addComponent}
-                </TableCell>
-              </TableRow>
-            )
-          }
-          {
             dataShown.map((element) => (
               <>
-                <TableRow>
+                <TableRow key={element.id}>
                   {config.filter((item) => item.showInShortList).map((item) => 
                     <TableCell key={item.key}>{element[item.key]}</TableCell>
                   )}

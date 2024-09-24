@@ -7,7 +7,7 @@ export default function FilterBar ({config, activeFilters, setActiveFilters}) {
   const [newFilter, setNewFilter] = useState(null);
 
   const addFilter = () => {
-
+    setActiveFilters(filters => [...filters, newFilter]);
   };
 
   const updateFilter = (filter) => {
