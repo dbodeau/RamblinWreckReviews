@@ -26,6 +26,7 @@ import Wrapper from './Wrapper';
 import NotFound from './pages/error/Error404';
 import NotAuthorized from './pages/error/Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import TestPage from './add_list/TestPage';
 
 //for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Wrapper />,
     children: [
+      {
+        path: "/test",
+        element: <TestPage />
+      },
       // for login and signup pages
       {
         path: "/login",
