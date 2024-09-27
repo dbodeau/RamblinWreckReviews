@@ -5,18 +5,8 @@ import person3 from '../../../assets/images/person-3-black.png';
 import edit from '../../../assets/images/edit-black.png';
 import scale from '../../../assets/images/scale-black.png'; 
 import plus from '../../../assets/images/plus-black.png'; 
-import { Button } from '@aws-amplify/ui-react';
-import AddFaculty from '../../add_list/AddFacultyForm';
-import AddQuestion from '../../add_list/AddQuestionForm';
-import { MdAdd } from 'react-icons/md';
-import { useRef } from 'react';
 
 export default function Admin_Home() {
-  const AddRef = useRef();
-
-  const onAdd = () => {
-    return AddRef.current?.showModal();
-  };
 
   return (
     <div>
@@ -51,10 +41,6 @@ export default function Admin_Home() {
             logo={plus}
           />
         </div>
-        <hr/>
-        <Button onClick={onAdd}><MdAdd/></Button>
-        <AddFaculty />
-        <AddQuestion />
       </div>
     </div>
   );

@@ -14,12 +14,18 @@ export default function AddQuestion({formData, onChange}) {
         <React.Fragment>
             <TextField
                 label="Question Title"
+                // this ?? syntax ensures the data type of these fields, as the state isn't necessarily created by the time it's passed through here
                 value={formData["title"] ?? ''}
                 onChange={(e) => {onChange(e, "title")}}
             />
             <CheckboxField
                 margin="10px"
-                label={<div style={{display: "flex", flexDirection: "row"}}>Mandatory<Tooltip tooltip="Mandatory questions are required to be on ALL department surveys"/></div>}
+                label={
+                    // this is just so we can have a little info box on the form
+                    <div style={{display: "flex", flexDirection: "row"}}>
+                        Mandatory<Tooltip tooltip="Mandatory questions are required to be on ALL department surveys"/>
+                    </div>
+                    }
                 name="isMandatory"
                 value={formData["isMandatory"] ?? false}
                 onChange={(e) => {onChange(e, "isMandatory")}}
