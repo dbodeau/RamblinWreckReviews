@@ -1,53 +1,33 @@
-import AddQuestion from "./AddQuestionForm";
-import AddFaculty from "./AddFacultyForm";
 import { Button } from "@aws-amplify/ui-react";
-import React from "react";
+import React, { useEffect } from "react";
+import '@aws-amplify/ui-react/styles.css';
+import PopupForm from "../add_list/PopupForm";
 
 export default function TestPage() {
-    const qRef = React.useRef();
     
-    const [questionFormData, setQuestionFormData] = React.useState({
-        title: "",
-        type: "",
-        content: "",
-        isMandatory: false
-    });
+    const [questionFormData, setQuestionFormData] = React.useState({});
 
     const [list, setList] = React.useState([]);
 
-    const onButtonClick = () => {
-        qRef.current?.showModal();
-    };
-
-    const onClose = () => {
-        qRef.current?.close();
-    };
-
     const onQuestionSubmit = () => {
-        qRef.current?.close();
+        // here is where we would add API calls to save questions/faculty
+        // and update any states
         setList((pl) => [...pl, questionFormData]);
+        setQuestionFormData({});
     };
+
+    useEffect(() => {
+        console.log("list", list);
+    }, [list]);
 
     return (
         <React.Fragment>
-            <Button onClick={onButtonClick}>
-                Open
-            </Button>
-            <hr />
-            <dialog ref={qRef}>
-                <AddQuestion 
-                    onClose={onClose}
-                    onSuccess={onQuestionSubmit}
-                    onChange={setQuestionFormData}
-                    formData={questionFormData}
-                />
-            </dialog>
-            
-            <AddFaculty />
-            <hr />
-            <Button onClick={() => console.log(list)}>
-                Print
-            </Button>
+            <PopupForm 
+                onSubmit={onQuestionSubmit} 
+                formType={"question"} 
+                formData={questionFormData}
+                onChange={setQuestionFormData}
+            />
         </React.Fragment>
     );
 };

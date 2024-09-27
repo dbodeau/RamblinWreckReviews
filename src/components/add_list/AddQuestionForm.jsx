@@ -1,57 +1,64 @@
 import * as React from 'react';
-import { Button, CheckboxField, TextField, TextAreaField, Radio, RadioGroupField } from '@aws-amplify/ui-react';
-import { IoMdClose } from "react-icons/io";
+import { CheckboxField, TextField, TextAreaField, Radio, RadioGroupField } from '@aws-amplify/ui-react';
 
-export default function AddQuestion({formData, onSuccess, onClose, onChange}) {
+export default function AddQuestion({formData, onChange}) {
     /*  formData format:
         title: string
         type: bool/string ("mcq", "frq")
         content: string
         isMandatory: bool
     */
-//    const onMount = React.useEffect(() => {
-//     onChange({
-//         title: "",
-//         type: "",
-//         content: "",
-//         isMandatory: false
-//     });
-//    }, []);
 
-    const onSubmit = (event) => {
-        event.preventDefault();
-        // do other validation
+    React.useEffect(() => {
+        // use this to initialize formData to our type, prevents default values
+        // so we don't have to worry about formData being set in parent
+        onChange({
+            title: "",
+            type: "",
+            content: "",
+            isMandatory: false
+        });
+    }, [onChange]);
 
-        onSuccess();
+    const changeHandler = (e, field) => {
+        let value = e.currentTarget.value; // pull the value here cuz race conditions!!
+        // love amplify making events different
+        if (typeof(formData[field]) === "boolean") {
+            // breaks...
+            value = e.target.checked;
+        }
+
+        onChange((pfd) => {
+            const newPfd = {...pfd};
+            newPfd[field] = value;
+            return newPfd;
+        })
     };
-    
+
     return (
         <React.Fragment>
-            <Button onClick={onClose}><IoMdClose /></Button>
-            <form onSubmit={onSubmit}>
-                <TextField
-                    label="Question Title"
-                    value={formData}
-                    onChange={(e) => {onChange((pfd) => {
-                        const newPfd = {...pfd};
-                        newPfd["title"] = e.currentTarget.value;
-                        return newPfd;
-                    })}}
-                />
-                <CheckboxField
-                    label="Mandatory"
-                    descriptivetext="Mandatory to include in all department surveys"
-                />
-                <TextAreaField
-                    label="Question"
-                />
-                <RadioGroupField legend="Question Type">
-                    <Radio value="mcq">Multiple Choice</Radio>
-                    <Radio value="frq">Short Answer</Radio>
-                </RadioGroupField>
-                
-                <Button type="submit">Submit</Button>
-            </form>
+            <TextField
+                label="Question Title"
+                onChange={(e) => {changeHandler(e, "title")}}
+            />
+            <TextAreaField
+                label="Question"
+                onChange={(e) => {changeHandler(e, "content")}}
+            />
+            <CheckboxField
+                label="Mandatory"
+                name="isMandatory"
+                value={true}
+                onChange={(e) => {changeHandler(e, "isMandatory")}}
+            />
+            <RadioGroupField 
+                legend="Question Type" 
+                name="Question Type"
+                onChange={(e) => {changeHandler(e, "type")}}
+            >
+                <Radio value="mcq">Multiple Choice</Radio>
+                <Radio value="frq">Short Answer</Radio>
+            </RadioGroupField>
         </React.Fragment>
     )
 }
