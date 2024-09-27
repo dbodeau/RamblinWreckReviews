@@ -4,7 +4,7 @@ import { Button } from '@aws-amplify/ui-react';
 import { IoMdAdd } from "react-icons/io";
 import AddFaculty from './AddFacultyForm';
 import AddQuestion from './AddQuestionForm';
-import './PopupForm.css';
+import '../../css/PopupForm.css';
 
 export default function PopupForm({formType, onSubmit, formData, onChange, validate}) {
     // for displaying dialog
