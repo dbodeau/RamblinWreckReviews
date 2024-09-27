@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import '@aws-amplify/ui-react/styles.css';
 import PopupForm from "../add_list/PopupForm";
-import Tooltip from "./Tooltip.jsx";
 
 export default function TestPage() {
     
@@ -10,7 +9,7 @@ export default function TestPage() {
     const [qList, setqList] = React.useState([]);
 
     const onQuestionSubmit = () => {
-        // here is where we would add API calls to save questions/faculty
+        // here is where we would add API calls to save questions
         // and update any states
         setqList((pl) => [...pl, questionFormData]);
         setQuestionFormData({});
@@ -20,12 +19,11 @@ export default function TestPage() {
         console.log("qList", qList);
     }, [qList]);
 
+    // state needed: formData, some list to view (just for this test page)
     const [facultyFormData, setFacultyFormData] = React.useState({});
-
     const [fList, setFList] = React.useState([]);
-
     const onFacultySubmit = () => {
-        // here is where we would add API calls to save facultys/faculty
+        // here is where we would add API calls to save facultys
         // and update any states
         setFList((pl) => [...pl, facultyFormData]);
         setFacultyFormData({});
@@ -50,7 +48,6 @@ export default function TestPage() {
                 formData={facultyFormData}
                 onChange={setFacultyFormData}
             />
-            <Tooltip tooltip="M"/>
         </React.Fragment>
     );
 };

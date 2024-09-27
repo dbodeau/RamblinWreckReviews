@@ -7,6 +7,8 @@ import AddQuestion from './AddQuestionForm';
 import '../../css/PopupForm.css';
 
 export default function PopupForm({formType, onSubmit, formData, onChange, validate}) {
+    // validate is an optional prop, for if we want to add custom validation rules before submitting
+
     // for displaying dialog
     const ref = React.useRef();
 
@@ -44,6 +46,20 @@ export default function PopupForm({formType, onSubmit, formData, onChange, valid
         onSubmit();
     };
 
+    const changeHandler = (e, field) => {
+        let value = e.currentTarget.value; // pull the value here cuz race conditions!!
+        // amplify doesn't always use the same interface for all data types
+        if (e.target.type === "checkbox") {
+            value = e.target.checked;
+        }
+
+        onChange((pfd) => {
+            const newPfd = {...pfd};
+            newPfd[field] = value;
+            return newPfd;
+        })
+    };
+
     return (
         <React.Fragment>
             <Button onClick={onOpen}><IoMdAdd /></Button>
@@ -53,12 +69,12 @@ export default function PopupForm({formType, onSubmit, formData, onChange, valid
                         {formType === "question" && 
                             <AddQuestion
                                 formData={formData}
-                                onChange={onChange}
+                                onChange={changeHandler}
                             />
                         || formType === "faculty" &&
                             <AddFaculty
                                 formData={formData}
-                                onChange={onChange}
+                                onChange={changeHandler}
                             />
                         }
                     </div>

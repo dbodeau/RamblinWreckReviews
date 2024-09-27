@@ -9,55 +9,35 @@ export default function AddFaculty({formData, onChange}) {
         admin: bool
         professor: bool
     */
-
-    React.useEffect(() => {
-        // setup initial fields
-        onChange({
-            first_name: "",
-            last_name: "",
-            email: "",
-            admin: false,
-            professor: false
-        });
-    }, [onChange]);
-
-    const changeHandler = (e, field) => {
-        let value = e.currentTarget.value; // pull the value here cuz race conditions!!
-        // amplify doesn't always use the same interface for all data types
-        if (e.target.type === "checkbox") {
-            value = e.target.checked;
-        }
-
-        onChange((pfd) => {
-            const newPfd = {...pfd};
-            newPfd[field] = value;
-            return newPfd;
-        })
-    };
     
     return (
         <React.Fragment>
             <TextField
                 label="First Name"
-                onChange={(e) => changeHandler(e, 'first_name')}
+                value={formData["first_name"] ?? ''}
+                onChange={(e) => onChange(e, 'first_name')}
             />
             <TextField
                 label="Last Name"
-                onChange={(e) => changeHandler(e, 'last_name')}
+                value={formData["last_name"] ?? ''}
+                onChange={(e) => onChange(e, 'last_name')}
             />
             <TextField
                 label="Email"
-                onChange={(e) => changeHandler(e, 'email')}
+                value={formData["email"] ?? ''}
+                onChange={(e) => onChange(e, 'email')}
             />
             <CheckboxField
                 label="Admin"
                 name="admin"
-                onChange={(e) => changeHandler(e, 'admin')}
+                value={formData["admin"] ?? false}
+                onChange={(e) => onChange(e, 'admin')}
             />
             <CheckboxField
                 label="Professor"
                 name="professor"
-                onChange={(e) => changeHandler(e, 'professor')}
+                value={formData["professor"] ?? false}
+                onChange={(e) => onChange(e, 'professor')}
             />
         </React.Fragment>
     )
