@@ -21,3 +21,8 @@ dialog {
     color: #e2e2e2;
     margin: 0px 5px;
 }
+
+.contrast-button:hover {
+    border-color: #000000;
+    font-weight: bolder;
+}

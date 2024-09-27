@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CheckboxField, TextField, TextAreaField, Radio, RadioGroupField } from '@aws-amplify/ui-react';
+import Tooltip from "./Tooltip.jsx";
 
 export default function AddQuestion({formData, onChange}) {
     /*  formData format:
@@ -40,18 +41,19 @@ export default function AddQuestion({formData, onChange}) {
                 label="Question Title"
                 onChange={(e) => {changeHandler(e, "title")}}
             />
-            <TextAreaField
-                label="Question"
-                onChange={(e) => {changeHandler(e, "content")}}
-            />
             <CheckboxField
-                label="Mandatory"
+                margin="10px"
+                label={<div style={{display: "flex", flexDirection: "row"}}>Mandatory<Tooltip tooltip="Mandatory questions are required to be on ALL department surveys"/></div>}
                 name="isMandatory"
                 value={true}
                 onChange={(e) => {changeHandler(e, "isMandatory")}}
             />
+            <TextAreaField
+                label="Question"
+                onChange={(e) => {changeHandler(e, "content")}}
+            />
             <RadioGroupField 
-                legend="Question Type" 
+                legend="Question Type"
                 name="Question Type"
                 onChange={(e) => {changeHandler(e, "type")}}
             >

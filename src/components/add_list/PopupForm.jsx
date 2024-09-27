@@ -29,7 +29,7 @@ export default function PopupForm({formType, onSubmit, formData, onChange, valid
                 if (formData[field] === "" || 
                     formData[field] === undefined || 
                     formData[field] === null) {
-                    return;
+                    return; // exit, should display errors
                 }
             }
         }
