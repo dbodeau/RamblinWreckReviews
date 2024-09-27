@@ -22,9 +22,8 @@ export default function AddQuestion({formData, onChange}) {
 
     const changeHandler = (e, field) => {
         let value = e.currentTarget.value; // pull the value here cuz race conditions!!
-        // love amplify making events different
-        if (typeof(formData[field]) === "boolean") {
-            // breaks...
+        // amplify doesn't always use the same interface for all data types
+        if (e.target.type === "checkbox") {
             value = e.target.checked;
         }
 

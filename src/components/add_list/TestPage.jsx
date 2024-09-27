@@ -24,7 +24,7 @@ export default function TestPage() {
         <React.Fragment>
             <PopupForm 
                 onSubmit={onQuestionSubmit} 
-                formType={"question"} 
+                formType={"faculty"} 
                 formData={questionFormData}
                 onChange={setQuestionFormData}
             />

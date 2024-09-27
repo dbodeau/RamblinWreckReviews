@@ -9,6 +9,7 @@ export default function AddFaculty({formData, onChange}) {
         admin: bool
         professor: bool
     */
+
     React.useEffect(() => {
         // setup initial fields
         onChange({
@@ -16,15 +17,14 @@ export default function AddFaculty({formData, onChange}) {
             last_name: "",
             email: "",
             admin: false,
-            professor: true
+            professor: false
         });
     }, [onChange]);
 
     const changeHandler = (e, field) => {
         let value = e.currentTarget.value; // pull the value here cuz race conditions!!
-        // love amplify making events different
-        if (typeof(formData[field]) === "boolean") {
-            // breaks...
+        // amplify doesn't always use the same interface for all data types
+        if (e.target.type === "checkbox") {
             value = e.target.checked;
         }
 
@@ -51,10 +51,12 @@ export default function AddFaculty({formData, onChange}) {
             />
             <CheckboxField
                 label="Admin"
+                name="admin"
                 onChange={(e) => changeHandler(e, 'admin')}
             />
             <CheckboxField
                 label="Professor"
+                name="professor"
                 onChange={(e) => changeHandler(e, 'professor')}
             />
         </React.Fragment>
