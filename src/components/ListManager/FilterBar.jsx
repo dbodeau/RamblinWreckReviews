@@ -8,6 +8,7 @@ export default function FilterBar ({config, activeFilters, setActiveFilters}) {
 
   const addFilter = () => {
     setActiveFilters(filters => [...filters, newFilter]);
+    setNewFilter(null);
   };
 
   const updateFilter = (filter) => {
@@ -56,7 +57,7 @@ export default function FilterBar ({config, activeFilters, setActiveFilters}) {
       >
         <Text>{activeFilters.length == 0 ? 'No':''} Active Filters:</Text>
         {
-          newFilter == null && 
+          newFilter == null && keyEnumOptions.length > 0 &&
           <Button marginLeft='1em' onClick={enableNewFilter}>
             <MdAdd/>
           </Button>
@@ -88,7 +89,7 @@ export default function FilterBar ({config, activeFilters, setActiveFilters}) {
           > 
             <EditField
               configItem={{displayName: 'Field Selection', type: 'enum', enumOptions: keyEnumOptions}}
-              value={getConfigForKey(newFilter.key)?.displayName ?? ''}
+              value={newFilter.key}
               setValue={setNewFilterKey}
             />
             <Text marginRight='1em' marginLeft='1em'>:</Text>

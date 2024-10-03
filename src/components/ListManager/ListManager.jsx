@@ -1,8 +1,8 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableRow, ThemeProvider, View, Text, Grid } from "@aws-amplify/ui-react";
 import { MdAdd, MdArrowDropDown, MdArrowDropUp, MdCancel, MdDelete, MdEdit, MdFilterList, MdFilterListOff, MdSave } from "react-icons/md";
-import { isEqual } from "lodash";
+import { findIndex, isBoolean, isEqual, isPlainObject } from "lodash";
 import '@aws-amplify/ui-react/styles.css';
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import FilterBar from "./FilterBar";
 import EditField from "./EditField";
 
@@ -38,8 +38,8 @@ const theme = {
 export default function ListManager({ config, showAddComponent, editItem, deleteItem, data }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [activeFilters, setActiveFilters] = useState([{key: 'status', value: 'enabled'}]);
-  const [dataShown, setDataShown] = useState(data.filter(elem => !elem.status || elem.status == 'enabled'));
+  const [activeFilters, setActiveFilters] = useState([]);
+  const [dataShown, setDataShown] = useState(data);
   const [showFilterBar, setShowFilterBar] = useState(null);
 
   const applyFilters = () => {
@@ -76,9 +76,13 @@ export default function ListManager({ config, showAddComponent, editItem, delete
     setShowFilterBar(state => !state);
   }
 
+  const getDisplayValue = (value, configItem) => {
+    return (configItem.enumOptions?.find(i => i.id == value)?.label ?? value).toString();
+  }
+
   useEffect(() => {
     applyFilters();
-  }, [activeFilters])
+  }, [activeFilters, data])
 
   return (
     <ThemeProvider theme={theme} colorMode="light">
@@ -135,10 +139,10 @@ export default function ListManager({ config, showAddComponent, editItem, delete
           }
           {
             dataShown.map((element) => (
-              <>
+              <Fragment key={element.id}>
                 <TableRow key={element.id}>
                   {config.filter((item) => item.showInShortList).map((item) => 
-                    <TableCell key={item.key}>{element[item.key]}</TableCell>
+                    <TableCell key={item.key}>{getDisplayValue(element[item.key], item)}</TableCell>
                   )}
                   <TableCell width='10%'>
                     <Button onClick={() => toggleExpandedElement(element)}>
@@ -168,11 +172,11 @@ export default function ListManager({ config, showAddComponent, editItem, delete
                                   key={item.key}
                                   style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingBottom: '5px'}}
                                 >
-                                  <Text style={{width: '20%', paddingLeft: '3%'}}>{item.displayName}: </Text>
+                                  <Text style={{width: '30%', paddingLeft: '3%'}}>{item.displayName}: </Text>
                                   {
                                     item.readOnly || !editMode
-                                      ? <Text>{expandedElement[item.key]}</Text>
-                                      : <View style={{width: '77%'}}>
+                                      ? <Text>{getDisplayValue(expandedElement[item.key], item)}</Text>
+                                      : <View style={{width: '67%'}}>
                                           <EditField
                                             configItem={item}
                                             value={expandedElement[item.key]}
@@ -242,7 +246,7 @@ export default function ListManager({ config, showAddComponent, editItem, delete
                     </TableRow>                    
                   )
                 }
-              </>
+              </Fragment>
             ))
           }
         </TableBody>
