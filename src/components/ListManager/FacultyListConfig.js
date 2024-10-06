@@ -43,5 +43,24 @@ export default [
         label: "Disabled"
       }
     ]
-  }
+  },
+  {
+    displayName: "Invited By",
+    key: "invited_by",
+    type: "string",
+    readOnly: true
+  },
+  {
+    displayName: "Invited On",
+    key: "created_at",
+    type: "string",
+    readOnly: true
+  },
+  {
+    displayName: "Last Modified",
+    key: "updated_at",
+    type: "string",
+    readOnly: true
+  },
+
 ];

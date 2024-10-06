@@ -19,7 +19,7 @@ Array of {
 // all members of data must have a unique id prop.
 // if a status prop exists, the enable/disable button will show
 //  status prop options: enabled || disabled
-export default function ListManager({ config, showAddComponent, editItem, deleteItem, data }) {
+export default function ListManager({ config, showAddComponent, editItem, data }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
@@ -173,20 +173,6 @@ export default function ListManager({ config, showAddComponent, editItem, delete
                           }
                         </Grid>
                         <View style={{display: 'flex', flexDirection: 'row-reverse'}}>
-                          <Button 
-                            onClick={() => {
-                              if (!element.status || element.status == 'enabled') {
-                                deleteItem(element)
-                              }
-                              else {
-                                editItem({...element, status: 'enabled'})
-                              }
-                            }}
-                            marginLeft='1em'
-                          >
-                            <MdDelete />
-                            <Text paddingLeft='1em'>{!element.status ? 'Delete' : element.status == 'enabled' ? 'Disable' : 'Enable'}</Text>
-                          </Button>
                           {
                             !editMode && 
                               <Button 
@@ -220,7 +206,7 @@ export default function ListManager({ config, showAddComponent, editItem, delete
                                 }}
                               >
                                 <MdCancel/>
-                                <Text paddingLeft='1em'>{isEqual(element, expandedElement)?'Stop Editing':'Discard Changes'}</Text>
+                                <Text paddingLeft='1em'>Cancel</Text>
                               </Button>
                           }
                         </View>
