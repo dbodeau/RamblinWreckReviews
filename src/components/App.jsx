@@ -21,11 +21,30 @@ import SignUpPage from './pages/auth/SignUpPage';
 import ForgetPasswordResetPage from './pages/auth/ForgetPasswordResetPage';
 // generic imports
 import React from 'react';
-// import '../../../css/index.css';
+import '../css/index.css';
 import Wrapper from './Wrapper';
 import NotFound from './pages/error/Error404';
 import NotAuthorized from './pages/error/Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import '@aws-amplify/ui-react/styles.css';
+import { ThemeProvider } from '@aws-amplify/ui-react';
+
+// Amplify theme
+const theme = {
+  name: 'table-theme',
+  tokens: {
+    components: {
+      table: {
+        row: {
+          hover: {
+            backgroundColor: { value: '{colors.shadow.secondary}' },
+          },
+        }
+      },
+    },
+  },
+};
 
 //for any web page to be visible in the application, it needs to be linked to this router object
 const router = createBrowserRouter([
@@ -121,7 +140,9 @@ const router = createBrowserRouter([
 export default function App(){
   return (
     <React.StrictMode>
-      <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
+      <ThemeProvider theme={theme} colorMode="light">
+        <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
+      </ThemeProvider>
     </React.StrictMode>
   )
 }

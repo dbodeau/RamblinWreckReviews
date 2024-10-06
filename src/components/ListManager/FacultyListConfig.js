@@ -7,6 +7,12 @@ export default [
     readOnly: true
   },
   {
+    displayName: "Email",
+    key: "email",
+    type: "string",
+    readOnly: true
+  },
+  {
     displayName: "Access Level",
     key: "user_type",
     showInShortList: true,
@@ -17,7 +23,7 @@ export default [
         label: "Admin"
       },
       {
-        id: "professor",
+        id: "prof",
         label: "Professor"
       }
     ]
