@@ -23,7 +23,7 @@ export default function TestPage() {
     const [facultyFormData, setFacultyFormData] = React.useState({});
     const [fList, setFList] = React.useState([]);
     const onFacultySubmit = () => {
-        // here is where we would add API calls to save facultys
+        // here is where we would add API calls to save faculties
         // and update any states
         setFList((pl) => [...pl, facultyFormData]);
         setFacultyFormData({});
