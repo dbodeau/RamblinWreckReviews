@@ -93,7 +93,7 @@ export default function ListManager({ config, showAddComponent, editItem, data }
               </Button>
               {
                 !!showAddComponent && (
-                  <Button marginLeft='1em' onClick={showAddComponentß}>
+                  <Button marginLeft='1em' onClick={showAddComponent}>
                     {
                       <MdAdd/>
                     }
