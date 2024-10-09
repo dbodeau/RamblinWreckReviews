@@ -1,29 +1,50 @@
+import { fetchAuthSession } from '@aws-amplify/auth';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://3l2g4sxaue.execute-api.us-east-2.amazonaws.com/prod',
+  baseURL: 'https://0izviyippe.execute-api.us-east-2.amazonaws.com/dev',
   headers: {
     'Content-Type': 'application/json',
-  },
-  // any auth stuff can go here (or get added somewhere below)
+  }
 })
+
+axiosInstance.interceptors.request.use (
+  async (config) => {
+    const token = (await fetchAuthSession()).tokens.accessToken.toString()
+    if (token) config.headers.Authorization = token;
+    return config;
+  },
+  (error) => {
+    return Promise.reject (error);
+  }
+);
+
+/**
+ * User: 
+ * base url: /users
+ * only get so far, may be a put/delete later
+ */
+
+export async function getCurrentUser() {
+  const response = await axiosInstance.get(`/users`);
+  return JSON.parse(response.data.body);
+}
 
 /**
  * Department: 
- * base url: /department
+ * base url: /departments
  * no delete, put as: 
  *    deletion shouldn't really be a thing, could do some sort of setting to inactive if needed
  *    put should be handled by other endpoints with limited responsibilities.
  */
 
 export async function getDepartment(departmentId) {
-  const response = await axiosInstance.get(`/department/${departmentId}`);
-  return JSON.parse(response.data.body);
-  // return {};
+  const response = await axiosInstance.get(`/departments/${departmentId}`);
+  return response.body;
 }
 
 export async function createDepartment(department) {
-  // const response = await axiosInstance.post('/department', department);
+  // const response = await axiosInstance.post('/departments', department);
   // return response.body;
   return department;
 }
@@ -36,26 +57,26 @@ export async function createDepartment(department) {
  */
 
 export async function getQuestions(departmentId) {
-  // const response = await axiosInstance.get(`/department/{departmentId}/questions`});
+  // const response = await axiosInstance.get(`/departments/${departmentId}/questions`});
   // return response.body;
   return [];
 }
 
 export async function createQuestion(question) {
-  // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/questions/`, question);
+  // const response = await axiosInstance.post(`/departments/${currUser.adminDepartment}/questions/`, question);
   // return response.body;
   return question;
 }
 
 export async function updateQuestion(question) {
-  // const response = await axiosInstance.put(`/department/{currUser.adminDepartment}/questions/${question.id}`, question);
+  // const response = await axiosInstance.put(`/departments/${currUser.adminDepartment}/questions/${question.id}`, question);
   // return response.body;
   return question;
 }
 
 // Should not actually delete, just set to inactive.
 export async function deleteQuestion(questionId) {
-  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/questions/${questionId}`);
+  // const response = await axiosInstance.delete(`/departments/{$currUser.adminDepartment}/questions/${questionId}`);
   // return response.body;
   return true;
 }
@@ -70,7 +91,7 @@ export async function deleteQuestion(questionId) {
  */
 
 export async function updateQuestioWeights(department, weights) {
-  // const response = await axiosInstance.put(`/department/${department.id}/mcqweights`, weights);
+  // const response = await axiosInstance.put(`/departments/${department.id}/mcqweights`, weights);
   // return response.body;
   return weights;
 }
@@ -83,20 +104,20 @@ export async function updateQuestioWeights(department, weights) {
  */
 
 export async function addDepartmentFacultyMember(facultyMember) {
-  // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/faculty/`, facultyMember);
+  // const response = await axiosInstance.post(`/departments/${currUser.adminDepartment}/faculty/`, facultyMember);
   // return response.body;
   return facultyMember;
 }
 
 export async function updateDepartmentFacultyMember(facultyMember) {
-  // const response = await axiosInstance.put(`/department/{currUser.adminDepartment}/faculty/${facultyMember.id}`, facultyMember);
+  // const response = await axiosInstance.put(`/departments/${currUser.adminDepartment}/faculty/${facultyMember.id}`, facultyMember);
   // return response.body;
   return facultyMember;
 }
 
 // Should not actually delete, just set to inactive.
 export async function deleteDepartmentFacultyMember(facultyMemberId) {
-  // const response = await axiosInstance.delete(`/department/{currUser.adminDepartment}/faculty/${facultyMemberId}`);
+  // const response = await axiosInstance.delete(`/departments/${currUser.adminDepartment}/faculty/${facultyMemberId}`);
   // return response.body;
   return true;
 }
