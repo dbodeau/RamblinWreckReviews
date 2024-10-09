@@ -4,7 +4,6 @@ import AddFaculty from './AddFacultyForm';
 import AddQuestion from './AddQuestionForm';
 import '../../css/PopupForm.css';
 
-
 /**
  * Handles opening, updating, and closing of a popup form
  * 
@@ -32,18 +31,18 @@ const PopupForm = forwardRef(({formType, onSubmit, formData, onChange}, ref) => 
         // current?. ensures that ref.current is not null before running showModal()
         setDialogOpen(true);
         dialogRef.current?.showModal();
-    };
+    }
 
     const onClose = () => {
         setDialogOpen(false);
         dialogRef.current?.close();
-    };
+    }
 
     const onFormSubmit = () => {
         // we want to close the dialog menu before running user form submission process
         onClose();
         onSubmit();
-    };
+    }
 
     const changeHandler = (e, field) => {
         let value = e.currentTarget.value; // pull the value here (race conditions!)
@@ -58,7 +57,7 @@ const PopupForm = forwardRef(({formType, onSubmit, formData, onChange}, ref) => 
             newPfd[field] = value;
             return newPfd;
         })
-    };
+    }
 
     return (
         <React.Fragment>
@@ -77,7 +76,7 @@ const PopupForm = forwardRef(({formType, onSubmit, formData, onChange}, ref) => 
                         onChange={changeHandler}
                         onClose={onClose}
                     />
-)}
+                )}
             </dialog>
         </React.Fragment>
     )
