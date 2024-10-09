@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use (
   async (config) => {
     const token = (await fetchAuthSession()).tokens.accessToken.toString()
-    console.log(token);
     if (token) config.headers.Authorization = token;
     return config;
   },
@@ -21,8 +20,19 @@ axiosInstance.interceptors.request.use (
 );
 
 /**
+ * User: 
+ * base url: /users
+ * only get so far, may be a put/delete later
+ */
+
+export async function getCurrentUser() {
+  const response = await axiosInstance.get(`/users`);
+  return JSON.parse(response.data.body);
+}
+
+/**
  * Department: 
- * base url: /department
+ * base url: /departments
  * no delete, put as: 
  *    deletion shouldn't really be a thing, could do some sort of setting to inactive if needed
  *    put should be handled by other endpoints with limited responsibilities.
