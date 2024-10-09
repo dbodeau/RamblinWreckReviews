@@ -64,10 +64,6 @@ const AWS_Authenticator = ({role, children}) => {
     getUserAndGroups();
   }, []);
 
-  // check for access
-  useEffect(() => {
-  }, [role, userGroups])
-
   return (
       role == '' || userGroups.includes(role)
         ? <>{children}</>
