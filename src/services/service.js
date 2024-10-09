@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosInstance = axios({
+const axiosInstance = axios.create({
   baseURL: 'https://3l2g4sxaue.execute-api.us-east-2.amazonaws.com/prod',
   headers: {
     'Content-Type': 'application/json',
@@ -17,9 +17,9 @@ const axiosInstance = axios({
  */
 
 export async function getDepartment(departmentId) {
-  // const response = await axiosInstance.get(`/department/{departmentId}`);
-  // return response.body;
-  return {};
+  const response = await axiosInstance.get(`/department/${departmentId}`);
+  return JSON.parse(response.data.body);
+  // return {};
 }
 
 export async function createDepartment(department) {
