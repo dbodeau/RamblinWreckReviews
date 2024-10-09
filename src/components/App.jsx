@@ -26,7 +26,6 @@ import Wrapper from './Wrapper';
 import NotFound from './pages/error/Error404';
 import NotAuthorized from './pages/error/Error401'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import TestPage from './add_list/TestPage';
 
 import '@aws-amplify/ui-react/styles.css';
 import { ThemeProvider } from '@aws-amplify/ui-react';
@@ -54,10 +53,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Wrapper />,
     children: [
-      {
-        path: "/test",
-        element: <TestPage />
-      },
       // for login and signup pages
       {
         path: "/login",
