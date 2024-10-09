@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CheckboxField, TextField, TextAreaField, Radio, RadioGroupField, Button } from '@aws-amplify/ui-react';
-import Tooltip from "./Tooltip.jsx";
+import ContrastButton from '../ContrastButton.jsx';
+import Tooltip from "../Tooltip.jsx";
 import '../../css/PopupForm.css';
 
 export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
@@ -106,7 +107,7 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
             </RadioGroupField>
             </div>
             <div className='button-row'>
-                <Button className='contrast-button' onClick={onFormSubmit}>Submit</Button>
+                <ContrastButton onClick={onFormSubmit}>Submit</ContrastButton>
                 <Button onClick={onClose}>Cancel</Button>
             </div>
         </div>

@@ -7,14 +7,15 @@
 }
 
 .navcard-img {
-    height: 50px;
+    height: 25%;
     /* width: 60px; */
 }
 
 .navcard-h2 {
-    height: 40px;
+    height: 20%;
 }
 
 .navcard-p {
-    height: 25px;
+    height: 15%;
+    font-weight: 400;
 }

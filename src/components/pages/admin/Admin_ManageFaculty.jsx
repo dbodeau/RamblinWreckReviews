@@ -6,12 +6,13 @@ import { getDepartment, updateDepartmentFacultyMember } from "../../../services/
 import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
-import { AddFaculty } from "../../add_list/AddFacultyForm";
+import AddFaculty from '../../add_list/AddFacultyForm';
 
 export default function Admin_ManageFaculty() {
   //stores users under a selected department
   const [users, setUsers] = useState([]);
 
+  // pop-up form states
   const dialogRef = useRef();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [formData, setFormData] = useState({});
@@ -55,6 +56,11 @@ export default function Admin_ManageFaculty() {
       );
   }, [])
 
+  useEffect(() => {
+    console.log("users", users);
+  }, [users])
+
+  // pop-up form event handlers
   const onOpen = () => {
     // current?. ensures that ref.current is not null before running showModal()
     setDialogOpen(true);
@@ -69,13 +75,34 @@ export default function Admin_ManageFaculty() {
   const onSubmit = () => {
     // we want to close the dialog menu before running user form submission process
     onClose();
-    // add to users, start back-end calls here
+
+    // convert to user table fields
+    const newUser = {user: {}, source: {}};
+    newUser.user.first_name = formData.first_name;
+    newUser.user.last_name = formData.last_name;
+
+    //... TODO: pull user data
+    newUser.source.first_name = "You"; 
+    newUser.source.last_name = " ";
+    newUser.email = formData.email;
+
+    // TODO: are these the actual IDs?
+    newUser.id = formData.cwid; 
+    newUser.user_type = formData.role;
+    newUser.status = true;
+    newUser.created_at = new Date().toLocaleDateString();
+    newUser.updated_at = new Date().toLocaleDateString();
+    
+    // add to users
+    setUsers((pu) => [...pu, newUser]);
+    // run any back-end calls
+    setFormData({});
   };
 
   const onChange = (e, field) => {
-    let value = e.currentTarget.value; // pull the value here (race conditions!)
-    // amplify doesn't always use the same interface for all data types
-    if (e.target.type === "checkbox") {
+    // get value
+    let value = e.currentTarget.value; 
+    if (e.target.type === "checkbox") { // checkboxes have different location for value
         value = e.target.checked;
     }
 

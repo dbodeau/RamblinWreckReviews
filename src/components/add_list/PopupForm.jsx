@@ -7,17 +7,7 @@ import AddQuestion from './AddQuestionForm';
 import '../../css/PopupForm.css';
 
 
-/**
- * Basically just a wrapper for displaying forms as a pop-up
- * 
- * `formType` - string - either "question" or "faculty"
- * 
- * `onSubmit` - function that handles what to do after a sucessful form submission
- * 
- * `formData` - actual form data object, does not need to be initialized beforehand
- * 
- * `onChange` - setState function for formData
- */
+// Look in Admin_ManageFaculty for how to use popup forms
 export default function PopupForm({formType, onSubmit, formData, onChange}) {
     // for displaying dialog
     const ref = React.useRef();

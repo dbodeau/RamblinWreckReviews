@@ -1,14 +1,7 @@
 import * as React from 'react';
-import { Button, CheckboxField, TextField, Radio, RadioGroupField  } from '@aws-amplify/ui-react';
+import { Button, TextField, Radio, RadioGroupField  } from '@aws-amplify/ui-react';
+import ContrastButton from '../ContrastButton';
 import '../../css/PopupForm.css';
-
-const facultyFormData = {
-    first_name: "",
-    last_name: "",
-    email: "",
-    cwid: "",
-    role: "professor" // default to professor
-};
 
 export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
     const formErrors = {
@@ -38,7 +31,7 @@ export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
 
     React.useEffect(() => {
         // set default values onMount
-        onChange({currentTarget: {value: "professor"}, target: {}}, "role");
+        onChange({currentTarget: {value: "prof"}, target: {}}, "role");
     }, []);
 
     const onFormSubmit = () => {
@@ -125,17 +118,17 @@ export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
                 <RadioGroupField 
                     legend="Role"
                     name="Role"
-                    value={formData.role ?? 'professor'} // default to professor
+                    value={formData.role ?? 'prof'} // default to professor
                     onChange={(e) => {onChange(e, "role")}}
                     hasError={errors.role.hasError}
                     errorMessage={errors.role.errorMsg}
                 >
                     <Radio value="admin">Admin</Radio>
-                    <Radio value="professor">Professor</Radio>
+                    <Radio value="prof">Professor</Radio>
                 </RadioGroupField>
             </div>
             <div className='button-row'>
-                <Button className='contrast-button' onClick={onFormSubmit}>Submit</Button>
+                <ContrastButton onClick={onFormSubmit}>Submit</ContrastButton>
                 <Button onClick={onClose}>Cancel</Button>
             </div>
         </div>

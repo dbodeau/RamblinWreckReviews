@@ -13,7 +13,7 @@ function NavCard({route, title, description, logo}) {
 
     return (
         <React.Fragment>
-            <Button onClick={onClick} className="navcard-button">
+            <Button onClick={onClick} style={{maxHeight: "30%", width: "25%", margin: "10px", display: "flex", flexDirection: "column", textAlign: "center", padding: "10px"}}>
                 <img src={logo} className="navcard-img"/>
                 <h2 className="navcard-h2">{title}</h2>
                 <p className="navcard-p">{description}</p>

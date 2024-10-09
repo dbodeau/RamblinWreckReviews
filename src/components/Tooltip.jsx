@@ -1,7 +1,7 @@
 import React from 'react';
 import { FcInfo } from 'react-icons/fc';
 
-// Poorly designed component- doesn't generalize well to other use cases...
+// Poorly designed component- doesn't generalize well to all use cases
 export default function Tooltip({ tooltip }) {
     const [hover, setHover] = React.useState(false);
 
