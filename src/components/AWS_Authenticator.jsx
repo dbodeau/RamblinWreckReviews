@@ -35,9 +35,7 @@ const AWS_Authenticator = ({role, children}) => {
       setIsLoading(false);
     }
     catch (error) {
-      if (error) {
-
-      }
+      dispatch(updateUserGroups([]))
       console.error(error);
       setIsLoading(false);
     }
