@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Error401 from './pages/error/Error401';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser, updateUserGroups } from '../redux/authSlice';
-import { getCognitoUser, getCognitoUserGroups } from '../services/authService';
+import { getCognitoUser } from '../services/authService';
 import { getCurrentUser } from '../services/service';
 import AuthStatusEnum from '../types/AuthStatusEnum';
 import { redirect } from 'react-router-dom';
