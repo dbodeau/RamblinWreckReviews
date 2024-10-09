@@ -6,7 +6,7 @@ import { getDepartment, updateDepartmentFacultyMember } from "../../../services/
 import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
-import AddFaculty from '../../add_list/AddFacultyForm';
+import AddFaculty from '../../AddForms/AddFacultyForm';
 
 export default function Admin_ManageFaculty() {
   //stores users under a selected department
