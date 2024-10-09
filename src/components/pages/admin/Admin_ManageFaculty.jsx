@@ -1,15 +1,20 @@
 /* This is previous team code and our team did not touch this file logic*/
 // import "../../../css/Admin_ManageFaculty.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ListManager from "../../ListManager/ListManager";
 import { getDepartment, updateDepartmentFacultyMember } from "../../../services/service";
 import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
+import { AddFaculty } from "../../add_list/AddFacultyForm";
 
 export default function Admin_ManageFaculty() {
   //stores users under a selected department
   const [users, setUsers] = useState([]);
+
+  const dialogRef = useRef();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const flattenUser = (u) => {
     return ({
@@ -50,6 +55,37 @@ export default function Admin_ManageFaculty() {
       );
   }, [])
 
+  const onOpen = () => {
+    // current?. ensures that ref.current is not null before running showModal()
+    setDialogOpen(true);
+    dialogRef.current?.showModal();
+  }
+
+  const onClose = () => {
+    setDialogOpen(false);
+    dialogRef.current?.close();
+  }
+
+  const onSubmit = () => {
+    // we want to close the dialog menu before running user form submission process
+    onClose();
+    // add to users, start back-end calls here
+  };
+
+  const onChange = (e, field) => {
+    let value = e.currentTarget.value; // pull the value here (race conditions!)
+    // amplify doesn't always use the same interface for all data types
+    if (e.target.type === "checkbox") {
+        value = e.target.checked;
+    }
+
+    setFormData((pfd) => {
+        const newPfd = {...pfd};
+        newPfd[field] = value;
+        return newPfd;
+    })
+  }
+
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
       <MenuBar/>
@@ -58,7 +94,18 @@ export default function Admin_ManageFaculty() {
           config={FacultyListConfig}
           data={users.map(flattenUser)}
           editItem={editUser}
+          showAddComponent={onOpen}
         />
+        <dialog ref={dialogRef}>
+          {dialogOpen && 
+            <AddFaculty
+              formData={formData}
+              onSubmit={onSubmit}
+              onChange={onChange}
+              onClose={onClose}
+            />
+          } 
+        </dialog>
       </View>
       
     </View>
