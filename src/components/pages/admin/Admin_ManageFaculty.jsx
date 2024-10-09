@@ -6,15 +6,14 @@ import { getDepartment, updateDepartmentFacultyMember } from "../../../services/
 import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
-import AddFaculty from '../../AddForms/AddFacultyForm';
+import PopupForm from "../../AddForms/PopupForm";
 
 export default function Admin_ManageFaculty() {
   //stores users under a selected department
   const [users, setUsers] = useState([]);
 
   // pop-up form states
-  const dialogRef = useRef();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const popupRef = useRef(null);
   const [formData, setFormData] = useState({});
 
   const flattenUser = (u) => {
@@ -56,26 +55,7 @@ export default function Admin_ManageFaculty() {
       );
   }, [])
 
-  useEffect(() => {
-    console.log("users", users);
-  }, [users])
-
-  // pop-up form event handlers
-  const onOpen = () => {
-    // current?. ensures that ref.current is not null before running showModal()
-    setDialogOpen(true);
-    dialogRef.current?.showModal();
-  }
-
-  const onClose = () => {
-    setDialogOpen(false);
-    dialogRef.current?.close();
-  }
-
   const onSubmit = () => {
-    // we want to close the dialog menu before running user form submission process
-    onClose();
-
     // convert to user table fields
     const newUser = {user: {}, source: {}};
     newUser.user.first_name = formData.first_name;
@@ -95,23 +75,10 @@ export default function Admin_ManageFaculty() {
     
     // add to users
     setUsers((pu) => [...pu, newUser]);
-    // run any back-end calls
     setFormData({});
+
+    // TODO: run any back-end calls
   };
-
-  const onChange = (e, field) => {
-    // get value
-    let value = e.currentTarget.value; 
-    if (e.target.type === "checkbox") { // checkboxes have different location for value
-        value = e.target.checked;
-    }
-
-    setFormData((pfd) => {
-        const newPfd = {...pfd};
-        newPfd[field] = value;
-        return newPfd;
-    })
-  }
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
@@ -121,18 +88,15 @@ export default function Admin_ManageFaculty() {
           config={FacultyListConfig}
           data={users.map(flattenUser)}
           editItem={editUser}
-          showAddComponent={onOpen}
+          showAddComponent={() => popupRef.current.onOpen()}
         />
-        <dialog ref={dialogRef}>
-          {dialogOpen && 
-            <AddFaculty
-              formData={formData}
-              onSubmit={onSubmit}
-              onChange={onChange}
-              onClose={onClose}
-            />
-          } 
-        </dialog>
+        <PopupForm
+          formData={formData}
+          onChange={setFormData}
+          onSubmit={onSubmit}
+          formType="faculty"
+          ref={popupRef}
+        />
       </View>
       
     </View>

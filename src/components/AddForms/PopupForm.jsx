@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import '@aws-amplify/ui-react/styles.css';
-import { Button } from '@aws-amplify/ui-react';
-import { IoMdAdd } from "react-icons/io";
 import AddFaculty from './AddFacultyForm';
 import AddQuestion from './AddQuestionForm';
 import '../../css/PopupForm.css';
 
 
-// Look in Admin_ManageFaculty for how to use popup forms
-export default function PopupForm({formType, onSubmit, formData, onChange}) {
+/**
+ * Handles opening, updating, and closing of a popup form
+ * 
+ * In order to use: pass in a `ref` and use `() => ref.current.onOpen()` as the `onClick` of some button
+ * 
+ * `formType` - "faculty" or "question"
+ * 
+ * `onSubmit` - event handler on submit 
+ * 
+ * `formData` - form state
+ * 
+ * `onChange` - form set state
+ */
+const PopupForm = forwardRef(({formType, onSubmit, formData, onChange}, ref) => {
     // for displaying dialog
-    const ref = React.useRef();
-    const [dialogOpen, setDialogOpen] = React.useState(false);
+    const dialogRef = useRef(null);
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    // magic to call onOpen() handler from a parent component
+    useImperativeHandle(ref, () => {
+        return {onOpen};
+    }, [])
 
     const onOpen = () => {
         // current?. ensures that ref.current is not null before running showModal()
         setDialogOpen(true);
-        ref.current?.showModal();
+        dialogRef.current?.showModal();
     };
 
     const onClose = () => {
         setDialogOpen(false);
-        ref.current?.close();
+        dialogRef.current?.close();
     };
 
     const onFormSubmit = () => {
@@ -47,8 +62,7 @@ export default function PopupForm({formType, onSubmit, formData, onChange}) {
 
     return (
         <React.Fragment>
-            <Button onClick={onOpen}><IoMdAdd /></Button>
-            <dialog ref={ref}>
+            <dialog ref={dialogRef}>
                 {dialogOpen && (formType == 'faculty' &&
                     <AddFaculty 
                         formData={formData}
@@ -63,8 +77,10 @@ export default function PopupForm({formType, onSubmit, formData, onChange}) {
                         onChange={changeHandler}
                         onClose={onClose}
                     />
-                )}
+)}
             </dialog>
         </React.Fragment>
     )
-}
+})
+
+export default PopupForm;
