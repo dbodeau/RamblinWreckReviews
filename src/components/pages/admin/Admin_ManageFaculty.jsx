@@ -30,14 +30,14 @@ export default function Admin_ManageFaculty() {
       fullName: u.user.first_name + " " + u.user.last_name, 
       source: undefined, 
       invited_by: u.source.first_name + " " + u.source.last_name,
-      id: u.id
+      id: u.id,
     })
   }
 
   const editUser = async (newUser) => {
     if (adminDepartment) {
       const newFM = await updateDepartmentFacultyMember(adminDepartment, {
-        id: newUser.id,
+        id: newUser.user_id,
         user_type: newUser.user_type,
         status: newUser.status
       });
@@ -72,32 +72,37 @@ export default function Admin_ManageFaculty() {
 
   const onSubmit = () => {
     // convert to user table fields
-    const newUser = {user: {}, source: {}};
-    newUser.user.first_name = formData.first_name;
-    newUser.user.last_name = formData.last_name;
+    console.log(formData);
+  //   addDepartmentFacultyMember(adminDepartment, {
 
-    //... TODO: pull user data
-    newUser.source.first_name = "You"; 
-    newUser.source.last_name = " ";
-    newUser.email = formData.email;
+  //   })
 
-    // TODO: are these the actual IDs?
-    newUser.id = formData.cwid; 
-    newUser.user_type = formData.role;
-    newUser.status = true;
-    newUser.created_at = new Date().toLocaleDateString();
-    newUser.updated_at = new Date().toLocaleDateString();
+  //   const newUser = {user: {}, source: {}};
+  //   newUser.user.first_name = formData.first_name;
+  //   newUser.user.last_name = formData.last_name;
+
+  //   //... TODO: pull user data
+  //   newUser.source.first_name = "You"; 
+  //   newUser.source.last_name = " ";
+  //   newUser.email = formData.email;
+
+  //   // TODO: are these the actual IDs?
+  //   newUser.id = formData.cwid; 
+  //   newUser.user_type = formData.role;
+  //   newUser.status = true;
+  //   newUser.created_at = new Date().toLocaleDateString();
+  //   newUser.updated_at = new Date().toLocaleDateString();
     
-    // add to users
-    setUsers((pu) => [...pu, newUser]);
-    setFormData({});
+  //   // add to users
+  //   setUsers((pu) => [...pu, newUser]);
+  //   setFormData({});
 
-    // TODO: run any back-end calls
-    addDepartmentFacultyMember(newUser.email, newUser.user.first_name, newUser.user.last_name, newUser.user_type, newUser.id ).then(res => {
-        setRtnFacultyFormData(JSON.parse(res.body))
-        //setRtnFacultyFormData(res.body)
-        //console.log("ddd" +JSON.stringify(res,null,2))
-  })
+  //   // TODO: run any back-end calls
+  //   addDepartmentFacultyMember(newUser.email, newUser.user.first_name, newUser.user.last_name, newUser.user_type, newUser.id ).then(res => {
+  //       setRtnFacultyFormData(JSON.parse(res.body))
+  //       //setRtnFacultyFormData(res.body)
+  //       //console.log("ddd" +JSON.stringify(res,null,2))
+  // })
 };
 
   return (

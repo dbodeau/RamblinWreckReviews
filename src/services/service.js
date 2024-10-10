@@ -103,11 +103,10 @@ export async function updateQuestioWeights(department, weights) {
  *    impliment if ever non-admin should be able to view other faculty in one of their departments
  */
 
-// export async function addDepartmentFacultyMember(facultyMember) {
-//   // const response = await axiosInstance.post(`/departments/${currUser.adminDepartment}/faculty/`, facultyMember);
-export async function addDepartmentFacultyMember(email1, first_name1, last_name1, user_type1, id1 ) {
-  // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/faculty/`, facultyMember);
-  // return response.body;
+export async function addDepartmentFacultyMember(department, facultyMember) {
+// export async function addDepartmentFacultyMember(email1, first_name1, last_name1, user_type1, id1 ) {
+  const response = await axiosInstance.post(`/department/${department}/faculty/`, facultyMember);
+  return JSON.parse(response.data.body);
   let rtn =""
   let email= email1;
   let first_name= first_name1;
@@ -138,8 +137,7 @@ export async function addDepartmentFacultyMember(email1, first_name1, last_name1
 
 export async function updateDepartmentFacultyMember(department, facultyMember) {
   const response = await axiosInstance.put(`/departments/${department}/faculty/${facultyMember.id}`, facultyMember);
-  return response.body;
-  return facultyMember;
+  return JSON.parse(response.data.body);
 }
 
 // Should not actually delete, just set to inactive.
