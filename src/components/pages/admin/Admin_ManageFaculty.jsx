@@ -7,6 +7,7 @@ import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
 import PopupForm from "../../AddForms/PopupForm";
+import { addDepartmentFacultyMember } from '../../../services/service';
 
 export default function Admin_ManageFaculty() {
   //stores users under a selected department
@@ -15,6 +16,8 @@ export default function Admin_ManageFaculty() {
   // pop-up form states
   const popupRef = useRef(null);
   const [formData, setFormData] = useState({});
+  // return stored faculty response from service
+  const [rtnfacultyFormData, setRtnFacultyFormData] = React.useState({});
 
   const flattenUser = (u) => {
     return ({
@@ -78,7 +81,12 @@ export default function Admin_ManageFaculty() {
     setFormData({});
 
     // TODO: run any back-end calls
-  };
+    addDepartmentFacultyMember(newUser.email, newUser.user.first_name, newUser.user.last_name, newUser.user_type, newUser.id ).then(res => {
+        setRtnFacultyFormData(JSON.parse(res.body))
+        //setRtnFacultyFormData(res.body)
+        //console.log("ddd" +JSON.stringify(res,null,2))
+  })
+};
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>

@@ -82,10 +82,35 @@ export async function updateQuestioWeights(department, weights) {
  *    impliment if ever non-admin should be able to view other faculty in one of their departments
  */
 
-export async function addDepartmentFacultyMember(facultyMember) {
+export async function addDepartmentFacultyMember(email1, first_name1, last_name1, user_type1, id1 ) {
   // const response = await axiosInstance.post(`/department/{currUser.adminDepartment}/faculty/`, facultyMember);
   // return response.body;
-  return facultyMember;
+  let rtn =""
+  let email= email1;
+  let first_name= first_name1;
+  let last_name= last_name1;
+  let role= user_type1;
+  let cwid= id1;
+  console.log("first_name ", first_name);
+
+  const resp= await
+  axios
+      .post(
+        'https://3l2g4sxaue.execute-api.us-east-2.amazonaws.com/prod/department/{deptId}/faculty',
+        {
+            email: email,
+            first_name: first_name,
+            last_name: last_name,
+            role: role,
+            cwid: cwid
+        }
+      )
+      .then((Response) => {rtn=Response.data})
+      .catch((Error) => { console.log("Error")})
+
+
+      console.log("response  "+ JSON.stringify(rtn,null,2));
+  return rtn;
 }
 
 export async function updateDepartmentFacultyMember(facultyMember) {
