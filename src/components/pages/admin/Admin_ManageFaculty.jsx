@@ -7,8 +7,12 @@ import FacultyListConfig from '../../ListManager/FacultyListConfig';
 import MenuBar from "../../MenuBar";
 import { View } from "@aws-amplify/ui-react";
 import PopupForm from "../../AddForms/PopupForm";
+import { useSelector } from "react-redux";
 
 export default function Admin_ManageFaculty() {
+  const currentUser = useSelector((state => state.auth.user));
+  const [adminDepartment, setAdminDepartment] = useState(null);
+
   //stores users under a selected department
   const [users, setUsers] = useState([]);
 
@@ -29,31 +33,40 @@ export default function Admin_ManageFaculty() {
   }
 
   const editUser = async (newUser) => {
-    const newFM = await updateDepartmentFacultyMember({
-      id: newUser.id,
-      user_type: newUser.user_type,
-      status: newUser.status
-    });
-    setUsers(oldUsers => oldUsers.map(
-      user => {
-        if(user.id == newUser.id){
-          return {
-            ...user,
-            ...newFM
-          };
+    if (adminDepartment) {
+      const newFM = await updateDepartmentFacultyMember(adminDepartment, {
+        id: newUser.id,
+        user_type: newUser.user_type,
+        status: newUser.status
+      });
+      setUsers(oldUsers => oldUsers.map(
+        user => {
+          if(user.id == newUser.id){
+            return {
+              ...user,
+              ...newFM
+            };
+          }
+          return user;
         }
-        return user;
-      }
-    ));
+      ));
+    }
   }
 
   useEffect(() => {
     //TODO: get the actual department of the current user.....
-    getDepartment(1)
-      .then(dept => {
-        setUsers(dept.faculty)}
-      );
-  }, [])
+    if(currentUser) {
+      const adminDept = currentUser.roles.find(role => role.user_type == 'admin' && role.resource_type == 'dept' && role.status == true).resource_id;
+      setAdminDepartment(adminDept)
+      getDepartment(adminDept)
+        .then(dept => {
+          setUsers(dept.faculty)}
+        );
+    }
+    else {
+      setUsers([])
+    }
+  }, [currentUser])
 
   const onSubmit = () => {
     // convert to user table fields

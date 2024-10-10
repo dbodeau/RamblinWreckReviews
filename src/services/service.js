@@ -40,7 +40,7 @@ export async function getCurrentUser() {
 
 export async function getDepartment(departmentId) {
   const response = await axiosInstance.get(`/departments/${departmentId}`);
-  return response.body;
+  return JSON.parse(response.data.body);
 }
 
 export async function createDepartment(department) {
@@ -109,9 +109,9 @@ export async function addDepartmentFacultyMember(facultyMember) {
   return facultyMember;
 }
 
-export async function updateDepartmentFacultyMember(facultyMember) {
-  // const response = await axiosInstance.put(`/departments/${currUser.adminDepartment}/faculty/${facultyMember.id}`, facultyMember);
-  // return response.body;
+export async function updateDepartmentFacultyMember(department, facultyMember) {
+  const response = await axiosInstance.put(`/departments/${department}/faculty/${facultyMember.id}`, facultyMember);
+  return response.body;
   return facultyMember;
 }
 
