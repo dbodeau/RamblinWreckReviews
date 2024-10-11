@@ -70,9 +70,11 @@ export default function Admin_ManageFaculty() {
     }
   }, [currentUser])
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     // convert to user table fields
     console.log(formData);
+    const newFM = await addDepartmentFacultyMember(adminDepartment, formData);
+    setUsers(u => [...u, newFM]);
   //   addDepartmentFacultyMember(adminDepartment, {
 
   //   })
@@ -108,7 +110,7 @@ export default function Admin_ManageFaculty() {
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
       <MenuBar/>
-      <View style={{width: '100%'}}>
+      <View style={{width: '100%', overflow: 'scroll'}}>
         <ListManager
           config={FacultyListConfig}
           data={users.map(flattenUser)}
