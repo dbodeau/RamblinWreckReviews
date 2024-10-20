@@ -16,10 +16,10 @@ import StudentHome from './pages/student/Student_Home';
 import StudentTakeSurvey from './pages/student/Student_TakeSurvey';
 import StudentViewFeedback from './pages/student/Student_ViewFeedback';
 // login and signup page imports
-import About from './components/pages/About';
-import Login from './components/pages/auth/Login';
-import SignUpPage from './components/pages/auth/SignUpPage';
-import ForgetPasswordResetPage from './components/pages/auth/ForgetPasswordResetPage';
+import About from './pages/About';
+import Login from './pages/auth/Login';
+import SignUpPage from './pages/auth/SignUpPage';
+import ForgetPasswordResetPage from './pages/auth/ForgetPasswordResetPage';
 // generic imports
 import React from 'react';
 // import '../../../css/index.css';
