@@ -1,0 +1,284 @@
+.student-take-survey-entire-page {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+/* for the survey title */
+.student-take-survey-title {
+    color: #21314d;
+    padding-bottom: 50px;
+    font-size: 30px;
+}
+
+/* orange bar */
+.student-take-survey-orange-bar {
+    background-color: #F15A2A;
+    width: 100%;
+    height: 5px;
+    margin-top: -30px;
+}
+
+/* orange bar for questions */
+.student-take-survey-orange-bar-question {
+    background-color: #F15A2A;
+    width: 600px;
+    height: 3px;
+    margin-top: 0px;
+}
+
+/* horizontally aligns the manu bar with the survey bubbles */
+.student-take-survey-horizontal-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
+    flex: 1;
+}
+
+/* styles the questions bubble */
+.student-take-survey-question-wrapper {
+    width: 80%;
+    height: auto;
+    margin: 1% auto;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-top: 2%;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    background-color: rgba(33, 49, 77, 0.15);
+    text-align: left;
+    color: #21314d;
+
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* better, newer, custom buttons */
+.student-take-survey-button {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0;
+}
+
+.student-take-survey-button:hover {
+    background: #879EC3;
+    color: #fff;
+    border: 1px solid #222;
+}
+
+.student-take-survey-button.selected {
+    background-color: #879EC3;
+    color: white;
+    border: 1px solid #222;
+}
+
+/* styling for the bubble answer */
+.student-take-survey-bubble-field {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* styling for the subtext */
+.student-take-survey-subtext-wrapper {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+/* aligns the question bubbles vertically */
+.student-take-survey-vertical-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-top-right-radius: 10px;
+    flex-grow: 1;
+    padding-top: 20px;
+    overflow: scroll;
+    padding-bottom: 150px;
+}
+
+/* styling for the title */
+.student-take-survey-title-wrapper {
+    font-size: 50px;
+}
+
+/* styling for the question field; where students put their answers */
+.student-take-survey-question-field {
+    margin-bottom: 0%;
+    margin-top: -5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* for the bubble scale field */
+.student-take-survey-bubble-scale-field {
+    font-size: 25px;
+    width: 100%;
+}
+
+.student-take-survey-bubble-scale-field .options-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* styling for the text answer */
+.student-take-survey-text-field {
+    flex: 1;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    resize: none;
+    width: auto;
+    padding-right: 60px;
+    resize: none;
+}
+
+.student-take-survey-text-input-field textarea {
+    width: '200px';
+    height: '100px';
+    resize: none;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+    border: 3px solid rgba(33, 49, 77, 0.15); /* make this the same color as the background */
+}
+
+.student-take-survey-text-input-field textarea:focus {
+    border-color:  #21314d; /* darker color when focused */
+    outline: none;
+}
+
+.student-take-survey-text-input-field textarea {
+    width: 90%;
+    height: '100px';
+    resize: 'none';
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* submit button */
+.student-take-survey-submit-button{
+    width: 250px;
+    margin-bottom: 55px;
+    margin-top: 35px;
+    height: 70px;
+    border-width: 1px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: #21314d;
+    color:white
+}
+
+/* below is styling for the grid, bubble MC */
+.student-take-survey-slider-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* make the buttons circular */
+    background-color: #fff;
+    border: 1px solid #222;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 5px;
+    margin: 5px;
+}
+
+.student-take-survey-slider-button:hover {
+    background-color: #879EC3;
+}
+
+.student-take-survey-slider-button.selected {
+    background-color: #879EC3;
+    color: white;
+}
+/* aligns the text in the slider MC more to the center */
+.student-take-survey-margin-option {
+    margin-left: 40px;
+}
+
+/* horizontaly align the top MC slider with the student names */
+.student-take-survey-slider-option-horizontal-container {
+    flex-direction: row;
+}
+
+/* styles for the table structure */
+.student-take-survey-slider-table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.student-take-survey-slider-header {
+    display: table-header-group;
+    font-weight: bold;
+}
+
+.student-take-survey-slider-header-option {
+    display: table-cell;
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.student-take-survey-slider-row {
+    display: table-row;
+}
+
+.student-take-survey-slider-row-name {
+    display: table-cell;
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.student-take-survey-slider-row-option {
+    display: table-cell;
+    text-align: center;
+}
+
+/* styling for the slider buttons */
+.student-take-survey-slider-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* make the buttons circular */
+    background-color: #fff;
+    border: 1px solid #222;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 5px;
+    margin: 5px;
+}
+
+.student-take-survey-slider-button:hover {
+    background-color: #879EC3;
+}
+
+.student-take-survey-slider-button.selected {
+    background-color: #879EC3;
+    color: white;
+}
+
+.student-take-survey-weight-input {
+    width: 35px;
+    margin: 5px;
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid;
+}
