@@ -6,13 +6,9 @@
 
 import minesbkgd from '../../../assets/images/mines-bkgd.jpg';
 import '../../../css/Portal.css';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../../../aws-exports';
 import { useState, useEffect } from 'react';
 import { signIn } from '@aws-amplify/auth';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
-
-Amplify.configure(awsconfig)
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false); /*Show password purpose is to hide and show the password: user clicks a FaEye in the input container (in HTML code below)*/
@@ -20,7 +16,6 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [isFocused, setIsFocused] = useState(false); /*This displays password requirments when the user is in the password input container */
   const [errorMessage, setErrorMessage] = useState('');
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +45,7 @@ export default function Login() {
 
   return (
     <>
-      <body className='portal-body'>
+      <div className='portal-body'>
         <div>
           <img className='portal-bkgd-image' src={minesbkgd} alt="Mines Logo" />
         </div>
@@ -106,7 +101,7 @@ export default function Login() {
             <a href='/signup'><button className='portal-sign-up-redirect-button'>Don't have an account?<br></br> Sign Up!</button></a>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

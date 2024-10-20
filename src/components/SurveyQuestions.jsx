@@ -1,11 +1,9 @@
 /* This is previous team code and our team did not touch this file. Unknown purpose*/
 
 import "../css/SurveyQuestion.css";
-import AWS_Authenticator from './AWS_Authenticator';
-
 
 //setQuestions updates the state of the parent
-function SurveyQuestions({ questions, deptID, setQuestions }) {
+export default function SurveyQuestions({ questions, deptID, setQuestions }) {
   return (
     <>
       {/* Container for all the questions in a category */}
@@ -46,5 +44,3 @@ function SurveyQuestions({ questions, deptID, setQuestions }) {
     //   setQuestions(q);
     // }
 }
-
-export default AWS_Authenticator(SurveyQuestions);

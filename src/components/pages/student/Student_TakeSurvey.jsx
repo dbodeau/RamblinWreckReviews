@@ -4,11 +4,9 @@
 import MenuBar from '../../MenuBar';
 import '../../../css/Student_TakeSurvey.css';
 import React, { useState } from 'react';
-import AWS_Authenticator from '../../AWS_Authenticator';
-import AuthStatusEnum from '../../../types/AuthStatusEnum';
 
 // funciton for the new, better and improved bubble sliders
-function MultipleChoiceSlider({ options, rowNames, numBubbles, onSelectionChange }) {
+export function MultipleChoiceSlider({ options, rowNames, numBubbles, onSelectionChange }) {
     // add an empty string to the beginning of the options array, to correctly space out the output
     const modifiedOptions = ["", ...options];
     const [selectedOptions, setSelectedOptions] = useState(
@@ -155,7 +153,7 @@ function DisplayQuestions({question = "Your Question Here", subtext = "subtext",
     );
 }
 
-function Student_TakeSurvey() {
+export default function Student_TakeSurvey() {
     // bits of code to handle getting the answers for the surveys
     const [answers, setAnswers] = useState({});
 
@@ -201,5 +199,3 @@ function Student_TakeSurvey() {
         </div>
     );
 }
-
-export default AWS_Authenticator(Student_TakeSurvey, AuthStatusEnum.STUDENT);

@@ -1,9 +1,20 @@
 /*Custom 401 page - Just for funzies its cute*/
-import React from 'react';
+import React, { useEffect } from 'react';
 import errorImage from '../../../assets/images/401.jpg'; // Assuming 404.png is in the same directory
 import '../../../css/Error404.css';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const NotAuthorized = () => {
+  const currentUser = useSelector((state => state.auth.user));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(currentUser == null) {
+      navigate('/login');
+    }
+  })
+
     return (
       <div className="error-404-not-found">
         <div className="error-404-not-found-content">  {/* Wrap content in a new div */}
