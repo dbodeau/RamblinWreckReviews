@@ -70,7 +70,7 @@ function Wrapper() {
   );
 
   return (
-    <>
+    <div style={{height: '100vh', width: '100vw'}}>
       <div className='wrapper-header'>
         <img style={{ height: 50, width: 50, margin: 15 }} src={mineslogo} alt="Mines Logo" />
         <h1 className='wrapper-school-header'>Colorado School of Mines</h1>
@@ -86,7 +86,7 @@ function Wrapper() {
       <AWS_Authenticator role={role}>
         <Outlet />
       </AWS_Authenticator>
-    </>
+    </div>
   );
 }
 
