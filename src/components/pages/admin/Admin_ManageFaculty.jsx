@@ -58,7 +58,7 @@ export default function Admin_ManageFaculty() {
   useEffect(() => {
     //TODO: get the actual department of the current user.....
     if(currentUser) {
-      const adminDept = currentUser.roles.find(role => role.user_type == 'admin' && role.resource_type == 'dept' && role.status == true).resource_id;
+      const adminDept = currentUser.roles.find(role => role.user_type == 'admin' && role.resource_type == 'dept' && role.status == true)?.resource_id;
       setAdminDepartment(adminDept)
       getDepartment(adminDept)
         .then(dept => {
