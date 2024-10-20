@@ -16,6 +16,7 @@ import StudentHome from './pages/student/Student_Home';
 import StudentTakeSurvey from './pages/student/Student_TakeSurvey';
 import StudentViewFeedback from './pages/student/Student_ViewFeedback';
 // login and signup page imports
+import About from './pages/About';
 import Login from './pages/auth/Login';
 import SignUpPage from './pages/auth/SignUpPage';
 import ForgetPasswordResetPage from './pages/auth/ForgetPasswordResetPage';
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Wrapper />,
     children: [
+      {
+        path: "/About",
+        element: <About />
+      },
       // for login and signup pages
       {
         path: "/login",

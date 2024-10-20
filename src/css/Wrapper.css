@@ -18,6 +18,7 @@
   margin-left: 2%;
   text-align: center;
   align-content: center;
+  flex: 6;
 }
 
 .wrapper-nav-bar-menu-link{
@@ -54,20 +55,26 @@
 .wrapper-website-title {
   font-weight: 400;
   font-size: 25px;
-  flex: 1;
+  flex: 18;
   text-align: center;
   align-content: center;
-  position: absolute;
-  width: 100%;
+  /* width: 60%; */
+}
+
+.wrapper-title-link {
+  color: white;
+  text-decoration: none;
 }
 
 .wrapper-nav-bar-menu{
   display: flex;
   flex-direction: row;
-  right: 0;
-  position: fixed;
+  justify-content: right;
+  /* right: 0; */
+  /* position: fixed; */
   height: inherit;
-  align-items: center;
+  align-items: right;
+  flex: 8;
 }
 
   /* Styles for smaller screens (adjust the breakpoint as needed) */
