@@ -20,10 +20,6 @@ export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
         role: {
             hasError: false,
             errorMsg: ""
-        },
-        cwid: {
-            hasError: false,
-            errorMsg: ""
         }
     };
 
@@ -61,19 +57,6 @@ export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
                 hasError = true;
             } 
         }
-        if (!formData.hasOwnProperty("cwid") || formData.cwid === "") {
-            err.cwid.hasError = true;
-            err.cwid.errorMsg = "Required field";
-            hasError = true;
-        } else { // do additional validation
-            const pattern = new RegExp('^[0-9]{8}$'); // 8 numeric chars
-
-            if (!pattern.test(formData.cwid)) {
-                err.cwid.hasError = true;
-                err.cwid.errorMsg = "Invalid CWID";
-                hasError = true;
-            } 
-        }
 
         // update error state
         setErrors(err);
@@ -100,13 +83,6 @@ export default function AddFaculty({formData, onChange, onSubmit, onClose}) {
                     onChange={(e) => onChange(e, 'last_name')}
                     hasError={errors.last_name.hasError}
                     errorMessage={errors.last_name.errorMsg}
-                />
-                <TextField
-                    label="CWID"
-                    value={formData.cwid ?? ''}
-                    onChange={(e) => onChange(e, 'cwid')}
-                    hasError={errors.cwid.hasError}
-                    errorMessage={errors.cwid.errorMsg}
                 />
                 <TextField
                     label="Email"
