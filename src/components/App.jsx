@@ -30,6 +30,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import '@aws-amplify/ui-react/styles.css';
 import { ThemeProvider } from '@aws-amplify/ui-react';
+import Admin_ManageQuestions from './pages/admin/Admin_CreateQuestions';
 
 // Amplify theme
 const theme = {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
         path: "/admin/manage-faculty",
         element: <AdminManageFaculty />,
         //loader: fetchAllDepartments
+      },
+      {
+        path: "/admin/manage-questions",
+        element: <Admin_ManageQuestions />
       },
       // for professor pages
       {
