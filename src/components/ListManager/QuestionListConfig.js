@@ -59,7 +59,7 @@ export default [
     },
     {
         displayName: "Created By",
-        key: "created_by",
+        key: "created_name",
         type: "string",
         readOnly: true
     },

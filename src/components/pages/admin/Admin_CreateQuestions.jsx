@@ -35,9 +35,12 @@ export default function Admin_ManageQuestions() {
   }
 
   useEffect(() => {
+    // ensure we have user data before trying to get department info
     if(currentUser) {
       const adminDept = currentUser.roles.find(role => role.user_type == 'admin' && role.resource_type == 'dept' && role.status == true)?.resource_id;
-      setAdminDepartment(adminDept)
+      // update department state
+      setAdminDepartment(adminDept);
+      // pull department questions
       getQuestions(adminDept)
         .then(questions => {
           // split up questions by their category
@@ -48,11 +51,10 @@ export default function Admin_ManageQuestions() {
           }, {});
           // update state
           setQuestionsByCategory(byCategory);
-        }
-        );
+        });
     }
     else {
-      setQuestionsByCategory({})
+      setQuestionsByCategory({});
     }
   }, [currentUser])
 
@@ -69,7 +71,7 @@ export default function Admin_ManageQuestions() {
     });
 
     setFormData({}); // empty formData after call
-};
+}
 
 const onOpen = (category) => {
   setAddingToCategory(category);
@@ -88,7 +90,7 @@ const onOpen = (category) => {
                 <Accordion.Icon style={{color: "white"}}/>
               </Accordion.Trigger>
               <Accordion.Content>
-              <ListManager
+                <ListManager
                   config={QuestionListConfig}
                   data={questionsByCategory[category]}
                   editItem={editQuestion}
