@@ -1,5 +1,5 @@
 /* This is previous team code and our team did not touch this file*/
-
+// Group 7 here... We just made a different file to match the rest of our lists/managers updated with auth
 import Questions from '../../Questions';
 import React, {useState} from 'react';
 import {useLoaderData} from 'react-router-dom';

@@ -57,20 +57,18 @@ export async function createDepartment(department) {
  */
 
 export async function getQuestions(departmentId) {
-  // const response = await axiosInstance.get(`/departments/${departmentId}/questions`});
-  // return response.body;
-  return [];
+  const response = await axiosInstance.get(`/departments/${departmentId}/questions`);
+  return JSON.parse(response.data.body);
 }
 
-export async function createQuestion(question) {
-  // const response = await axiosInstance.post(`/departments/${currUser.adminDepartment}/questions/`, question);
-  // return response.body;
-  return question;
+export async function createQuestion(department, question) {
+  const response = await axiosInstance.post(`/departments/${department}/questions/`, question);
+  return JSON.parse(response.data.body);
 }
 
-export async function updateQuestion(question) {
-  // const response = await axiosInstance.put(`/departments/${currUser.adminDepartment}/questions/${question.id}`, question);
-  // return response.body;
+export async function updateQuestion(department, question) {
+  const response = await axiosInstance.post(`/departments/${department}/questions/`, question);
+  return JSON.parse(response.data.body);
   return question;
 }
 

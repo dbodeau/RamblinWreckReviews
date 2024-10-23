@@ -7,7 +7,7 @@ import '../../css/PopupForm.css';
 export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
     /*  formData format:
         title: string
-        type: bool/string ("mcq", "frq")
+        type: bool/string ("Bubble", "Short Answer")
         content: string
         isMandatory: bool
     */
@@ -16,7 +16,7 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
             hasError: false,
             errorMsg: ""
         },
-        type: {
+        question_type: {
             hasError: false,
             errorMsg: ""
         },
@@ -24,7 +24,7 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
             hasError: false,
             errorMsg: ""
         },
-        isMandatory: {
+        is_mandatory: {
             hasError: false,
             errorMsg: ""
         }
@@ -34,8 +34,8 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
 
     React.useEffect(() => {
         // set default values onMount
-        onChange({currentTarget: {value: "mcq"}, target: {}}, "type");
-        onChange({currentTarget: {value: false}, target: {}}, "isMandatory");
+        onChange({currentTarget: {value: "mc"}, target: {}}, "question_type");
+        onChange({currentTarget: {value: false}, target: {}}, "is_mandatory");
     }, []);
 
     const onFormSubmit = () => {
@@ -82,10 +82,10 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
                     </div>
                     }
                 name="isMandatory"
-                value={formData.isMandatory ?? false}
-                onChange={(e) => {onChange(e, "isMandatory")}}
-                hasError={errors.isMandatory.hasError}
-                errorMessage={errors.isMandatory.errorMsg}
+                value={formData.is_mandatory ?? false}
+                onChange={(e) => {onChange(e, "is_mandatory")}}
+                hasError={errors.is_mandatory.hasError}
+                errorMessage={errors.is_mandatory.errorMsg}
             />
             <TextAreaField
                 label="Question"
@@ -97,13 +97,13 @@ export default function AddQuestion({formData, onChange, onSubmit, onClose}) {
             <RadioGroupField 
                 legend="Question Type"
                 name="Question Type"
-                value={formData.type ?? ''}
-                onChange={(e) => {onChange(e, "type")}}
-                hasError={errors.type.hasError}
-                errorMessage={errors.type.errorMsg}
+                value={formData.question_type ?? ''}
+                onChange={(e) => {onChange(e, "question_type")}}
+                hasError={errors.question_type.hasError}
+                errorMessage={errors.question_type.errorMsg}
             >
-                <Radio value="mcq">Multiple Choice</Radio>
-                <Radio value="frq">Short Answer</Radio>
+                <Radio value="mc">Multiple Choice</Radio>
+                <Radio value="sa">Short Answer</Radio>
             </RadioGroupField>
             </div>
             <div className='button-row'>

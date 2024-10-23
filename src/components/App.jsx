@@ -74,10 +74,8 @@ const router = createBrowserRouter([
       },
       // for admin pages
       {
-        path: "/admin/create-survey-questions",
-        element: <AdminCreateSurveyQuestions />,
-        // same as below
-        //loader: getCreateContentPageData
+        path: "/admin/manage-questions",
+        element: <Admin_ManageQuestions />
       },
       {
         path: "/admin/edit-question-weights",
@@ -92,10 +90,6 @@ const router = createBrowserRouter([
         path: "/admin/manage-faculty",
         element: <AdminManageFaculty />,
         //loader: fetchAllDepartments
-      },
-      {
-        path: "/admin/manage-questions",
-        element: <Admin_ManageQuestions />
       },
       // for professor pages
       {

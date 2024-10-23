@@ -8,16 +8,16 @@ export default [
     },
     {
         displayName: "Type",
-        key: "type",
+        key: "question_type",
         showInShortList: true,
         type: "enum",
         enumOptions: [
             {
-                id: true,
+                id: "mc",
                 label: 'Bubble'
             },
             {
-                id: false,
+                id: 'sa',
                 label: "Short Answer"
             }
         ]
@@ -30,7 +30,7 @@ export default [
     },
     {
         displayName: "Mandatory",
-        key: "isMandatory",
+        key: "is_mandatory",
         showInShortList: true,
         type: "bool",
         readOnly: true
@@ -38,7 +38,7 @@ export default [
     {
         displayName: "Category",
         key: "category",
-        type: "bool",
+        type: "string",
         readOnly: true
     },
     {

@@ -33,7 +33,7 @@ export default function MenuBar() {
 
   const adminMenu = (
     <div className='menu-bar-menu-item-container'>
-      <button onClick={() => { navigate( "/admin/create-survey-questions") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
+      <button onClick={() => { navigate( "/admin/manage-questions") }} className="menu-bar-menu-item" onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)}>
         <img
           src={isPlusHovered ? menuItemImages.plus.dark : menuItemImages.plus.light}
           alt="Create Survey Questions"

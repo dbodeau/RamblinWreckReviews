@@ -16,7 +16,7 @@ export default function Admin_Home() {
           {<MenuBar />}
           <div className='admin-home-navcard-container'>
             <NavCard 
-              route="/admin/create-survey-questions" 
+              route="/admin/manage-questions" 
               title="Manage Questions"
               description="Add, edit, or delete questions"
               logo={edit}
