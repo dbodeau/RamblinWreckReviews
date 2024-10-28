@@ -42,7 +42,11 @@ export default [
         id: false,
         label: "Disabled"
       }
-    ]
+    ],
+    initialSort: {
+      order: 1,
+      asc: true
+    }
   },
   {
     displayName: "Invited By",
@@ -54,7 +58,11 @@ export default [
     displayName: "Invited On",
     key: "created_at",
     type: "string",
-    readOnly: true
+    readOnly: true,
+    initialSort: {
+      order: 0,
+      asc: true
+    }
   },
   {
     displayName: "Last Modified",

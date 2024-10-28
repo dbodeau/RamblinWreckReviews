@@ -19,10 +19,11 @@ Array of {
 // all members of data must have a unique id prop.
 // if a status prop exists, the enable/disable button will show
 //  status prop options: enabled || disabled
-export default function ListManager({ config, showAddComponent, editItem, data }) {
+export default function ListManager({ config, showAddComponent, editItem, data, isLoading }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
+  const [activeSorts, setActiveSorts] = useState([]);
   const [dataShown, setDataShown] = useState(data);
   const [showFilterBar, setShowFilterBar] = useState(null);
 
@@ -44,6 +45,29 @@ export default function ListManager({ config, showAddComponent, editItem, data }
       }
     })
     setDataShown(filteredData);
+    return filteredData;
+  }
+
+  const sortData = (filteredData) => {
+    let sortedData = filteredData;
+    activeSorts.forEach(sort => {
+      console.log(sort);
+      sortedData = sortedData.sort((a,b) => {
+        if (a[sort.key] == b[sort.key]) {
+          return 0;
+        }
+        let ret = -1;
+        if (a[sort.key] < b[sort.key]) {
+          ret = 1;
+        }
+
+        if (!sort.asc) {
+          ret *= -1;
+        }
+        return ret;
+      })
+    })
+    setDataShown(sortedData);
   }
 
   const toggleExpandedElement = (element) => {
@@ -65,10 +89,19 @@ export default function ListManager({ config, showAddComponent, editItem, data }
   }
 
   useEffect(() => {
-    applyFilters();
-  }, [activeFilters, data])
+    const sorts = config.filter(c => !!c.initialSort).sort((c1, c2) => c1.initialSort.order - c2.initialSort.order).map(c => ({key: c.key, asc: c.initialSort.asc}));
+    setActiveSorts(sorts);
+  }, [])
+
+  useEffect(() => {
+    const fd = applyFilters();
+    sortData(fd);
+  }, [activeFilters, activeSorts, data])
 
   return (
+    isLoading
+      ? <p>Loading...</p>
+      :
     <Table
       highlightOnHover={!!!expandedElement && showFilterBar == false}
       variation="striped"
