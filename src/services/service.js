@@ -90,16 +90,24 @@ export async function deleteQuestion(questionId) {
  *    post/delete not needed, one to one with department.
  */
 
-export async function updateQuestionWeights(department, weights) {
-  // const response = await axiosInstance.put(`/departments/${department.id}/mcqweights`, weights);
-  // return response.body;
-  return weights;
+
+
+export async function updateQuestionWeights(departmentId, weights) {
+  const response = await axiosInstance.post(`/departments/${departmentId}/mcq-weights`, weights);
+  if(response.data.statusCode != 200) {
+    throw new Error(response.data.statusCode);
+  }
+  return JSON.parse(JSON.parse(response.data.body).json_question_weights);
 }
 
-export async function getQuestionWeights(department) {
-  // const response = await axiosInstance.get(`/department/${department.id}/mcqweights`, weights);
-  // return response.body;
-  return true;
+export async function getQuestionWeights(departmentId) {
+   //const response = await axiosInstance.get(`/department/${department.id}/mcq-weights`, weights);
+   
+   const response = await axiosInstance.get(`/departments/${departmentId}/mcq-weights`);
+   
+   
+   return JSON.parse(JSON.parse(response.data.body)[0]);
+  //return true;
 }
 
 /**
