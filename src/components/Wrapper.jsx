@@ -90,9 +90,11 @@ function Wrapper() {
           {currentUser ? signOutLink: signInLink}
         </div>
       </div>
-      <AWS_Authenticator role={role}>
-        <Outlet />
-      </AWS_Authenticator>
+      <div style={{height: 'calc(100vh - 80px)'}}>
+        <AWS_Authenticator role={role}>
+          <Outlet />
+        </AWS_Authenticator>
+      </div>
     </div>
   );
 }
