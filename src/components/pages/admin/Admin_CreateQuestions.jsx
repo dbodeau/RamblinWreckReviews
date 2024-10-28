@@ -28,7 +28,9 @@ export default function Admin_ManageQuestions() {
       // update table
       setQuestionsByCategory(pq => {
         const newQuestions = {...pq};
-        newQuestions[addingToCategory] = [...newQuestions[addingToCategory], newQuestion];
+        let newCategory = newQuestions[newQuestion.category];
+        newCategory = newCategory.map(q => q.id == newQuestion.id ? newQuestion : q);
+        newQuestions[newQuestion.category] = newCategory;
         return newQuestions;
       });
     }
@@ -83,10 +85,10 @@ const onOpen = (category) => {
       <MenuBar/>
       <View style={{width: '100%', overflow: 'scroll', marginLeft: 10}}>
         <Accordion.Container allowMultiple>
-          {Object.keys(questionsByCategory).map(category => (
+          {Object.keys(questionsByCategory).sort().map(category => (
             <Accordion.Item key={category} value={category} style={{marginTop: 10}}>
               <Accordion.Trigger style={{backgroundColor: "#21314d", color: "white"}}>
-                {category}
+                {category[0].toUpperCase() + category.slice(1)}
                 <Accordion.Icon style={{color: "white"}}/>
               </Accordion.Trigger>
               <Accordion.Content>

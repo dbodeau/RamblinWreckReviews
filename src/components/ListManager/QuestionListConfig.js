@@ -3,14 +3,14 @@ export default [
         displayName: "Title",
         key: "title",
         showInShortList: true,
-        type: "string",
-        readOnly: true
+        type: "string"
     },
     {
         displayName: "Type",
         key: "question_type",
         showInShortList: true,
         type: "enum",
+        readOnly: true,
         enumOptions: [
             {
                 id: "mc",
@@ -26,14 +26,12 @@ export default [
         displayName: "Content",
         key: "content",
         type: "string",
-        readOnly: true
     },
     {
         displayName: "Mandatory",
         key: "is_mandatory",
         showInShortList: true,
-        type: "bool",
-        readOnly: true
+        type: "bool"
     },
     {
         displayName: "Category",

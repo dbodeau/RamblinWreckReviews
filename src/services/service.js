@@ -67,9 +67,8 @@ export async function createQuestion(department, question) {
 }
 
 export async function updateQuestion(department, question) {
-  const response = await axiosInstance.post(`/departments/${department}/questions/`, question);
+  const response = await axiosInstance.put(`/departments/${department}/questions/${question.id}`, question);
   return JSON.parse(response.data.body);
-  return question;
 }
 
 // Should not actually delete, just set to inactive.
