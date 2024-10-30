@@ -3,9 +3,10 @@ import ListManager from "../../ListManager/ListManager";
 import { getQuestions, createQuestion, updateQuestion, deleteQuestion } from "../../../services/service";
 import QuestionListConfig from '../../ListManager/QuestionListConfig';
 import MenuBar from "../../MenuBar";
-import { Accordion, View } from "@aws-amplify/ui-react";
+import { Accordion, View, Button } from "@aws-amplify/ui-react";
 import PopupForm from "../../AddForms/PopupForm";
 import { useSelector } from "react-redux";
+import { MdAdd } from "react-icons/md";
 
 export default function Admin_ManageQuestions() {
   const currentUser = useSelector((state => state.auth.user));
@@ -14,11 +15,9 @@ export default function Admin_ManageQuestions() {
   // stores questions by category
   const [questionsByCategory, setQuestionsByCategory] = useState({});
 
-  // so we don't need multiple add forms
-  const [addingToCategory, setAddingToCategory] = useState("");
-
   // pop-up form states
   const popupRef = useRef(null);
+  const categoryRef = useRef(null);
   const [formData, setFormData] = useState({});
 
   const editQuestion = async (question) => {
@@ -68,17 +67,23 @@ export default function Admin_ManageQuestions() {
     // add to table
     setQuestionsByCategory(pq => {
       const newQuestions = {...pq};
-      newQuestions[addingToCategory] = [...newQuestions[addingToCategory], newQuestion];
+
+      // if the category exists, add it, otherwise make a new array for the category
+      newQuestions[formData.category] = !!newQuestions[formData.category] ? 
+        [...newQuestions[formData.category], newQuestion] :
+        [newQuestion];
+
+      console.log(newQuestions);
       return newQuestions;
     });
 
     setFormData({}); // empty formData after call
-}
+  }
 
-const onOpen = (category) => {
-  setAddingToCategory(category);
-  popupRef.current.onOpen();
-}
+  const onOpen = (category) => {
+    setFormData({category: category});
+    popupRef.current.onOpen();
+  }
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
@@ -102,7 +107,11 @@ const onOpen = (category) => {
             </Accordion.Item>
           ))}
         </Accordion.Container>
-        
+
+        <Button onClick={() => categoryRef.current.onOpen()} style={{width: "15%", display: "block", textAlign:"center", marginLeft: "auto", marginRight: "auto", marginTop: "10px"}}>
+          Add Category
+        </Button>
+
         <PopupForm
           formData={formData}
           onChange={setFormData}
@@ -110,9 +119,14 @@ const onOpen = (category) => {
           formType="question"
           ref={popupRef}
         />
+        <PopupForm
+          formData={formData}
+          onChange={setFormData}
+          onSubmit={onSubmit}
+          formType="category"
+          ref={categoryRef}
+        />
       </View>
-      
     </View>
-    
   )
 }

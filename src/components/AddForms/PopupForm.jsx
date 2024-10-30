@@ -2,6 +2,7 @@ import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import '@aws-amplify/ui-react/styles.css';
 import AddFaculty from './AddFacultyForm';
 import AddQuestion from './AddQuestionForm';
+import AddCategory from './AddCategoryForm';
 import '../../css/PopupForm.css';
 
 /**
@@ -71,6 +72,13 @@ const PopupForm = forwardRef(({formType, onSubmit, formData, onChange}, ref) => 
                     />
                 || formType == 'question' && 
                     <AddQuestion 
+                        formData={formData}
+                        onSubmit={onFormSubmit}
+                        onChange={changeHandler}
+                        onClose={onClose}
+                    />
+                || formType == 'category' && 
+                    <AddCategory 
                         formData={formData}
                         onSubmit={onFormSubmit}
                         onChange={changeHandler}
