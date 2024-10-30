@@ -108,8 +108,8 @@ export default function Admin_ManageQuestions() {
           ))}
         </Accordion.Container>
 
-        <Button onClick={() => categoryRef.current.onOpen()} style={{width: "15%", display: "block", textAlign:"center", marginLeft: "auto", marginRight: "auto", marginTop: "10px"}}>
-          Add Category
+        <Button onClick={() => categoryRef.current.onOpen()} style={{minWidth: "fit-content", maxWidth: "80%", display: "block", textAlign:"center", marginLeft: "auto", marginRight: "auto", marginTop: "10px"}}>
+          Add Question to New Category
         </Button>
 
         <PopupForm
