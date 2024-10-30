@@ -45,7 +45,7 @@ export default [
     ],
     initialSort: {
       order: 1,
-      asc: true
+      asc: false
     }
   },
   {
