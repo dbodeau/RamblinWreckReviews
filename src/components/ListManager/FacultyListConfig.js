@@ -1,7 +1,14 @@
 export default [
   {
-    displayName: "Name",
-    key: "fullName",
+    displayName: "First Name",
+    key: "first_name",
+    showInShortList: true,
+    type: "string",
+    readOnly: true
+  },
+  {
+    displayName: "Last Name",
+    key: "last_name",
     showInShortList: true,
     type: "string",
     readOnly: true
@@ -42,7 +49,11 @@ export default [
         id: false,
         label: "Disabled"
       }
-    ]
+    ],
+    initialSort: {
+      order: 1,
+      asc: false
+    }
   },
   {
     displayName: "Invited By",
@@ -54,7 +65,11 @@ export default [
     displayName: "Invited On",
     key: "created_at",
     type: "string",
-    readOnly: true
+    readOnly: true,
+    initialSort: {
+      order: 0,
+      asc: true
+    }
   },
   {
     displayName: "Last Modified",

@@ -20,8 +20,8 @@ export default function Admin_ManageFaculty() {
   const popupRef = useRef(null);
   const [formData, setFormData] = useState({});
   // return stored faculty response from service
-  const [rtnfacultyFormData, setRtnFacultyFormData] = React.useState({});
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   const flattenUser = (u) => {
     return ({
       ...u, 
@@ -57,7 +57,9 @@ export default function Admin_ManageFaculty() {
 
   useEffect(() => {
     //TODO: get the actual department of the current user.....
+
     if(currentUser) {
+      setIsLoading(true);
       const adminDept = currentUser.roles.find(role => role.user_type == 'admin' && role.resource_type == 'dept' && role.status == true)?.resource_id;
       setAdminDepartment(adminDept)
       getDepartment(adminDept)
@@ -68,6 +70,7 @@ export default function Admin_ManageFaculty() {
     else {
       setUsers([])
     }
+    setIsLoading(false);
   }, [currentUser])
 
   const onSubmit = async () => {
@@ -75,36 +78,6 @@ export default function Admin_ManageFaculty() {
     console.log(formData);
     const newFM = await addDepartmentFacultyMember(adminDepartment, formData);
     setUsers(u => [...u, newFM]);
-  //   addDepartmentFacultyMember(adminDepartment, {
-
-  //   })
-
-  //   const newUser = {user: {}, source: {}};
-  //   newUser.user.first_name = formData.first_name;
-  //   newUser.user.last_name = formData.last_name;
-
-  //   //... TODO: pull user data
-  //   newUser.source.first_name = "You"; 
-  //   newUser.source.last_name = " ";
-  //   newUser.email = formData.email;
-
-  //   // TODO: are these the actual IDs?
-  //   newUser.id = formData.cwid; 
-  //   newUser.user_type = formData.role;
-  //   newUser.status = true;
-  //   newUser.created_at = new Date().toLocaleDateString();
-  //   newUser.updated_at = new Date().toLocaleDateString();
-    
-  //   // add to users
-  //   setUsers((pu) => [...pu, newUser]);
-  //   setFormData({});
-
-  //   // TODO: run any back-end calls
-  //   addDepartmentFacultyMember(newUser.email, newUser.user.first_name, newUser.user.last_name, newUser.user_type, newUser.id ).then(res => {
-  //       setRtnFacultyFormData(JSON.parse(res.body))
-  //       //setRtnFacultyFormData(res.body)
-  //       //console.log("ddd" +JSON.stringify(res,null,2))
-  // })
 };
 
   return (
@@ -116,6 +89,7 @@ export default function Admin_ManageFaculty() {
           data={users.map(flattenUser)}
           editItem={editUser}
           showAddComponent={() => popupRef.current.onOpen()}
+          isLoading={isLoading}
         />
         <PopupForm
           formData={formData}

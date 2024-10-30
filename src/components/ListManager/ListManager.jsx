@@ -19,10 +19,11 @@ Array of {
 // all members of data must have a unique id prop.
 // if a status prop exists, the enable/disable button will show
 //  status prop options: enabled || disabled
-export default function ListManager({ config, showAddComponent, editItem, data }) {
+export default function ListManager({ config, showAddComponent, editItem, data, isLoading }) {
   const [expandedElement, setExpandedElement] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
+  const [activeSorts, setActiveSorts] = useState([]);
   const [dataShown, setDataShown] = useState(data);
   const [showFilterBar, setShowFilterBar] = useState(null);
 
@@ -43,7 +44,27 @@ export default function ListManager({ config, showAddComponent, editItem, data }
         }
       }
     })
-    setDataShown(filteredData);
+    // setDataShown(filteredData);
+    return filteredData;
+  }
+
+  const sortData = (filteredData, sorts) => {
+    let sortedData = filteredData;
+    // console.log(activeSorts);
+    sorts.forEach(s => {
+      sortedData = sortedData.sort((a,b) => {
+        if (a[s.key] == b[s.key]) {
+          return 0;
+        }
+        let ret = a[s.key] > b[s.key] ? 1 : -1;
+
+        if (!s.asc) {
+          ret *= -1;
+        }
+        return ret;
+      });
+    });
+    return sortedData;
   }
 
   const toggleExpandedElement = (element) => {
@@ -64,11 +85,45 @@ export default function ListManager({ config, showAddComponent, editItem, data }
     return (configItem.enumOptions?.find(i => i.id == value)?.label ?? value).toString();
   }
 
+  const getSortType = (fieldKey) => {
+    return activeSorts.filter(f => f.key == fieldKey)[0]?.asc
+  }
+
+  const toggleSort = (fieldKey) => {
+    const sortType = getSortType(fieldKey);
+    let newSorts = activeSorts.filter(s => s.key != fieldKey);
+    const newSortType = 
+      sortType == true
+        ? false
+        : sortType == false
+          ? undefined
+          : true
+    if(newSortType != undefined) {
+      newSorts.push({key: fieldKey, asc: newSortType});
+    }
+    setActiveSorts(newSorts);
+    filterSortData(newSorts);
+  }
+
+  const filterSortData = (sorts = activeSorts) => {
+    const fd = applyFilters();
+    const sd = sortData(fd, sorts);
+    setDataShown(sd);
+  }
+
   useEffect(() => {
-    applyFilters();
+    const sorts = config.filter(c => !!c.initialSort).sort((c1, c2) => c1.initialSort.order - c2.initialSort.order).map(c => ({key: c.key, asc: c.initialSort.asc}));
+    setActiveSorts(sorts);
+  }, [])
+
+  useEffect(() => {
+    filterSortData();
   }, [activeFilters, data])
 
   return (
+    isLoading
+      ? <p>Loading...</p>
+      :
     <Table
       highlightOnHover={!!!expandedElement && showFilterBar == false}
       variation="striped"
@@ -77,7 +132,16 @@ export default function ListManager({ config, showAddComponent, editItem, data }
         <TableRow>
           {
             config.filter((item) => item.showInShortList).map((item) =>
-              <TableCell as='th' key={item.key}>{item.displayName}</TableCell>
+              <TableCell as='th' key={item.key}>
+                <Button onClick={() => {toggleSort(item.key)}} variation="menu">
+                  {item.displayName}
+                  {getSortType(item.key) == true 
+                    ? <MdArrowDropUp/> 
+                    : getSortType(item.key) == false 
+                      ? <MdArrowDropDown/>  
+                      : ''}
+                </Button>
+              </TableCell>
             )
           }
           <TableCell as='th' width='10%'>
