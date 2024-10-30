@@ -35,7 +35,7 @@ export default function Admin_Home() {
             />
             {/*NOTE: this page is NOT made yet, so it just keeps the same page*/}
             <NavCard 
-              route="/admin" /*"/admin/create-department" */
+              route="/admin/create-department"
               title="Create Department"
               description="Initialize a department and assign an administrator"
               logo={plus}

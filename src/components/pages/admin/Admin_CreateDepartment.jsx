@@ -1,33 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { createDepartment, getInactiveDepartments } from '../../../services/service';
-import { useSelector } from "react-redux";
 import MenuBar from '../../MenuBar';
-import { SelectField, Button, TextField, View } from "@aws-amplify/ui-react";
-import '../../../css/Admin_Home.css';
+import { SelectField, TextField, View } from "@aws-amplify/ui-react";
 import ContrastButton from '../../ContrastButton';
 
 export default function AdminCreateDepartment() {
-  const currentUser = useSelector((state => state.auth.user));
   
   const [formData, setFormData] = useState({department: "", email: ""});
   const [formErrors, setFormErrors] = useState({department: {hasError: false, errorMsg: ""}, email: {hasError: false, errorMsg: ""}});
   const [departments, setDepartments] = useState([]);
 
+  const validate = () => {
+    console.log(formData);
+    let hasError = false;
+    const err = formErrors;
+    // do our data validation
+    if (!formData.hasOwnProperty("department") || formData.department === "") {
+        err.department.hasError = true;
+        err.department.errorMsg = "Required field";
+        hasError = true;
+    } 
+    if (!formData.hasOwnProperty("email") || formData.email === "") {
+      err.email.hasError = true;
+      err.email.errorMsg = "Required field";
+      hasError = true;
+    } else { // do additional validation
+        const pattern = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@mines.edu$'); // stop sql injection...
+
+        if (!pattern.test(formData.email)) {
+            err.email.hasError = true;
+            err.email.errorMsg = "Invalid email";
+            hasError = true;
+        } 
+    }
+
+    // update error state
+    setFormErrors(err);
+
+    return hasError;
+  }
+
   const onSubmit = () => {
     // createDepartment()
+    if (!validate()) {
+      // createDepartment();
+    }
   }
 
   const onChange = (e, field) => {
+    const value = e.target.value;
 
+    setFormData((pfd) => {
+      const newFormData = {...pfd};
+      newFormData[field] = value;
+      return newFormData;
+    })
+    validate();
   }
 
   // onMount, grab departments
   useEffect(() => {
     getInactiveDepartments()
       .then((departments) => {
-        console.log(departments);
+        setDepartments(departments);
       })
   }, [])
+
+
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
@@ -41,6 +80,7 @@ export default function AdminCreateDepartment() {
             onChange={(e) => onChange(e, 'department')}
             hasError={formErrors.department.hasError}
             errorMessage={formErrors.department.errorMsg}
+            options={departments.map(value => value.abbr + " - " + value.name)}
           />
           <div style={{margin: "20px"}}/>
           <TextField

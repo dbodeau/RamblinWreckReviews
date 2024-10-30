@@ -49,8 +49,7 @@ export async function createDepartment(department) {
 }
 
 export async function getInactiveDepartments() {
-  const response = await axiosInstance.get(`/getInactiveDepartments`);
-  console.log(JSON.parse(response));
+  const response = await axiosInstance.get(`/departments/inactive`);
   return JSON.parse(response.data.body);
 }
 
