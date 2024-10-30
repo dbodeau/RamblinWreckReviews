@@ -48,10 +48,10 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
     return filteredData;
   }
 
-  const sortData = (filteredData) => {
+  const sortData = (filteredData, sorts) => {
     let sortedData = filteredData;
     // console.log(activeSorts);
-    activeSorts.forEach(s => {
+    sorts.forEach(s => {
       sortedData = sortedData.sort((a,b) => {
         if (a[s.key] == b[s.key]) {
           return 0;
@@ -63,7 +63,6 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
         }
         return ret;
       });
-      console.log(s, sortedData.map(d => d[s.key]));
     });
     return sortedData;
   }
@@ -103,6 +102,13 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
       newSorts.push({key: fieldKey, asc: newSortType});
     }
     setActiveSorts(newSorts);
+    filterSortData(newSorts);
+  }
+
+  const filterSortData = (sorts = activeSorts) => {
+    const fd = applyFilters();
+    const sd = sortData(fd, sorts);
+    setDataShown(sd);
   }
 
   useEffect(() => {
@@ -111,9 +117,8 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
   }, [])
 
   useEffect(() => {
-    const fd = applyFilters();
-    setDataShown(sortData(fd));
-  }, [activeFilters, activeSorts, data])
+    filterSortData();
+  }, [activeFilters, data])
 
   return (
     isLoading
