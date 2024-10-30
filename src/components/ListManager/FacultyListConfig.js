@@ -1,7 +1,14 @@
 export default [
   {
-    displayName: "Name",
-    key: "fullName",
+    displayName: "First Name",
+    key: "first_name",
+    showInShortList: true,
+    type: "string",
+    readOnly: true
+  },
+  {
+    displayName: "Last Name",
+    key: "last_name",
     showInShortList: true,
     type: "string",
     readOnly: true
