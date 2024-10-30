@@ -50,7 +50,6 @@ export default function AdminCreateDepartment() {
   }
 
   const onSubmit = () => {
-    // createDepartment()
     if (!validate(formData)) {
       // createDepartment();
       setFormData({department: "", email: "", first: "", last: ""});
@@ -63,7 +62,7 @@ export default function AdminCreateDepartment() {
     setFormData((pfd) => {
       const newFormData = {...pfd};
       newFormData[field] = value;
-      validate(newFormData, field);
+      validate(newFormData, field); // validate with new data (live validation)
       return newFormData;
     })
   }
@@ -119,7 +118,8 @@ export default function AdminCreateDepartment() {
           <div style={{display: "flex", flexDirection: "row-reverse", marginTop: "15px", }}> 
             <ContrastButton onClick={onSubmit}>Create</ContrastButton>
           </div>
-          
+
+          {/*success popup*/}
         </form>
       </View>
     </View>
