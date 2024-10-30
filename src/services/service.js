@@ -44,9 +44,14 @@ export async function getDepartment(departmentId) {
 }
 
 export async function createDepartment(department) {
-  // const response = await axiosInstance.post('/departments', department);
-  // return response.body;
-  return department;
+  const response = await axiosInstance.post('/departments', department);
+  return JSON.parse(response.data.body);
+}
+
+export async function getInactiveDepartments() {
+  const response = await axiosInstance.get(`/getInactiveDepartments`);
+  console.log(JSON.parse(response));
+  return JSON.parse(response.data.body);
 }
 
 /**

@@ -4,6 +4,7 @@ import AdminCreateSurveyQuestions from './pages/admin/Admin_CreateSurveyQuestion
 import AdminEditQuestionWeights from './pages/admin/Admin_EditQuestionWeights';
 import AdminHome from './pages/admin/Admin_Home';
 import AdminManageFaculty from './pages/admin/Admin_ManageFaculty';
+import AdminCreateDepartment from './pages/admin/Admin_CreateDepartment';
 // professor page imports
 import ProfessorCreateCourse from './pages/professor/Professor_CreateCourse';
 import ProfessorEmailNotifications from './pages/professor/Professor_EmailNotifications';
@@ -90,6 +91,11 @@ const router = createBrowserRouter([
       {
         path: "/admin/manage-faculty",
         element: <AdminManageFaculty />,
+        //loader: fetchAllDepartments
+      },
+      {
+        path: "/admin/create-department",
+        element: <AdminCreateDepartment/>,
         //loader: fetchAllDepartments
       },
       // for professor pages
