@@ -3,8 +3,10 @@ import { createDepartment, getInactiveDepartments } from '../../../services/serv
 import MenuBar from '../../MenuBar';
 import { SelectField, TextField, View } from "@aws-amplify/ui-react";
 import ContrastButton from '../../ContrastButton';
+import { useSelector } from "react-redux";
 
 export default function AdminCreateDepartment() {
+  const currentUser = useSelector((state => state.auth.user));
   const errors = {department: {hasError: false, errorMsg: ""}, email: {hasError: false, errorMsg: ""}, first: {hasError: false, errorMsg: ""}, last: {hasError: false, errorMsg: ""}};
   
   const [formData, setFormData] = useState({department: "", email: "", first: "", last: ""});
@@ -51,8 +53,17 @@ export default function AdminCreateDepartment() {
 
   const onSubmit = () => {
     if (!validate(formData)) {
+      // get data fields
       const deptId = departments.find((dept) => dept.abbr === formData.department.split(' - ')[0]).id;
-      // createDepartment();
+      const createdBy = currentUser.id; 
+
+      // compile data into one object
+      const createData = {...formData, deptId: deptId, createdBy: createdBy};
+
+      // call back-end 
+      // createDepartment(createData);
+
+      // TODO add error handling/success popup
       setFormData({department: "", email: "", first: "", last: ""});
     }
   }
