@@ -51,6 +51,7 @@ export default function AdminCreateDepartment() {
 
   const onSubmit = () => {
     if (!validate(formData)) {
+      const deptId = departments.find((dept) => dept.abbr === formData.department.split(' - ')[0]).id;
       // createDepartment();
       setFormData({department: "", email: "", first: "", last: ""});
     }
@@ -74,8 +75,6 @@ export default function AdminCreateDepartment() {
         setDepartments(departments);
       })
   }, [])
-
-
 
   return (
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
