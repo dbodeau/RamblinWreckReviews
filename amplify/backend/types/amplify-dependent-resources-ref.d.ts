@@ -11,7 +11,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "S3Trigger1091c9fb": {
+    "S3Trigger31091c9fb": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

@@ -30,9 +30,9 @@
           "deploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
           "s3Key": "amplify-builds/ramblinwreckreviewv34e1161e2PostConfirmation-3564462f654445494d2f-build.zip"
         },
-        "S3Trigger1091c9fb": {
+        "S3Trigger31091c9fb": {
           "deploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
-          "s3Key": "amplify-builds/S3Trigger1091c9fb-5431622b2b754b455245-build.zip"
+          "s3Key": "amplify-builds/S3Trigger31091c9fb-5431622b2b754b455245-build.zip"
         }
       },
       "storage": {

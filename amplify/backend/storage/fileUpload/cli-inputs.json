@@ -8,6 +8,6 @@
     "CREATE_AND_UPDATE",
     "READ"
   ],
-  "triggerFunction": "S3Trigger1091c9fb",
+  "triggerFunction": "S3Trigger31091c9fb",
   "groupAccess": {}
 }
