@@ -1,0 +1,68 @@
+@font-face {
+    font-family: monsterrat;
+    src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw3aXo.woff2);
+}
+
+@font-face {
+    font-family: opensans;
+    src: url(https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjr0B4uaVI.woff2);
+}
+.about-body-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: opensans;
+}
+
+.about-container{
+    width: 1100px;
+    min-height: 700px;
+    align-content: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.about-component-container{
+    flex-direction: column;
+    display: flex;
+}
+
+.about-component-container ul{
+    list-style-type: disc;
+    padding-left: 7%;
+    width: 50%;
+    color: #21314d;
+}
+
+.about-component-container h1{
+    text-align: center;
+    color: black;
+    font-weight: 300;
+}
+
+.about-component-container h2{
+    color: #21314d;
+    font-weight: 600;
+    border-bottom: 3px solid #d14b28;
+}
+
+.about-component-container p{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.about-component-container div{
+    text-align: center;
+    align-content: center;
+}
+
+.about-bkgd-image{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}

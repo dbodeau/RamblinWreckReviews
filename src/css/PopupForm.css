@@ -1,0 +1,28 @@
+dialog {
+    width: 60%;
+    height: 70%;
+}
+
+.dialog-internal {
+    /* we need this because otherwise dialogs won't disappear */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contrast-button {
+    background-color: #21314d;
+    color: #e2e2e2;
+    margin: 0px 5px;
+}
+
+.contrast-button:hover {
+    border-color: #000000;
+    font-weight: bolder;
+}

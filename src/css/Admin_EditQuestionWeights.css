@@ -1,4 +1,4 @@
-.admin-edit-question-weights-form {
+.form {
   background-color: rgb(255, 255, 255);
   width: 97%;
   height: auto;
@@ -17,64 +17,64 @@
   padding-left: 10px;
 }
 
-.admin-edit-question-weights-add-question-title {
+.add-question-title {
   margin-left: 10px;
   font-weight: 500;
   font-size: 20px;
 }
 
-.admin-edit-question-weights-form-subheaders {
+.form-subheaders {
   font-weight: 500;
   font-size: 16px;
 }
 
-.admin-edit-question-weights-category-span {
+.category-span {
   display: flex;
   flex-direction: row;
   margin-left: 10px;
 }
 
-.admin-edit-question-weights-input-category-name {
+.input-category-name {
   width: 200px;
   border-radius: 5px;
   border-width: 1px;
-  height: 25px;
+  height: 30px;
 }
 
-.admin-edit-question-weights-input-category-span {
+.input-category-span {
   display: flex;
   flex-direction: row;
 }
 
-.admin-edit-question-weights-input-category-subheader {
+.input-category-subheader {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
   margin-right: 5px;
 }
 
-.admin-edit-question-weights-input-range-span {
+.input-range-span {
   display: flex;
   flex-direction: row;
   margin-right: 10px;
 }
 
-.admin-edit-question-weights-input-range {
+.input-range {
   width: 50px;
   border-radius: 5px;
   border-width: 1px;
-  height: 20px;
+  height: 25px;
   margin-top: 1px;
 }
 
-.admin-edit-question-weights-input-range-subheader {
+.input-range-subheader {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
   margin-right: 5px;
 }
 
-.admin-edit-question-weights-set-grading-button {
+.set-grading-button {
   width: 350px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -84,10 +84,11 @@
   border-radius: 8px;
   font-size: 20px;
   background-color: #21314d;
-  color:white
+  color:white;
+  cursor: pointer;
   }
 
-.admin-edit-question-weights-autoscale-button {
+.autoscale-button {
   width: 100px;
   margin-bottom: 10px;
   margin-left: 1%;
@@ -96,10 +97,11 @@
   border-radius: 8px;
   font-size: 16px;
   background-color: #21314d;
-  color:white
+  color:white;
+  cursor: pointer;
 }
 
-.admin-edit-question-weights-preview {
+.preview {
   background-color: rgb(255, 255, 255);
   width: 98.8%;
   height: auto;
@@ -118,28 +120,28 @@
   padding-left: 2px;
 }
 
-.admin-edit-question-weights-content {
+.content {
   margin-left: 10px;
 }
 
-.admin-edit-question-weights-category {
+.category {
   margin-right: 20px;
 }
 
-.admin-edit-question-weights-category-header {
+.category-header {
   margin-left: 15px;
 }
 
-.admin-edit-question-weights-radio-button-container {
+.radio-button-container {
   display: flex;
   flex-direction: row;
 }
 
-.admin-edit-question-weights-content-text {
+.content-text {
   font-weight: 600;
 }
 
-.admin-edit-question-weights-popup-button {
+.popup-button {
   width: 100px;
   margin-bottom: 10px;
   margin-left: 0%;
@@ -151,7 +153,7 @@
   color:white
 }
 
-.admin-edit-question-weights-content-box-error {
+.content-box-error {
   background-color: rgb(255, 218, 218);
   width:95%;
   height: auto;
@@ -168,7 +170,7 @@
   padding-top: 20px;
 }
 
-.admin-edit-question-weights-content-box-success {
+.content-box-success {
   background-color: rgb(229, 255, 218);
   width:95%;
   height: auto;
@@ -185,7 +187,7 @@
   padding-top: 20px;
 }
 
-.admin-edit-question-weights-radio-text-box {
+.radio-text-box {
   width: 25px;
   font-size: 14px;
   border: none; 

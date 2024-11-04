@@ -1,13 +1,13 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import mineslogo from '../assets/images/mineslogo.png';
-import '../css/Wrapper.css';
+import React, { useEffect, useState } from 'react';
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import AuthStatusEnum from '../types/AuthStatusEnum';
 import { signOut } from 'aws-amplify/auth';
-import { useEffect, useState } from 'react';
 import AWS_Authenticator from './AWS_Authenticator';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '../redux/authSlice';
+
+import mineslogo from '../assets/images/mineslogo.png';
+import '../css/Wrapper.css';
 
 /*
   The wrapper houses the navigation bar that is displayed on top of every page
@@ -69,24 +69,33 @@ function Wrapper() {
     <button onClick={doSignOut} className="wrapper-nav-bar-menu-button" id="wrapper-nav-bar-menu-button-sign-out">Sign Out</button>
   );
 
+  const signInLink = (
+    <Link to="/login" className="wrapper-nav-bar-menu-link">
+      <button className="wrapper-nav-bar-menu-button">Login</button>
+    </Link>
+  );
+
   return (
-    <>
+    <div style={{height: '100vh', width: '100vw'}}>
       <div className='wrapper-header'>
         <img style={{ height: 50, width: 50, margin: 15 }} src={mineslogo} alt="Mines Logo" />
         <h1 className='wrapper-school-header'>Colorado School of Mines</h1>
-        <h1 className="wrapper-website-title">Ramblin' Wreck Reviews</h1>
+        
+        <h1 className='wrapper-website-title'><Link to="/about" className="wrapper-title-link">Ramblin' Wreck Reviews</Link></h1>
         <div className='wrapper-nav-bar-menu'>
           {/* Displays correct links based on user access */}
           {userGroups.includes(AuthStatusEnum.ADMIN) ? adminLink : null}
           {userGroups.includes(AuthStatusEnum.SUPERUSER) ? professorLink : null}
           {userGroups.includes(AuthStatusEnum.STUDENT) ? studentLink : null}
-          {currentUser ? signOutLink: null}
+          {currentUser ? signOutLink: signInLink}
         </div>
       </div>
-      <AWS_Authenticator role={role}>
-        <Outlet />
-      </AWS_Authenticator>
-    </>
+      <div style={{height: 'calc(100vh - 80px)'}}>
+        <AWS_Authenticator role={role}>
+          <Outlet />
+        </AWS_Authenticator>
+      </div>
+    </div>
   );
 }
 
