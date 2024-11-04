@@ -9,7 +9,7 @@
       "UnauthRoleName": "amplify-ramblinwreckreviewv3-dev-48779-unauthRole",
       "StackName": "amplify-ramblinwreckreviewv3-dev-48779",
       "StackId": "arn:aws:cloudformation:us-east-2:386157563166:stack/amplify-ramblinwreckreviewv3-dev-48779/3add4bb0-21c5-11ef-980e-0a0f377c2591",
-      "AmplifyAppId": "d17syn1snva5yk",
+      "AmplifyAppId": "d294wynzkg1i7m",
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ramblinwreckreviewv3-dev-48779-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
