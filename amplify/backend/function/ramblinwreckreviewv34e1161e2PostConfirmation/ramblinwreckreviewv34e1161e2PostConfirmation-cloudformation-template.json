@@ -2,15 +2,7 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.12.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "REDIRECTURL": {
-      "Type": "String",
-      "Default": ""
-    },
-    "EMAILMESSAGE": {
-      "Type": "String",
-      "Default": ""
-    },
-    "EMAILSUBJECT": {
+    "GROUP": {
       "Type": "String",
       "Default": ""
     },
@@ -75,12 +67,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ramblinwreckreviewv24e1161e2CustomMessage",
+            "ramblinwreckreviewv34e1161e2PostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ramblinwreckreviewv24e1161e2CustomMessage",
+                  "ramblinwreckreviewv34e1161e2PostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -101,17 +93,8 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "REDIRECTURL": {
-              "Ref": "REDIRECTURL"
-            },
-            "EMAILSUBJECT": {
-              "Ref": "EMAILSUBJECT"
-            },
-            "EMAILMESSAGE": {
-              "Ref": "EMAILMESSAGE"
-            },
-            "RESOURCENAME": {
-              "Ref": "resourceName"
+            "GROUP": {
+              "Ref": "GROUP"
             }
           }
         },
@@ -139,12 +122,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ramblinwreckreviewv24e1161e2CustomMessage",
+            "ramblinwreckreviewv34e1161e2PostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ramblinwreckreviewv24e1161e2CustomMessage",
+                  "ramblinwreckreviewv34e1161e2PostConfirmation",
                   "-",
                   {
                     "Ref": "env"

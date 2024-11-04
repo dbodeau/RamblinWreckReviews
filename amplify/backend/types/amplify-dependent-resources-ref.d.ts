@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "auth": {
-    "ramblinwreckreviewv24e1161e2": {
+    "ramblinwreckreviewv34e1161e2": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -18,14 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "ramblinwreckreviewv24e1161e2CustomMessage": {
+    "ramblinwreckreviewv34e1161e2CustomMessage": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "ramblinwreckreviewv24e1161e2PostConfirmation": {
+    "ramblinwreckreviewv34e1161e2PostConfirmation": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

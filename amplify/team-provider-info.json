@@ -1,37 +1,37 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-ramblinwreckreviewv2-dev-48779-authRole",
-      "UnauthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv2-dev-48779-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv2-dev-48779-authRole",
+      "AuthRoleName": "amplify-ramblinwreckreviewv3-dev-48779-authRole",
+      "UnauthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv3-dev-48779-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::386157563166:role/amplify-ramblinwreckreviewv3-dev-48779-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
-      "UnauthRoleName": "amplify-ramblinwreckreviewv2-dev-48779-unauthRole",
-      "StackName": "amplify-ramblinwreckreviewv2-dev-48779",
-      "StackId": "arn:aws:cloudformation:us-east-2:386157563166:stack/amplify-ramblinwreckreviewv2-dev-48779/3add4bb0-21c5-11ef-980e-0a0f377c2591",
+      "DeploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
+      "UnauthRoleName": "amplify-ramblinwreckreviewv3-dev-48779-unauthRole",
+      "StackName": "amplify-ramblinwreckreviewv3-dev-48779",
+      "StackId": "arn:aws:cloudformation:us-east-2:386157563166:stack/amplify-ramblinwreckreviewv3-dev-48779/3add4bb0-21c5-11ef-980e-0a0f377c2591",
       "AmplifyAppId": "d17syn1snva5yk",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ramblinwreckreviewv2-dev-48779-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ramblinwreckreviewv3-dev-48779-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "ramblinwreckreviewv24e1161e2": {},
-        "ramblinwreckreviewv2c3b308f7": {}
+        "ramblinwreckreviewv34e1161e2": {},
+        "ramblinwreckreviewv3c3b308f7": {}
       },
       "function": {
-        "ramblinwreckreviewv24e1161e2CustomMessage": {
+        "ramblinwreckreviewv34e1161e2CustomMessage": {
           "REDIRECTURL": "ramblinwreckreviews.com/signup",
           "EMAILSUBJECT": "Email Verification",
           "EMAILMESSAGE": "Please confirm your email for ramblinwreckreviews.com using the provided link:",
-          "deploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
-          "s3Key": "amplify-builds/ramblinwreckreviewv24e1161e2CustomMessage-713177685741674b7538-build.zip"
+          "deploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
+          "s3Key": "amplify-builds/ramblinwreckreviewv34e1161e2CustomMessage-713177685741674b7538-build.zip"
         },
-        "ramblinwreckreviewv24e1161e2PostConfirmation": {
+        "ramblinwreckreviewv34e1161e2PostConfirmation": {
           "GROUP": "RamblinWreckUsers",
-          "deploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
-          "s3Key": "amplify-builds/ramblinwreckreviewv24e1161e2PostConfirmation-3564462f654445494d2f-build.zip"
+          "deploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
+          "s3Key": "amplify-builds/ramblinwreckreviewv34e1161e2PostConfirmation-3564462f654445494d2f-build.zip"
         },
         "S3Trigger1091c9fb": {
-          "deploymentBucketName": "amplify-ramblinwreckreviewv2-dev-48779-deployment",
+          "deploymentBucketName": "amplify-ramblinwreckreviewv3-dev-48779-deployment",
           "s3Key": "amplify-builds/S3Trigger1091c9fb-5431622b2b754b455245-build.zip"
         }
       },

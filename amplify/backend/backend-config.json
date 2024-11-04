@@ -1,6 +1,6 @@
 {
   "auth": {
-    "ramblinwreckreviewv24e1161e2": {
+    "ramblinwreckreviewv34e1161e2": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -9,7 +9,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage",
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage",
           "triggerProvider": "Cognito"
         },
         {
@@ -18,7 +18,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation",
+          "resourceName": "ramblinwreckreviewv34e1161e2PostConfirmation",
           "triggerProvider": "Cognito"
         }
       ],
@@ -52,12 +52,12 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "ramblinwreckreviewv24e1161e2CustomMessage": {
+    "ramblinwreckreviewv34e1161e2CustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "ramblinwreckreviewv24e1161e2PostConfirmation": {
+    "ramblinwreckreviewv34e1161e2PostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -80,67 +80,67 @@
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_EMAILMESSAGE": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2CustomMessage_EMAILMESSAGE": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_EMAILSUBJECT": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2CustomMessage_EMAILSUBJECT": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_REDIRECTURL": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2CustomMessage_REDIRECTURL": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_deploymentBucketName": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2CustomMessage_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2CustomMessage_s3Key": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2CustomMessage_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2CustomMessage"
+          "resourceName": "ramblinwreckreviewv34e1161e2CustomMessage"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_GROUP": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2PostConfirmation_GROUP": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+          "resourceName": "ramblinwreckreviewv34e1161e2PostConfirmation"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_deploymentBucketName": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2PostConfirmation_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+          "resourceName": "ramblinwreckreviewv34e1161e2PostConfirmation"
         }
       ]
     },
-    "AMPLIFY_function_ramblinwreckreviewv24e1161e2PostConfirmation_s3Key": {
+    "AMPLIFY_function_ramblinwreckreviewv34e1161e2PostConfirmation_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "ramblinwreckreviewv24e1161e2PostConfirmation"
+          "resourceName": "ramblinwreckreviewv34e1161e2PostConfirmation"
         }
       ]
     }

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "ramblinwreckreviewv24e1161e2_identitypool_4e1161e2",
+    "identityPoolName": "ramblinwreckreviewv34e1161e2_identitypool_4e1161e2",
     "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "rambli4e1161e2",
-    "userPoolName": "ramblinwreckreviewv24e1161e2_userpool_4e1161e2",
+    "userPoolName": "ramblinwreckreviewv34e1161e2_userpool_4e1161e2",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -34,7 +34,7 @@
     "userpoolClientLambdaRole": "rambli4e1161e2_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "sharedId": "4e1161e2",
-    "resourceName": "ramblinwreckreviewv24e1161e2",
+    "resourceName": "ramblinwreckreviewv34e1161e2",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
@@ -50,7 +50,7 @@
     },
     "userPoolGroupList": [],
     "serviceName": "Cognito",
-    "verificationBucketName": "ramblinwreckreviewv24e1161e2verificationbucket",
+    "verificationBucketName": "ramblinwreckreviewv34e1161e2verificationbucket",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }
