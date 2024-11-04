@@ -2,7 +2,7 @@ import { fetchAuthSession } from '@aws-amplify/auth';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://0izviyippe.execute-api.us-east-2.amazonaws.com/dev',
+  baseURL: 'https://0izviyippe.execute-api.us-east-2.amazonaws.com/prod',
   headers: {
     'Content-Type': 'application/json',
   }
