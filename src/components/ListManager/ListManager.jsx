@@ -129,10 +129,10 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
       variation="striped"
     >
       <TableHead>
-        <TableRow>
+        <TableRow display='flex'>
           {
             config.filter((item) => item.showInShortList).map((item) =>
-              <TableCell as='th' key={item.key}>
+              <TableCell as='th' key={item.key} style={{flex: item.width??1, minWidth: '50px'}}>
                 <Button onClick={() => {toggleSort(item.key)}} variation="menu">
                   {item.displayName}
                   {getSortType(item.key) == true 
@@ -144,7 +144,7 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
               </TableCell>
             )
           }
-          <TableCell as='th' width='10%'>
+          <TableCell as='th' style={{flex: 1, minWidth:'150px'}}>
             <View
               style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}
             >
@@ -187,11 +187,11 @@ export default function ListManager({ config, showAddComponent, editItem, data, 
         {
           dataShown.map((element) => (
             <Fragment key={element.id}>
-              <TableRow key={element.id}>
+              <TableRow key={element.id} display='flex'>
                 {config.filter((item) => item.showInShortList).map((item) => 
-                  <TableCell key={item.key}>{getDisplayValue(element[item.key], item)}</TableCell>
+                  <TableCell key={item.key} style={{flex: item.width??1, minWidth: '50px'}}>{getDisplayValue(element[item.key], item)}</TableCell>
                 )}
-                <TableCell width='10%'>
+                <TableCell style={{flex: 1, minWidth:'150px'}}>
                   <Button onClick={() => toggleExpandedElement(element)}>
                     {
                       expandedElement !== null && expandedElement?.id == element.id
