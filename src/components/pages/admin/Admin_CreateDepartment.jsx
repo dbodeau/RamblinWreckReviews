@@ -51,17 +51,18 @@ export default function AdminCreateDepartment() {
     return hasError;
   }
 
-  const onSubmit = () => {
+  const onSubmit =  () => {
     if (!validate(formData)) {
       // get data fields
       const deptId = departments.find((dept) => dept.abbr === formData.department.split(' - ')[0]).id;
       const createdBy = currentUser.id; 
-
+      console.log("here1");
       // compile data into one object
       const createData = {...formData, deptId: deptId, createdBy: createdBy};
-
+      //const newFM = await createDepartment(createData);
+      
       // call back-end 
-      // createDepartment(createData);
+     createDepartment(createData);
 
       // TODO add error handling/success popup
       setFormData({department: "", email: "", first: "", last: ""});

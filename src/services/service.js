@@ -43,9 +43,13 @@ export async function getDepartment(departmentId) {
   return JSON.parse(response.data.body);
 }
 
-export async function createDepartment(department, user) {
+export async function createDepartment(department) {
+  console.log("here");
+  console.log(department);
+  
   const response = await axiosInstance.post('/departments', department);
   return JSON.parse(response.data.body);
+  
 }
 
 export async function getInactiveDepartments() {
