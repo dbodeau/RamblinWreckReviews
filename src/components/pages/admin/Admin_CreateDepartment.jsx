@@ -20,7 +20,6 @@ export default function AdminCreateDepartment() {
   const [isWaiting, setIsWaiting] = useState(false);
 
   const validate = (formData, field="all") => {
-    console.log(field);
     let hasError = false;
     const err = errors;
     // do our data validation
@@ -29,19 +28,20 @@ export default function AdminCreateDepartment() {
         err.department.errorMsg = "Required field";
         hasError = true;
     }
-    if ((field === "all" || field === "email") && formData.email === "") {
-      err.email.hasError = true;
-      err.email.errorMsg = "Required field";
-      hasError = true;
-    } else { // do additional validation
+    if (field === "all" || field === "email") {
+      if (formData.email === ""){
+        err.email.hasError = true;
+        err.email.errorMsg = "Required field";
+        hasError = true;
+      } else { // do additional validation
         const pattern = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@mines.edu$'); // stop sql injection...
-
         if (!pattern.test(formData.email)) {
             err.email.hasError = true;
             err.email.errorMsg = "Invalid email";
             hasError = true;
         }
     }
+    } 
     if ((field === "all" || field === "first") && formData.first === "") {
       err.first.hasError = true;
       err.first.errorMsg = "Required field";
@@ -67,7 +67,6 @@ export default function AdminCreateDepartment() {
       const createData = {...formData, deptId: deptId};
 
       // call back-end 
-      console.log("createData", createData);
       createDepartment(createData)
         .then((response) => {
           // can't use .then/.catch 
