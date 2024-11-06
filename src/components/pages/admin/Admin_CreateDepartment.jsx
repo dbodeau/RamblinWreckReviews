@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { createDepartment, getInactiveDepartments } from '../../../services/service';
 import MenuBar from '../../MenuBar';
-import { SelectField, TextField, View } from "@aws-amplify/ui-react";
+import { Loader, SelectField, TextField, View } from "@aws-amplify/ui-react";
 import ContrastButton from '../../ContrastButton';
-import { useSelector } from "react-redux";
+import { Popup } from 'reactjs-popup';
+import { MdClose } from 'react-icons/md';
 
 export default function AdminCreateDepartment() {
-  const currentUser = useSelector((state => state.auth.user));
   const errors = {department: {hasError: false, errorMsg: ""}, email: {hasError: false, errorMsg: ""}, first: {hasError: false, errorMsg: ""}, last: {hasError: false, errorMsg: ""}};
   
   const [formData, setFormData] = useState({department: "", email: "", first: "", last: ""});
   const [formErrors, setFormErrors] = useState(errors);
   const [departments, setDepartments] = useState([]);
 
+  // states for creation success/failure popup
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isWaiting, setIsWaiting] = useState(false);
+
   const validate = (formData, field="all") => {
+    console.log(field);
     let hasError = false;
     const err = errors;
     // do our data validation
@@ -54,17 +61,29 @@ export default function AdminCreateDepartment() {
   const onSubmit = () => {
     if (!validate(formData)) {
       // get data fields
-      const deptId = departments.find((dept) => dept.abbr === formData.department.split(' - ')[0]).id;
-      const createdBy = currentUser.id; 
+      const deptId = departments.find((dept) => dept.abbr === formData.department.split('\t-\t')[0]).id;
 
       // compile data into one object
-      const createData = {...formData, deptId: deptId, createdBy: createdBy};
+      const createData = {...formData, deptId: deptId};
 
       // call back-end 
-      // createDepartment(createData);
-
-      // TODO add error handling/success popup
-      setFormData({department: "", email: "", first: "", last: ""});
+      console.log("createData", createData);
+      createDepartment(createData)
+        .then((response) => {
+          // can't use .then/.catch 
+          if (response.statusCode >= 200 && response.statuseCode < 300) { // success
+            setSuccess(true);
+            setFormData({department: "", email: "", first: "", last: ""});
+            setDepartments((pd) => pd.filter(val => val.id != deptId)); // remove department from departments list
+            setResponseMessage("Department has been sucessfully added");
+          } else { // 3xx 4xx 5xx status codes
+            setFailure(true); // display to user
+            setResponseMessage(JSON.parse(response.body));
+          }
+        })
+        .finally(() => (setIsWaiting(false)))
+        // let user know response is loading
+        setIsWaiting(true);
     }
   }
 
@@ -91,7 +110,7 @@ export default function AdminCreateDepartment() {
     <View style={{display: 'flex', flexDirection: 'row', height: '100%', width: '100%'}}>
       <MenuBar/>
       <View style={{width: '100%'}}>
-        <form style={{width: "40%", marginLeft: "auto", marginRight: "auto", marginTop: "20px", border: '2px solid', borderColor: "#21314d", borderRadius: "5px", padding: '20px'}}>
+        <form style={{width: "40%", minWidth: "400px", maxWidth: "600px", marginLeft: "auto", marginRight: "auto", marginTop: "20px", border: '2px solid', borderColor: "#21314d", borderRadius: "5px", padding: '20px'}}>
           <SelectField 
             label="Department"
             placeholder='Ex. CSCI...'
@@ -99,7 +118,7 @@ export default function AdminCreateDepartment() {
             onChange={(e) => onChange(e, 'department')}
             hasError={formErrors.department.hasError}
             errorMessage={formErrors.department.errorMsg}
-            options={departments.map(value => value.abbr + " - " + value.name)}
+            options={departments.map(value => value.abbr + "\t-\t" + value.name)}
           />
           <div style={{margin: "20px"}}/>
           <TextField
@@ -126,11 +145,27 @@ export default function AdminCreateDepartment() {
             errorMessage={formErrors.last.errorMsg}
           />
           <div style={{display: "flex", flexDirection: "row-reverse", marginTop: "15px", }}> 
-            <ContrastButton onClick={onSubmit}>Create</ContrastButton>
+            <ContrastButton onClick={onSubmit}>{isWaiting ? <Loader /> : "Create"}</ContrastButton>
           </div>
-
-          {/*success popup*/}
         </form>
+        {/*success popup*/}
+        <Popup open={success} onClose={() => setSuccess(false)}>
+            <div style={{width: 400, height: 100, backgroundColor: "#c5ffca", borderRadius: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+              <div style={{width: "100%", height: "20%", display: 'flex', flexDirection: 'row-reverse', marginBottom: -10, marginTop: -10, alignItems: 'flex-end', borderRadius: 6}}>
+                <button onClick={() => setSuccess(false)} style={{border: "none", backgroundColor: "#c5ffca"}}><MdClose/></button>
+              </div>
+              <p>{responseMessage}</p>
+            </div>
+          </Popup>
+          {/*fail popup*/}
+          <Popup open={failure} onClose={() => setFailure(false)}> 
+            <div style={{width: 400, height: 100, backgroundColor: "#ff9494", borderRadius: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+              <div style={{width: "100%", height: "20%", display: 'flex', flexDirection: 'row-reverse', marginBottom: -10, marginTop: -10, alignItems: 'flex-end', borderRadius: 6}}>
+                <button onClick={() => setFailure(false)} style={{border: "none", backgroundColor: "#ff9494"}}><MdClose/></button>
+              </div>
+              <p>{responseMessage}</p>
+            </div>
+          </Popup>
       </View>
     </View>
   );

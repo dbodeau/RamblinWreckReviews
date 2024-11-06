@@ -45,7 +45,7 @@ export async function getDepartment(departmentId) {
 
 export async function createDepartment(department, user) {
   const response = await axiosInstance.post('/departments', department);
-  return JSON.parse(response.data.body);
+  return response.data; // need the statusCode
 }
 
 export async function getInactiveDepartments() {
