@@ -70,7 +70,7 @@ export default function AdminCreateDepartment() {
       createDepartment(createData)
         .then((response) => {
           // can't use .then/.catch 
-          if (response.statusCode >= 200 && response.statuseCode < 300) { // success
+          if (response.statusCode >= 200 && response.statusCode < 300) { // success
             setSuccess(true);
             setFormData({department: "", email: "", first: "", last: ""});
             setDepartments((pd) => pd.filter(val => val.id != deptId)); // remove department from departments list
